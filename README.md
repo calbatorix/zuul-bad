@@ -1,6 +1,14 @@
-# 1.A/ Auteur :
+#Présentation du jeu
+## Auteur :
 Baptiste Espinasse
-# 1.B/ Thème  :
+## Thème  :
 Une équipe d'aventurier doivent retrouver un antidote volé par un savant fou à l’intérieur d'un donjon
-# 1.C/ Résumé du scénario complet : 
-# 1.D/Plan complet
+## Résumé du scénario complet : 
+## Plan complet
+## Scénario détaillé
+## Détail des lieux, items, personnages
+## Situations gagnantes et perdantes
+## Eventuellement énigmes, mini-jeux, combats, etc.
+## Commentaires (ce qui manque, reste à faire, ...)
+# Réponses aux exercices
+# Mode d'emploi
