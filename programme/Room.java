@@ -1,11 +1,10 @@
+import java.util.HashMap;
+
 public class Room
 {
     //attribut
     private String aDescription;
-    private Room aNorthExit;
-    private Room aSouthExit;
-    private Room aWestExit;
-    private Room aEastExit;
+    private HashMap<String, Room> aExits;
     /****************************constructeur*********************************/
     /**
      * constructeur naturel de la class Room
@@ -13,6 +12,7 @@ public class Room
     public Room(final String pDescription)
     {
         this.aDescription = pDescription;
+        aExits = new HashMap<>();
     }
     /**************************acesseur et modificateur **********************/
     /**
@@ -22,34 +22,25 @@ public class Room
 
     public Room getExit(String pDirection)
     {
-        if(pDirection.equals("north")) return this.aNorthExit;
-        if(pDirection.equals("south")) return this.aSouthExit;
-        if(pDirection.equals("east")) return this.aEastExit;
-        if(pDirection.equals("west")) return this.aWestExit;
-        return null;
+        return this.aExits.get(pDirection);
     }
 
     public Room getExitString()
     {
-        String vExitString="Exits: ";
-        if(this.aNorthExit != null) vExitString += "north";
-        if(this.aSouthExit != null) vExitString += "south";
-        if(this.aEastExit != null) vExitString += "east";
-        if(this.aWestExit != null) vExitString += "west";
-        return vExitString;
+        String vReturnString = "Exits:";
+        Set<String> vKeys = this.aExits.keySet();
+        for(String vExit : vKeys)
+        {
+            vReturnString += " "+vExit;
+        }
+        return vReturnString;
     }
     
     /**
      *modificateur setExits 
      */
-    public void setExits(final Room pNorthExit, final Room pSouthExit, final Room pEastExit, final Room pWestExit)
+    public void setExits(final String pDirection, final Room pNeighbor)
     {
-        this.aNorthExit = pNorthExit;
-        
-        this.aSouthExit = pSouthExit;
-        
-        this.aEastExit  = pEastExit;
-        
-        this.aWestExit  = pWestExit;
+        this.aExits.put(pDirection, pNeighbor);
     }
 } // Room
