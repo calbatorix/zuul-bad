@@ -3,12 +3,17 @@ public class Game
     //attribut
     private Room aCurrentRoom;
     private Parser aParser;
-    
+    /**
+     * Construteur par defaut de la classe Game
+     */
     public Game()
     {
         this.createRooms();
         this.aParser = new Parser();
     }
+    /**
+     * Procedure de creation de toute les salles du jeu
+     */
     private void createRooms()
     {
         //declaration des room
@@ -82,6 +87,10 @@ public class Game
         this.aCurrentRoom =vPieceDeDepart;
     }
     
+    /**
+     * Procedure affichant les information sur la salle actuel
+     * comme sont nom ainsi que les sortis possible pour cette piece
+     */
     private void printLocationInfo()
     {
             System.out.println("You are in the "+ this.aCurrentRoom.getDescription());
@@ -93,6 +102,10 @@ public class Game
             System.out.println(this.aCurrentRoom.getExitString());
     }
     
+    /**
+     * Procedure ayant pour but de permettre le deplacement du jour de piece en piece
+     * @param demande une commande avec deux mots le premier go et le second la direction
+     */
     private void goRoom(final Command pCommand)
     {
         if(!pCommand.hasSecondWord())
@@ -113,6 +126,9 @@ public class Game
         }
     }
     
+    /**
+     * procedure affichant un message de bienvenue au jour
+     */
     private void printWelcome()
     {
         System.out.println("Welcome to the World of Zuul!");
@@ -122,6 +138,9 @@ public class Game
         this.printLocationInfo();
     }
     
+    /**
+     * procedure affichant l'aide au joueur
+     */
     private void printHelp()
     {
         System.out.println("You are lost. You are alone.");
