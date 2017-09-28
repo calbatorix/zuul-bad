@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Set;
 
 public class Room
 {
@@ -25,7 +26,7 @@ public class Room
         return this.aExits.get(pDirection);
     }
 
-    public Room getExitString()
+    public String getExitString()
     {
         String vReturnString = "Exits:";
         Set<String> vKeys = this.aExits.keySet();
@@ -39,7 +40,7 @@ public class Room
     /**
      *modificateur setExits 
      */
-    public void setExits(final String pDirection, final Room pNeighbor)
+    public void setExit(final String pDirection, final Room pNeighbor)
     {
         this.aExits.put(pDirection, pNeighbor);
     }

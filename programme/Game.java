@@ -24,7 +24,7 @@ public class Game
         Room vCouloir8 = new Room("couloir8");
         Room vSortie = new Room("sortie");
         Room vTourRDC = new Room("RDC de la tour");
-        Room vTourHight = new Room("Sommet de la tour")
+        Room vTourHight = new Room("Sommet de la tour");
         Room vSalleDesGardes = new Room("Salle des gardes");
         Room vJardin = new Room("Jardin");
         Room vBureau = new Room("Bureau");
