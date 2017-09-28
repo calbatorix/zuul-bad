@@ -12,7 +12,7 @@ Une équipe d'aventurier doivent retrouver un antidote volé par un savant fou �
 ## Commentaires (ce qui manque, reste à faire, ...)
 # Réponses aux exercices
 ## Exercice 7.5 (printLocationInfo)
-```
+```java
 private void printLocationInfo()
 {
     System.out.println("You are in the "+ this.aCurrentRoom.getDescription());
