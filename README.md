@@ -23,4 +23,19 @@ private void printLocationInfo()
     if(this.aCurrentRoom.getExit("west") != null) System.out.print("west");
 }
 ```
+## Exercice 7.6 (getExit)
+```java
+```
+## Exercice 7.7 (getExitString)
+```java
+```
+## Exercice 7.8 (HashMap, setExit)
+```java
+```
+## Exercice 7.9 (keySet)
+```java
+```
+## Exercice 7.10 (getExitString CCM?)
+```java
+```
 # Mode d'emploi
