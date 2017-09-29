@@ -51,6 +51,14 @@ vNextRoom = this.aCurrentRoom.getExit("east");
 Au premiere abord rendre privé les attribut peut semblée generer une difficultée en plus, mais sur le long terme, cela facilite la modification du code.
 Par exemple le code suivant :
 ```java
+        Room vNextRoom = null;
+        String vDirection =pCommand.getSecondWord();
+
+        if( vDirection.equals("north") ) vNextRoom = this.aCurrentRoom.aNorthExit;
+        if( vDirection.equals("south") ) vNextRoom = this.aCurrentRoom.aSouthExit;
+        if( vDirection.equals("east") ) vNextRoom = this.aCurrentRoom.aEastExit;
+        if( vDirection.equals("west") ) vNextRoom = this.aCurrentRoom.aWestExit;
+        
 ```
 devient beaucoup plus court, et permet d'ajouté une nouvelle direction de sortie avec aucune ligne a modifiée dans la class Game:
 `java
