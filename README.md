@@ -12,6 +12,9 @@ Une équipe d'aventurier doivent retrouver un antidote volé par un savant fou �
 ## Commentaires (ce qui manque, reste à faire, ...)
 # Réponses aux exercices
 ## Exercice 7.5 (printLocationInfo)
+Aprés avoir ecrire les methodes printWelcome et goRoom,on remarque que toute deux execute la meme suite de fontion.Ceci est une duplation de code.
+Pour eviter cette duplication de code on peut créé une methode printLocationInfo qui effectura cette meme suite de fonction.
+Ensuite nous appellerons cette procedure dans printWelcome et goRoom.
 ```java
 private void printLocationInfo()
 {
