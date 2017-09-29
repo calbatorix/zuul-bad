@@ -11,6 +11,13 @@ Une équipe d'aventurier doivent retrouver un antidote volé par un savant fou �
 ## Eventuellement énigmes, mini-jeux, combats, etc.
 ## Commentaires (ce qui manque, reste à faire, ...)
 # Réponses aux exercices
+## Exercice 7.1 (ex 'zuul-bad')
+## Exercice 7.1.1 : Choisir un thème ...
+## Exercice 7.2.1 : La classe Scanner ... /*todo: explication*/
+## Faire l'exercice 7.3 (scénario libre)
+## Exercice 7.3.1 : Écrire dans le Rapport ...
+## Exercice 7.3.2 : Dessiner un plan du jeu ...
+##  Exercice 7.4 (zuul-v1, rooms, exits)
 ## Exercice 7.5 (printLocationInfo)
 Aprés avoir ecrire les methodes printWelcome et goRoom,on remarque que toute deux execute la meme suite de fontion.Ceci est une duplation de code.
 Pour eviter cette duplication de code on peut créé une methode printLocationInfo qui effectura cette meme suite de fonction.
@@ -65,7 +72,28 @@ devient beaucoup plus court, et permet d'ajouté une nouvelle direction de sorti
 Room vNextRoom = this.aCurrentRoom.getExit(vDirection);
 ```
 ## Exercice 7.7 (getExitString)
+Dans la meme optique que dans la question precedante, nous allons créée une methode getExitString dans la class Room.
+Elle aura pour but de simplifier la methode printLocationInfo, cette derniere n'aura plus qu'a afficher la String de retour de getExitString.
+Ainsi si de nouvelle direction de sortie sont ajoutée cela n'aura pas d'impacte sur printLocationInfo.
+A noté que le il faudra tout de meme modifier getExitSting si une nouvelle direction est ajoutée pour l'intant.
+```java    
+public Room getExitString()
+{
+    String vExitString="Exits: ";
+    if(this.aNorthExit != null) vExitString += "north";
+    if(this.aSouthExit != null) vExitString += "south";
+    if(this.aEastExit != null) vExitString += "east";
+    if(this.aWestExit != null) vExitString += "west";
+    return vExitString;
+}
+```
+
 ```java
+private void printLocationInfo()
+{
+    System.out.println("You are in the "+ this.aCurrentRoom.getDescription());
+    System.out.println(this.aCurrentRoom.getExitString());
+}
 ```
 ## Exercice 7.8 (HashMap, setExit)
 ```java
