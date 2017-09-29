@@ -27,8 +27,35 @@ private void printLocationInfo()
 }
 ```
 ## Exercice 7.6 (getExit)
+Nous souhaitons ajoutée deux nouveaux type de direction pour sortir d'une piece tel que "haut" et "bas".Malheuresement lors de la premiere creation de la class Room les attribut de direction on etaient rendue publique au autre class.Ce qui à permit a la class Game d'utiliser un accées a ceci tres simple.Mais maintenant que nous voulons modifié la class Room cela va perturbée le bon fonctionement de Game car ces deux class on un couplage fort.
+Pour remedier a ce probleme nous alons renforce la separtion de ces deux class en rendant les attribu prive.
+Ce qui oblige de créé un getteur a la class room.
+```java
+public Room getExit(String pDirection)
+{
+    if(vDirection.equals("nord")) return this.aNorthExit;
+    if(vDirection.equals("south")) return this.aSouthExit;
+    if(vDirection.equals("east")) return this.aEastExit;
+    if(vDirection.equals("west")) return this.aWestExit;
+}
+```
+Maintenant il faut egalement modifie la class Game.Qui a maintenant besoin des getter pour accèdais au champ de Room.
+Au lien d'ecrire :
+`java
+vNextRoom = this.aCurrentRoom.eastExit;
+`
+il faut :
+`java
+vNextRoom = this.aCurrentRoom.getExit("east");
+`
+Au premiere abord rendre privé les attribut peut semblée generer une difficultée en plus, mais sur le long terme, cela facilite la modification du code.
+Par exemple le code suivant :
 ```java
 ```
+devient beaucoup plus court, et permet d'ajouté une nouvelle direction de sortie avec aucune ligne a modifiée dans la class Game:
+`java
+Room vNextRoom = this.aCurrentRoom.getExit(vDirection);
+`
 ## Exercice 7.7 (getExitString)
 ```java
 ```
