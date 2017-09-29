@@ -41,13 +41,13 @@ public Room getExit(String pDirection)
 ```
 Maintenant il faut egalement modifie la class Game.Qui a maintenant besoin des getter pour accèdais au champ de Room.
 Au lien d'ecrire :
-`java
+```java
 vNextRoom = this.aCurrentRoom.eastExit;
-`
+```
 il faut :
-`java
+```java
 vNextRoom = this.aCurrentRoom.getExit("east");
-`
+```
 Au premiere abord rendre privé les attribut peut semblée generer une difficultée en plus, mais sur le long terme, cela facilite la modification du code.
 Par exemple le code suivant :
 ```java
@@ -61,9 +61,9 @@ Par exemple le code suivant :
         
 ```
 devient beaucoup plus court, et permet d'ajouté une nouvelle direction de sortie avec aucune ligne a modifiée dans la class Game:
-`java
+```java
 Room vNextRoom = this.aCurrentRoom.getExit(vDirection);
-`
+```
 ## Exercice 7.7 (getExitString)
 ```java
 ```
