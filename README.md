@@ -136,6 +136,7 @@ public class Room
 }
 ```
 Une table de hachage simplement est un tableau ou les indices ne sont pas des entiers de 0 à N-1 mais des objets que l'on nomera "key".
+Dans notre cas les "key" sont les noms de sortie de la piece.
 Pour utiliser ce paquetage il faut ajouter :
 `java
  import java.util.HashMap;
@@ -143,9 +144,24 @@ Pour utiliser ce paquetage il faut ajouter :
 Ainsi on peut instancier des objets de type Hashmap et utiliser les methodes qui sont deja créé dans le paquetage.
 Le construteur naturel subit lui aussi des modifications pour correspondre aux atribut de la class.
 ## Exercice 7.9 (keySet)
+Il faut mettre la methode getExitString à jour.
 ```java
+ public String getExitString()
+ {
+    String vReturnString = "Exits:";
+    Set<String> vKeys = this.aExits.keySet();
+    for(String vExit : vKeys)
+    {
+        vReturnString += " "+vExit;
+    }
+    return vReturnString;
+}
 ```
 ## Exercice 7.10 (getExitString CCM?)
-```java
-```
+Le but de la methode getExitString est de retourner sous forme d'un String toute les sorties possible pour la commande go.
+Toute ces direction de sortie sont les les "key" de la table de hachage aExits.
+L'interface Set est une collection d'objet dans laquel on ne peut pas avoir de doublons.
+La methode keySet() permet de retourner un objet de type set<> représentant la liste des clés contenues dans la collection.
+Donc en faisant `java Set<String> vKeys = this.aExits.keySet();` On stock toute les "key" (direction de sortie de la piece this.) dans la collection de type Set<String> vKeys.
+La boucle for each 
 # Mode d'emploi
