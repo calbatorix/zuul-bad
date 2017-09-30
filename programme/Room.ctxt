@@ -16,4 +16,6 @@ comment4.text=\r\n\ acesseur\ transmettant\ toute\ les\ direction\ de\ sortie\ d
 comment5.params=pDirection\ pNeighbor
 comment5.target=void\ setExit(java.lang.String,\ Room)
 comment5.text=\r\nmodificateur\ permetant\ de\ cr\u00E9e/modifier\ une\ direction\ de\ sortie\ de\ la\ piece\ courante\ \r\n@param\ elle\ demande\ un\ String\ contenant\ le\ nom\ de\ la\ direction\ de\ sorite,\ et\ une\ Room\ de\ destination\r\n
-numComments=6
+comment6.params=
+comment6.target=java.lang.String\ getLongDescription()
+numComments=7

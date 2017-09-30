@@ -171,4 +171,5 @@ for(type variable : collection)
 }
 ```
 Va effectuer les instruction sur les objets de la collection un par un dans l'ordre.
+## Exercice 7.11 (getLongDescription)
 # Mode d'emploi

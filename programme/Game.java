@@ -129,7 +129,6 @@ public class Game
         System.out.println("Welcome to the World of Zuul!");
         System.out.println("World of Zuul is a new, incredibly boring adventure game.");
         System.out.println("Type 'help' if you need help.");
-        getLongDescription();
         System.out.println(this.aCurrentRoom.getLongDescription());
     //    this.printLocationInfo();
     }
@@ -145,6 +144,11 @@ public class Game
         System.out.println("Your command words are:");
         System.out.println("    go quit help");
     }
+
+    private void look()
+    { 
+        System.out.println(this.aCurrentRoom.getLongDescription());
+    }
     
     private boolean quit(final Command pCommand)
     {
@@ -158,23 +162,10 @@ public class Game
     
     public boolean processCommand(final Command pCommand)
     {
-        if (! pCommand.getCommandWord().equals("help") 
-                && !pCommand.getCommandWord().equals("quit")
-                    && !pCommand.getCommandWord().equals("go"))
-                {
-                    System.out.println("I don't know what you mean...");
-                    return false;
-                }
-        if (pCommand.getCommandWord().equals("help")) 
-        {
-            printHelp();
-            return false;
-        }
-        if (pCommand.getCommandWord().equals("go"))
-        {
-            goRoom(pCommand);
-            return false;
-        }
+        if(pCommand.isUnknown()) System.out.println("I don't know what you mean...");
+        if (pCommand.getCommandWord().equals("help"))  printHelp();
+        if (pCommand.getCommandWord().equals("go"))    goRoom(pCommand);
+        if (pCommand.getCommandWord().equals("look"))  look();
         if (pCommand.getCommandWord().equals("quit"))
         { 
             Command vCommand = new Command(pCommand.getSecondWord(), null);
