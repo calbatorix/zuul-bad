@@ -163,5 +163,12 @@ Toute ces direction de sortie sont les les "key" de la table de hachage aExits.
 L'interface Set est une collection d'objet dans laquel on ne peut pas avoir de doublons.
 La methode keySet() permet de retourner un objet de type set<> représentant la liste des clés contenues dans la collection.
 Donc en faisant `java Set<String> vKeys = this.aExits.keySet();` On stock toute les "key" (direction de sortie de la piece this.) dans la collection de type Set<String> vKeys.
-La boucle for each 
+La boucle for each :
+```java
+for(type variable : collection)
+{
+ /*instruction*/
+}
+```
+Va effectuer les instruction sur les objets de la collection un par un dans l'ordre.
 # Mode d'emploi
