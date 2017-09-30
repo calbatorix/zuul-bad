@@ -1,16 +1,19 @@
 #BlueJ class context
 comment0.target=Room
+comment0.text=\r\n\ This\ class\ is\ part\ of\ the\ "World\ of\ Zuul"\ application.\ \r\n\ "World\ of\ Zuul"\ is\ a\ very\ simple,\ text\ based\ adventure\ game.\ \ \r\n\ \r\n\ La\ classe\ Room\ a\ pour\ but\ de\ generer\ des\ pieces\r\n\ Elle\ possede\ comme\ attribut\ une\ courte\ description\ de\ la\ piece\ ainsi\ que\ que\ toute\ les\ direction\ de\ sortie,\ li\u00E9e\ \u00E0\ leur\ destination\r\n\ \r\n\ @author\ \ Espinasse\ Baptiste\r\n\ @version\ 2017.09.30\r\n
 comment1.params=pDescription
 comment1.target=Room(java.lang.String)
-comment1.text=\r\n\ constructeur\ naturel\ de\ la\ class\ Room\r\n
+comment1.text=\r\n\ constructeur\ naturel\ de\ la\ class\ Room\r\n\ @param\ demande\ en\ parametre\ un\ String\ decrivent\ la\ Room\r\n
 comment2.params=
 comment2.target=java.lang.String\ getDescription()
-comment2.text=\r\n\ acesseur\ de\ Description\r\n
+comment2.text=\r\n\ acesseur\ de\ la\ description\ de\ Room\r\n\ @return\ aDescription\r\n
 comment3.params=pDirection
 comment3.target=Room\ getExit(java.lang.String)
+comment3.text=\r\n\ acesseur\ des\ direction\ de\ sortie\ de\ la\ piece\r\n\ @param\ demande\ un\ String\ contenant\ une\ direction\r\n\ @return\ aExits\r\n
 comment4.params=
 comment4.target=java.lang.String\ getExitString()
+comment4.text=\r\n\ acesseur\ transmettant\ toute\ les\ direction\ de\ sortie\ de\ la\ piece\r\n\ @return\ un\ String\ contenant\ toute\ de\ la\ direction\ de\ sortie\ de\ la\ piece\r\n
 comment5.params=pDirection\ pNeighbor
 comment5.target=void\ setExit(java.lang.String,\ Room)
-comment5.text=\r\nmodificateur\ setExits\ \r\n
+comment5.text=\r\nmodificateur\ permetant\ de\ cr\u00E9e/modifier\ une\ direction\ de\ sortie\ de\ la\ piece\ courante\ \r\n@param\ elle\ demande\ un\ String\ contenant\ le\ nom\ de\ la\ direction\ de\ sorite,\ et\ une\ Room\ de\ destination\r\n
 numComments=6
