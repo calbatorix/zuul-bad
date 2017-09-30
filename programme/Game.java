@@ -150,6 +150,11 @@ public class Game
         System.out.println(this.aCurrentRoom.getLongDescription());
     }
     
+    private void eat()
+    {
+        System.out.println("You have eaten now and you are not hungry any more.");
+    }
+
     private boolean quit(final Command pCommand)
     {
         if(pCommand.hasSecondWord() == true)
@@ -166,6 +171,7 @@ public class Game
         if (pCommand.getCommandWord().equals("help"))  printHelp();
         if (pCommand.getCommandWord().equals("go"))    goRoom(pCommand);
         if (pCommand.getCommandWord().equals("look"))  look();
+        if (pCommand.getCommandWord().equals("eat"))   eat();
         if (pCommand.getCommandWord().equals("quit"))
         { 
             Command vCommand = new Command(pCommand.getSecondWord(), null);
