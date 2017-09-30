@@ -96,8 +96,52 @@ private void printLocationInfo()
 }
 ```
 ## Exercice 7.8 (HashMap, setExit)
+Dans le but d'avoir de créé des sorti diferente pour chaque objet Room. Nous allons remplacé les 4 attributs de direction par une table de hachage.Ainsi on ne sear plus limitée à cree des sorite correspondant au quatre point cardinaux.
+Et comme la class Room à desormée une encapsulation forte grace au travaux precedant, les modification qui vont lui etre apporte n'aurai aucune repercutation sur les autre class (correction : il faut tout de meme revoir les instanciation des objets Room dans les autres class).
 ```java
+import java.util.HashMap;
+
+public class Room
+{
+    private String aDescription;
+    private HashMap<String, Room> aExits;
+
+    public Room(final String pDescription)
+    {
+        this.aDescription = pDescription;
+        aExits = new HashMap<>();
+    }
+
+    public String getDescription(){return this.aDescription;}
+
+    public Room getExit(String pDirection)
+    {
+        return this.aExits.get(pDirection);
+    }
+
+    public String getExitString()
+    {
+        String vExitString="Exits: ";
+        if(this.aNorthExit != null) vExitString += "north";
+        if(this.aSouthExit != null) vExitString += "south";
+        if(this.aEastExit != null) vExitString += "east";
+        if(this.aWestExit != null) vExitString += "west";
+        return vExitString;
+    }
+    
+    public void setExit(final String pDirection, final Room pNeighbor)
+    {
+        this.aExits.put(pDirection, pNeighbor);
+    }
+}
 ```
+Une table de hachage simplement est un tableau ou les indices ne sont pas des entiers de 0 à N-1 mais des objets que l'on nomera "key".
+Pour utiliser ce paquetage il faut ajouter :
+`java
+ import java.util.HashMap;
+`
+Ainsi on peut instancier des objets de type Hashmap et utiliser les methodes qui sont deja créé dans le paquetage.
+Le construteur naturel subit lui aussi des modifications pour correspondre aux atribut de la class.
 ## Exercice 7.9 (keySet)
 ```java
 ```
