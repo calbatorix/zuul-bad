@@ -172,4 +172,11 @@ for(type variable : collection)
 ```
 Va effectuer les instruction sur les objets de la collection un par un dans l'ordre.
 ## Exercice 7.11 (getLongDescription)
+## Exercice 7.12 optionnel (diagramme objet) /*todo*/
+## Exercice 7.13 optionnel (go => changement) /*todo*/
+## Exercice 7.14 (look)
+## Exercice 7.14.1 optionnel (look item) /*todo*/
+## Exercice 7.15 (eat)
+## Exercice 7.16 (showAll, showCommands)
+## Exercice 7.17 (optionnel) (changer Game ?) /*todo*/
 # Mode d'emploi
