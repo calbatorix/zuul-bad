@@ -7,4 +7,6 @@ comment1.text=\r\n\ Constructeur\ par\ defaut\ qui\ cree\ les\ 2\ objets\ prevus
 comment2.params=
 comment2.target=Command\ getCommand()
 comment2.text=\r\n\ @return\ The\ next\ command\ from\ the\ user.\r\n
-numComments=3
+comment3.params=
+comment3.target=void\ showCommands()
+numComments=4

@@ -7,4 +7,6 @@ comment1.text=\r\n\ Constructeur\ par\ defaut\r\n
 comment2.params=pString
 comment2.target=boolean\ isCommand(java.lang.String)
 comment2.text=\r\n\ Verifie\ si\ une\ String\ donnee\ fait\ partie\ des\ commandes\ valides.\ \r\n\ @param\ pString\ la\ String\ a\ tester\r\n\ @return\ true\ si\ pString\ est\ une\ comande\ valide,\ false\ sinon\r\n
-numComments=3
+comment3.params=
+comment3.target=void\ showAll()
+numComments=4

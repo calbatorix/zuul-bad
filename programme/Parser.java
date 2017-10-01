@@ -62,4 +62,9 @@ public class Parser
             return new Command( null, null ); 
         }
     } // getCommand()
+
+    public void showCommands()
+    {
+        aValidCommands.showAll();
+    }
 } // Parser
