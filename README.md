@@ -172,11 +172,98 @@ for(type variable : collection)
 ```
 Va effectuer les instruction sur les objets de la collection un par un dans l'ordre.
 ## Exercice 7.11 (getLongDescription)
+Pour encore reduire n'encapsulation de la class Room et en prevision de modification futur tel que l'jaout de personnage et objet dans les piece.Il faut ajouter une nouvelle methode qui pourra fournir une description de la piece et de tout de qui s'y trouve.
+```java
+public String getLongDescription()
+{   
+	return " You are in " + this.aDescription + ".\n" + getExitString();
+}
+```
 ## Exercice 7.12 optionnel (diagramme objet) /*todo*/
 ## Exercice 7.13 optionnel (go => changement) /*todo*/
-## Exercice 7.14 (look)
+## Exercice 7.14 (look)7
+Depuis le debut du projet nous nous jamais soucier des probleme de couplage implicite.
+Un couplage implicite est une situation ou une class depend des information d'une autre, mais a la difference d'un couplage normal, celui-ci ne produira pas d'erreur de compilation.
+Ce probleme s'ilustre dans cette exercice par l'ajout d'une nouvelle commande (look) dans le jeu.
+```java
+private void look()
+{ 
+    System.out.println(this.aCurrentRoom.getLongDescription());
+}
+```
+Si nous ajoutons seulement la methode look dans la class game il n'y aura pas d'erreur de compilation.En rechanche l'utisateur ne pourra jamais utiliser cette commande car elle n'est pas connu de la class CommanWords .
+```java
+private static final String[] sValidCommands = {
+    "go", "quit", "help", "look"
+};
+```
+et de la methode qui interprete les commande dans la class Game.
+```java
+public boolean processCommand(final Command pCommand)
+{
+    if(pCommand.isUnknown()) System.out.println("I don't know what you mean...");
+    if (pCommand.getCommandWord().equals("help"))  printHelp();
+    if (pCommand.getCommandWord().equals("go"))    goRoom(pCommand);
+    if (pCommand.getCommandWord().equals("look"))  look();
+    if (pCommand.getCommandWord().equals("quit"))
+    { 
+        Command vCommand = new Command(pCommand.getSecondWord(), null);
+        return quit(vCommand);
+    }
+    return false;
+}
+```
 ## Exercice 7.14.1 optionnel (look item) /*todo*/
 ## Exercice 7.15 (eat)
+Pour cette cette commande il faut effectuée les meme mofication que pour l' exercice precedent.
+Dans la class Game
+```java
+private void eat()
+{
+    System.out.println("You have eaten now and you are not hungry any more.");
+}
+```
+Ajout de l'interpertation de la commande par le methode processCommand()
+```java
+if (pCommand.getCommandWord().equals("eat"))   eat();
+```
+et dans la class CommandWords
+```java
+private static final String[] sValidCommands = {
+    "go", "quit", "help", "look","eat"
+};
+```
 ## Exercice 7.16 (showAll, showCommands)
+Dans les deux exercice precedent il a aite oublie d'ajouter a la methode help() d'ajouter les commande look et eat.
+C'est un probleme de couplage implicite.
+Pour que ce probleme n'arrive plus on va ajouter une methode showAll() qui affichera la liste de toute les commande repertorier dans sValidCommands de la class CommandWords. 
+```java
+public void showAll()
+{
+    for(String vCommand : sValidCommands)
+    {
+        System.out.print(vCommand + "    ");
+    }
+    System.out.println();
+}
+```
+Il faut maintenant pouvoir appeler cette methode dans printHelp() mais comme nous ne souhaitons pas augmenter le degré de couplage dans l'application, il ne faut pas faire de lien directe en la class game et commandWords.
+Il faut donc faire communiquer CoomandWords avec Parser puis Parser avec Game
+```java
+public void showCommands()
+{
+    aValidCommands.showAll();
+}
+```
+```java
+private void printHelp()
+{
+    System.out.println("You are lost. You are alone.");
+    System.out.println("You wander around at the university.");
+    System.out.println();
+    System.out.println("Your command words are:");
+    aParser.showCommands();
+}
+```
 ## Exercice 7.17 (optionnel) (changer Game ?) /*todo*/
 # Mode d'emploi
