@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Architects+Daughter" />
+<link rel="stylesheet" media="screen" type="text/css" title="Exemple" href="style.css"/>
+<link rel="stylesheet" href="styles/default.css">
+<script src="highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+	<title>Marquage du texte</title>
+</head>
+
+<header>
+	<h1>hello</h1>
+    <a href="https://github.com/calbatorix/zuul-bad" class="button"><small>View project on</small> GitHub</a>
+</header>
+
+
+<body>
+<section id='main-content'>
+	<h1>Présentation du jeu</h1>
+		<h2>Auteur :</h2>
+			<p>Baptiste Espinasse</p>
+		<h2>Thème :</h2>
+			<p>Une équipe d'aventurier doivent retrouver un antidote volé par un savant fou à l’intérieur d'un donjon</p>
+		<h2>Résumé du scénario complet :</h2>
+		<h2>Plan complet</h2>
+		<h2>Scénario détaillé</h2>
+		<h2>Détail des lieux, items, personnages</h2>
+		<h2>Situations gagnantes et perdantes</h2>
+		<h2>Eventuellement énigmes, mini-jeux, combats, etc.</h2>
+		<h2>Commentaires (ce qui manque, reste à faire, …)</h2>
+	<h1>Réponses aux exercices</h1>
+		<h2>Exercice 7.1 (ex ‘zuul-bad’)</h2>
+		<h2>Exercice 7.1.1 : Choisir un thème …</h2>
+		<h2>Exercice 7.2.1 : La classe Scanner … /todo: explication/</h2>
+		<h2>Faire l’exercice 7.3 (scénario libre)</h2>
+		<h2>Exercice 7.3.1 : Écrire dans le Rapport …</h2>
+		<h2>Exercice 7.3.2 : Dessiner un plan du jeu …</h2>
+		<h2>Exercice 7.4 (zuul-v1, rooms, exits)</h2>
+		<h2>Exercice 7.5 (printLocationInfo)</h2>
+			<p>Après avoir écrit les méthodes printWelcome() et goRoom(), on remarque que tous deux exécutent la même suite de fonctions. Ceci est une duplication de code.
+			Pour éviter cette duplication de code, on peut créer une méthode printLocationInfo() qui effectuera cette même suite de fonctions.
+			Ensuite, nous appellerons cette procédure dans printWelcome et goRoom.</p>
+			<pre><code class="java">
+private void printLocationInfo()
+{
+	System.out.println("You are in the "+ this.aCurrentRoom.getDescription());
+   	System.out.print("Exit(s):");
+   	if(this.aCurrentRoom.getExit("north") != null) System.out.print("north ");
+   	if(this.aCurrentRoom.getExit("south") != null) System.out.print("south ");
+   	if(this.aCurrentRoom.getExit("east") != null) System.out.print("east ");
+   	if(this.aCurrentRoom.getExit("west") != null) System.out.print("west");
+}
+			</code></pre>
+		<h2>Exercice 7.6 (getExit)</h2>
+			<p>Nous souhaitons ajouter deux nouveaux types de direction pour sortir d'une pièce tels que "haut" et "bas". Malheureusement, lors de la première création de la class Room les attributs de directions étaient publique aux autres class. Ce qui a permis à la class Game d'utiliser un accès à ceci très simple. Mais maintenant que nous voulons modifier la class Room cela va perturber le bon fonctionnement de Game, car ces deux class ont un couplage fort.
+			Pour remédier à ce problème nous allons renforcer la séparation de ces deux class en rendant les attributs prive.
+			Ce qui oblige de créer un getteur a la class room.</p>
+			<pre><code class="java">
+public Room getExit(String pDirection)
+{
+    if(vDirection.equals("nord")) return this.aNorthExit;
+    if(vDirection.equals("south")) return this.aSouthExit;
+    if(vDirection.equals("east")) return this.aEastExit;
+    if(vDirection.equals("west")) return this.aWestExit;
+}
+			</code></pre>			
+			<p>Maintenant, il faut également modifie la class Game. Qui a maintenant besoin des getters pour accédait au champ de Room.
+			Au lieu d'écrire :</p>
+			<pre><code class="java">
+vNextRoom = this.aCurrentRoom.eastExit;
+			</code></pre>
+			<p>il faut :</p>
+			<pre><code class="java">
+vNextRoom = this.aCurrentRoom.getExit("east");
+			</code></pre>
+			<p>Au premier abord rendre privé les attributs peut sembler générer une difficulté en plus, mais sur le long terme, cela facilite la modification du code.
+			Par exemple le code suivant :</p>
+			<pre><code class="java">
+Room vNextRoom = null;
+String vDirection =pCommand.getSecondWord();
+
+if( vDirection.equals("north") ) vNextRoom = this.aCurrentRoom.aNorthExit;
+if( vDirection.equals("south") ) vNextRoom = this.aCurrentRoom.aSouthExit;
+if( vDirection.equals("east") ) vNextRoom = this.aCurrentRoom.aEastExit;
+if( vDirection.equals("west") ) vNextRoom = this.aCurrentRoom.aWestExit;
+			</code></pre>
+		<h2>Exercice 7.7 (getExitString)</h2>
+			<p>Dans la même optique que dans la question précédente, nous allons créer une méthode getExitString() dans la class Room.
+			Elle aura pour but de simplifier la méthode printLocationInfo, cette dernière n'aura plus qu'à afficher la String de retour de getExitString().
+			Ainsi si de nouvelles directions de sortie sont ajoutées cela n'aura pas d'impact sur printLocationInfo().
+			À noter qu’il faudra tout de même modifier getExitSting() si une nouvelle direction est ajoutée pour l'instant.</p>
+			<pre><code class="java">
+public Room getExitString()
+{
+    String vExitString="Exits: ";
+    if(this.aNorthExit != null) vExitString += "north";
+    if(this.aSouthExit != null) vExitString += "south";
+    if(this.aEastExit != null) vExitString += "east";
+    if(this.aWestExit != null) vExitString += "west";
+    return vExitString;
+}
+			</code></pre>
+			<pre><code class="java">
+private void printLocationInfo()
+{
+    System.out.println("You are in the "+ this.aCurrentRoom.getDescription());
+    System.out.println(this.aCurrentRoom.getExitString());
+}
+			</code></pre>
+		<h2>Exercice 7.8 (HashMap, setExit)</h2>
+			<p>Dans le but d'avoir de créé des sorti différente pour chaque objet Room. Nous allons remplacer les 4 attributs de direction par une table de hachage. Ainsi on ne sera plus limitée à créer des sorties correspondant aux quatre points cardinaux.
+			Et comme la class Room a déformé une encapsulation forte grâce au travail précédent, les modifications qui vont lui être apporté n'auraient aucune répercussion sur les autres class (correction : il faut tout de même revoir les instanciations des objets Room dans les autres class).</p>
+			<pre><code class="java">
+import java.util.HashMap;
+
+public class Room
+{
+    private String aDescription;
+    private HashMap<String, Room> aExits;
+
+    public Room(final String pDescription)
+    {
+        this.aDescription = pDescription;
+        aExits = new HashMap<>();
+    }
+
+    public String getDescription(){return this.aDescription;}
+
+    public Room getExit(String pDirection)
+    {
+        return this.aExits.get(pDirection);
+    }
+
+    public String getExitString()
+    {
+        String vExitString="Exits: ";
+        if(this.aNorthExit != null) vExitString += "north";
+        if(this.aSouthExit != null) vExitString += "south";
+        if(this.aEastExit != null) vExitString += "east";
+        if(this.aWestExit != null) vExitString += "west";
+        return vExitString;
+    }
+    
+    public void setExit(final String pDirection, final Room pNeighbor)
+    {
+        this.aExits.put(pDirection, pNeighbor);
+    }
+}
+			</code></pre>
+			<p>Une table de hachage simplement est un tableau ou les indices ne sont pas des entiers de 0 à N-1, mais des objets que l'on nommera "key".
+			Dans notre cas les "key" sont les noms de sortie de la pièce.
+			Pour utiliser ce paquetage, il faut ajouter :</p>
+			<pre><code class="java">
+ import java.util.HashMap;
+			</code></pre>
+			<p>Ainsi on peut instancier des objets de type Hashmap et utiliser les méthodes qui sont déjà créées dans le paquetage.
+			Le constructeur naturel subit lui aussi des modifications pour correspondre aux attributs de la class.</p>
+		<h2>Exercice 7.9 (keySet)</h2>
+			<p>Il faut mettre la méthode getExitString à jour.</p>
+			<pre><code class="java">
+ public String getExitString()
+ {
+    String vReturnString = "Exits:";
+    Set<String> vKeys = this.aExits.keySet();
+    for(String vExit : vKeys)
+    {
+        vReturnString += " "+vExit;
+    }
+    return vReturnString;
+}
+			</code></pre>
+		<h2>Exercice 7.10 (getExitString CCM?)</h2>
+			<p>Le but de la méthode getExitString est de retourner sous forme d'un String toutes les sorties possibles pour la commande go.
+			Toutes ces directions de sortie sont les "key" de la table de hachage aExits.
+			L'interface Set est une collection d'objets dans lequel on ne peut pas avoir de doublons.
+			La méthode keySet() permet de retourner un objet de type set<> représentant la liste des clés contenues dans la collection.
+
+			Donc en faisant</p>
+			<pre><code class="java">
+Set<String> vKeys = this.aExits.keySet();
+			</code></pre>
+			<p>On stock toute les "key" (direction de sortie de la pièce this.) dans la collection de types Set<String> vKeys.</p>
+			<p>La boucle for each :</p>
+			<pre><code class="java">
+for(type variable : collection)
+{
+ /*instruction*/
+}
+			</code></pre>
+			<p>Va effectuer les instructions sur les objets de la collection un par un dans l'ordre.</p>
+		<h2>Exercice 7.11 (getLongDescription)</h2>
+			<p>Pour encore réduire n'encapsulation de la class Room et en prévision de modification future telle que l'ajout de personnage et objet dans les pièces. Il faut ajouter une nouvelle méthode qui pourra fournir une description de la pièce et de tout ce qui s'y trouve.</p>
+			<pre><code class="java">
+public String getLongDescription()
+{   
+	return " You are in " + this.aDescription + ".\n" + getExitString();
+}
+			</code></pre>
+		<h2>Exercice 7.12 optionnel (diagramme objet) /todo/</h2>
+		<h2>Exercice 7.13 optionnel (go => changement) /todo/</h2>
+		<h2>Exercice 7.14 (look)</h2>
+			<p>Depuis le début du projet nous nous jamais soucier des problèmes de couplage implicite.
+			Un couplage implicite est une situation ou une class dépend des informations d'une autre, mais à la différence d'un couplage normal, celui-ci ne produira pas d'erreur de compilation.
+			Ce problème s'illustre dans cet exercice par l'ajout d'une nouvelle commande (look) dans le jeu.</p>
+			<pre><code class="java">
+private void look()
+{ 
+    System.out.println(this.aCurrentRoom.getLongDescription());
+}
+			</code></pre>
+			<p>Si nous ajoutons seulement la méthode look dans la class Game il n'y aura pas d'erreur de compilation. En revanche l'utilisateur ne pourra jamais utiliser cette commande, car elle n'est pas connue de la class CommanWords.</p>
+			<pre><code class="java">
+private static final String[] sValidCommands = {
+    "go", "quit", "help", "look"
+};
+			</code></pre>
+			<p>Et de la méthode qui interprète les commandes dans la class Game.</p>
+			<pre><code class="java">
+public boolean processCommand(final Command pCommand)
+{
+    if(pCommand.isUnknown()) System.out.println("I don't know what you mean...");
+    if (pCommand.getCommandWord().equals("help"))  printHelp();
+    if (pCommand.getCommandWord().equals("go"))    goRoom(pCommand);
+    if (pCommand.getCommandWord().equals("look"))  look();
+    if (pCommand.getCommandWord().equals("quit"))
+    { 
+        Command vCommand = new Command(pCommand.getSecondWord(), null);
+        return quit(vCommand);
+    }
+    return false;
+}
+			</code></pre>
+		<h2>Exercice 7.14.1 optionnel (look item) /todo/</h2>
+		<h2>Exercice 7.15 (eat)</h2>
+			<p>Pour cette commande il faut effectuée les mêmes modifications que pour l’exercice précèdent.
+			Dans la class Game</p>
+			<pre><code class="java">
+private void eat()
+{
+    System.out.println("You have eaten now and you are not hungry any more.");
+}
+			</code></pre>
+			<p>Ajout de l'interprétation de la commande par la méthode processCommand()</p>
+			<pre><code class="java">
+if (pCommand.getCommandWord().equals("eat"))   eat();
+			</code></pre>
+			<p>et dans la class CommandWords</p>
+			<pre><code class="java">
+private static final String[] sValidCommands = {
+    "go", "quit", "help", "look","eat"
+};
+			</code></pre>
+		<h2>Exercice 7.16 (showAll, showCommands)</h2>
+			<p>Dans les deux exercices précèdent il a été oublie d'ajouter à la méthode help() d'ajouter les commandes look et eat.
+			C'est un problème de couplage implicite.
+			Pour que ce problème n'arrive plus on va ajouter une méthode showAll() qui affichera la liste de toutes les commandes répertorier dans sValidCommands de la class CommandWords.</p>
+			<pre><code class="java">
+public void showAll()
+{
+    for(String vCommand : sValidCommands)
+    {
+        System.out.print(vCommand + "    ");
+    }
+    System.out.println();
+}
+			</code></pre>
+			<p>Il faut maintenant pouvoir appeler cette méthode dans printHelp(), mais comme nous ne souhaitons pas augmenter le degré de couplage dans l'application, il ne faut pas faire de lien direct en la class Game et CommandWords.
+			Il faut donc faire communiquer ComandWords avec Parser puis Parser avec Game</p>
+			<pre><code class="java">
+public void showCommands()
+{
+    aValidCommands.showAll();
+}
+			</code></pre>
+			<pre><code class="java">
+private void printHelp()
+{
+    System.out.println("You are lost. You are alone.");
+    System.out.println("You wander around at the university.");
+    System.out.println();
+    System.out.println("Your command words are:");
+    aParser.showCommands();
+}
+			</code></pre>
+		<h2>Exercice 7.17 (optionnel) (changer Game ?) /todo/</h2>
+	<h1>Mode d'emploi </h1>
+</section>
+</body>
+
+</html>
