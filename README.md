@@ -4,6 +4,13 @@ Baptiste Espinasse
 ## Thème  :
 Une équipe d'aventurier doivent retrouver un antidote volé par un savant fou à l’intérieur d'un donjon
 ## Résumé du scénario complet : 
+La veille : 
+Le groupe d’aventuriers venant tout juste de résoudre une quête fête cette victoire dans la taverne du village le plus proche. Une fois dans la taverne et ayant bu plus que de raison une bonne partie de la nuit, un vieil homme entra en catastrophe dans la taverne. Celui si était un ancien alchimiste. Après avoir écouté cet homme du nom de balthazar, les aventuriers partirent pour résoudre cette nouvelle quête qui venait tout juste de leur être confiée. Dans un état plus que précaire (complètement ivre), le groupe était parti en route vers le donjon. Le seul objet qu’ils ont sur cette quête est un morceau de papier se trouvant dans l’une des poches des aventuriers.
+La mission :
+Malheureusement, la nièce de l’alchimiste a confondu son milk shake fraise avec un flacon d’un poison très rare. Elle est désormais à l’article de la mort.
+En temps normal Balthazar n’aurait eu aucun problème à lui inoculer l’antidote, sauf que quelques semaines plus tôt celui-ci avait un stagiaire qui se révéla un peu fou. Quand le vieil homme le renvoya, ce dernier fou de rage lui vola une partie de ses potions. Et il n’a pas les ingrédients pour refaire l’antidote.
+La mission des aventuriers et donc de partir sur-le-champ où le stagiaire fou réside et de lui reprendre l’antidote.
+
 ## Plan complet
 ## Scénario détaillé
 ## Détail des lieux, items, personnages
