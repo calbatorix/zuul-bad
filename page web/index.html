@@ -3,6 +3,7 @@
 <link rel="stylesheet" media="screen" type="text/css" title="Exemple" href="style.css"/>
 <link rel="stylesheet" href="styles/default.css">
 <script src="highlight.pack.js"></script>
+<script src="menu.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <html>
@@ -12,10 +13,21 @@
 	<title>Marquage du texte</title>
 </head>
 
-<header>
-	<h1>hello</h1>
-    <a href="https://github.com/calbatorix/zuul-bad" class="button"><small>View project on</small> GitHub</a>
-</header>
+<nav>
+	<div id="sse1">
+		<!--<h1>Zuul-bad project</h1>-->
+		<div id="sses1">
+    		<ul>
+    	  		<li class="nav-item-1"><a href="index.html">Acceuil</a>
+    	  		</li>
+    	  		<li class="nav-item-2"><a href="doc/index.html">Javadoc</a>
+    	  		</li>
+     	  		<li class="nav-item-3"><a href="https://calbatorix.github.io/zuul-bad/">github page</a>
+     	  		</li>
+     		</ul>
+		</div>
+	</div>
+</nav>
 
 
 <body>
@@ -26,8 +38,18 @@
 		<h2>Thème :</h2>
 			<p>Une équipe d'aventurier doivent retrouver un antidote volé par un savant fou à l’intérieur d'un donjon</p>
 		<h2>Résumé du scénario complet :</h2>
+			<p>Malheureusement, la nièce de l’alchimiste a confondu son milk shake fraise avec un flacon d’un poison très rare. Elle est désormais à l’article de la mort.
+			En temps normal Balthazar n’aurait eu aucun problème à lui inoculer l’antidote, sauf que quelques semaines plus tôt celui-ci avait un stagiaire qui se révéla un peu fou. Quand le vieil homme le renvoya, ce dernier fou de rage lui vola une partie de ses potions. Et il n’a pas les ingrédients pour refaire l’antidote.
+			La mission des aventuriers et donc de partir sur-le-champ où le stagiaire fou réside et de lui reprendre l’antidote.</p>
 		<h2>Plan complet</h2>
+		<img src="images/carte.jpg" alt="plan du jeu" style="width:690px;height:500px;">
 		<h2>Scénario détaillé</h2>
+			<p>La veille : 
+			Le groupe d’aventuriers venant tout juste de résoudre une quête fête cette victoire dans la taverne du village le plus proche. Une fois dans la taverne et ayant bu plus que de raison une bonne partie de la nuit, un vieil homme entra en catastrophe dans la taverne. Celui si était un ancien alchimiste. Après avoir écouté cet homme du nom de balthazar, les aventuriers partirent pour résoudre cette nouvelle quête qui venait tout juste de leur être confiée. Dans un état plus que précaire (complètement ivre), le groupe était parti en route vers le donjon. Le seul objet qu’ils ont sur cette quête est un morceau de papier se trouvant dans l’une des poches des aventuriers.</p>
+			<p>La mission :
+			Malheureusement, la nièce de l’alchimiste a confondu son milk shake fraise avec un flacon d’un poison très rare. Elle est désormais à l’article de la mort.
+			En temps normal Balthazar n’aurait eu aucun problème à lui inoculer l’antidote, sauf que quelques semaines plus tôt celui-ci avait un stagiaire qui se révéla un peu fou. Quand le vieil homme le renvoya, ce dernier fou de rage lui vola une partie de ses potions. Et il n’a pas les ingrédients pour refaire l’antidote.
+			La mission des aventuriers et donc de partir sur-le-champ où le stagiaire fou réside et de lui reprendre l’antidote.</p>
 		<h2>Détail des lieux, items, personnages</h2>
 		<h2>Situations gagnantes et perdantes</h2>
 		<h2>Eventuellement énigmes, mini-jeux, combats, etc.</h2>
@@ -35,7 +57,29 @@
 	<h1>Réponses aux exercices</h1>
 		<h2>Exercice 7.1 (ex ‘zuul-bad’)</h2>
 		<h2>Exercice 7.1.1 : Choisir un thème …</h2>
-		<h2>Exercice 7.2.1 : La classe Scanner … /todo: explication/</h2>
+		<h2>Exercice 7.2.1 : La classe Scanner … /todo: à refaire/</h2>
+			<p>1) Comprendre une 1ère utilisation d'un objet Scanner dans la classe Parser de zuul-bad pour lire au clavier (scanner le clavier ligne par ligne) :
+
+    		System.in désigne le clavier (comme System.out désigne l'écran)
+    		Il faut créer un objet Scanner en lui passant le clavier en paramètre :
+    		Scanner vScan = new Scanner( System.in );
+    		Pour pouvoir compiler, il faut indiquer au compilateur où se trouve la classe Scanner :
+    		import java.util.Scanner;
+    		Il faut créer une String pour contenir les caractères qui seront tapés au clavier :
+    		String vLigneLue;
+    		Ensuite, à chaque fois qu'on écrira l'instruction
+    		vLigneLue = vScan.nextLine();
+    		toute la ligne de caractères tapés au clavier sera stockée dans vLigneLue
+    		En attendant que des caractères soient tapés au clavier, le programme reste bloqué. Il est donc indispensable de prévenir l'utilisateur de ce qu'on attend de lui, en affichant quelque chose comme "Veuillez taper une commande : " ou plus simplement "> "</p>
+
+			<p>2) Comprendre une 2ème utilisation d'un objet Scanner dans la classe Parser de zuul-bad pour analyser une String (scanner une chaîne de caractères mot par mot) :
+
+    		Il faut créer un nouvel objet Scanner en lui passant la String en paramètre :
+    		Scanner vScan2 = new Scanner( vLigneLue );
+    		Pas de problème de compilation puisqu'on a déjà importé la classe Scanner.
+    		Pour savoir s'il y a un prochain mot à analyser dans la String, on utilise la fonction booléenne vScan2.hasNext() qui nous renvoie vrai ou faux, selon que vScan2 a ou non trouvé un mot dans la String.
+    		S'il en a trouvé un, on le récupère par l'instruction String vMot = vScan2.next();
+    		On peut ensuite recommencer pour voir s'il y a un second mot, et ainsi de suite ... </p>
 		<h2>Faire l’exercice 7.3 (scénario libre)</h2>
 		<h2>Exercice 7.3.1 : Écrire dans le Rapport …</h2>
 		<h2>Exercice 7.3.2 : Dessiner un plan du jeu …</h2>
