@@ -40,17 +40,17 @@ public class Game
 
         aListeRoom = new HashMap();
         this.aListeRoom.put("Piece de depart",vPieceDeDepart);
-        this.aListeRoom.put("couloir 1",vcouloir1);
-        this.aListeRoom.put("couloir 2",vcouloir2);
-        this.aListeRoom.put("couloir 3",vcouloir3);
-        this.aListeRoom.put("couloir 4",vcouloir4);
-        this.aListeRoom.put("couloir 5",vcouloir5);
-        this.aListeRoom.put("couloir 6",vcouloir6);
-        this.aListeRoom.put("couloir 7",vcouloir7);
-        this.aListeRoom.put("couloir 8",vcouloir8);
+        this.aListeRoom.put("couloir 1",vCouloir1);
+        this.aListeRoom.put("couloir 2",vCouloir2);
+        this.aListeRoom.put("couloir 3",vCouloir3);
+        this.aListeRoom.put("couloir 4",vCouloir4);
+        this.aListeRoom.put("couloir 5",vCouloir5);
+        this.aListeRoom.put("couloir 6",vCouloir6);
+        this.aListeRoom.put("couloir 7",vCouloir7);
+        this.aListeRoom.put("couloir 8",vCouloir8);
         this.aListeRoom.put("Sortie",vSortie);
         this.aListeRoom.put("RDC de la tour",vTourRDC);
-        this.aListeRoom.put("Sommet de la tour",)vTourHight;
+        this.aListeRoom.put("Sommet de la tour",vTourHight);
         this.aListeRoom.put("Salle des gardes",vSalleDesGardes);
         this.aListeRoom.put("Jardin",vJardin);
         this.aListeRoom.put("Bureau",vBureau);
