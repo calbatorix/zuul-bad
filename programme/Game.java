@@ -1,8 +1,11 @@
+import java.util.HashMap;
+
 public class Game
 {
     //attribut
     private Room aCurrentRoom;
     private Parser aParser;
+    private HashMap<String, Room> aListeRoom;
     /**
      * Construteur par defaut de la classe Game
      */
@@ -35,51 +38,54 @@ public class Game
         Room vBureau = new Room("Bureau");
         Room vTresor = new Room("salle au tresor");
 
+        aListeRoom = new HashMap();
+        this.aListeRoom.put("Piece de depart",vPieceDeDepart);
+        this.aListeRoom.put("couloir 1",vcouloir1);
+        this.aListeRoom.put("couloir 2",vcouloir2);
+        this.aListeRoom.put("couloir 3",vcouloir3);
+        this.aListeRoom.put("couloir 4",vcouloir4);
+        this.aListeRoom.put("couloir 5",vcouloir5);
+        this.aListeRoom.put("couloir 6",vcouloir6);
+        this.aListeRoom.put("couloir 7",vcouloir7);
+        this.aListeRoom.put("couloir 8",vcouloir8);
+        this.aListeRoom.put("Sortie",vSortie);
+        this.aListeRoom.put("RDC de la tour",vTourRDC);
+        this.aListeRoom.put("Sommet de la tour",)vTourHight;
+        this.aListeRoom.put("Salle des gardes",vSalleDesGardes);
+        this.aListeRoom.put("Jardin",vJardin);
+        this.aListeRoom.put("Bureau",vBureau);
+        this.aListeRoom.put("Salle au tresor",vTresor);
+
         //positionement des sorties
-        //vPieceDeDepart.setExits(null, null, vCouloir1, vPrison);
         vPieceDeDepart.setExit("east",vCouloir1);
         vPieceDeDepart.setExit("west",vPrison);
-        //vPrison.setExits(null, null,vPieceDeDepart,null);
         vPrison.setExit("east",vPieceDeDepart);
-        //vCouloir1.setExits(null, vCouloir2, null, vPieceDeDepart);
         vCouloir1.setExit("south",vCouloir2);
         vCouloir1.setExit("west",vPieceDeDepart);
-        //vCouloir2.setExits(vCouloir1,vCouloir3,vCouloir5,null);
         vCouloir2.setExit("north",vCouloir1);
         vCouloir2.setExit("south",vCouloir3);
         vCouloir2.setExit("east",vCouloir5);
-        //vCouloir3.setExits(vCouloir2,null,null,vCouloir4);
         vCouloir3.setExit("north",vCouloir2);
         vCouloir3.setExit("west",vCouloir4);
-        //vCouloir4.setExits(null,vTourRDC,vCouloir3,vSortie);
         vCouloir4.setExit("south",vTourRDC);
         vCouloir4.setExit("east",vCouloir3);
         vCouloir4.setExit("west",vSortie);
-        //vCouloir5.setExits(null,null,vCouloir6,vCouloir2);
         vCouloir5.setExit("east",vCouloir6);
         vCouloir5.setExit("west",vCouloir2);
-        //vCouloir6.setExits(vSalleDesGardes,vCouloir7,null,vCouloir2);
         vCouloir6.setExit("north",vSalleDesGardes);
         vCouloir6.setExit("south",vCouloir7);
         vCouloir6.setExit("west",vCouloir2);
-        //vCouloir7.setExits(vCouloir6,vJardin,vCouloir8,null);
         vCouloir7.setExit("north",vCouloir6);
         vCouloir7.setExit("south",vJardin);
         vCouloir7.setExit("east",vCouloir8);
-        //vCouloir8.setExits(null,null,vBureau,vCouloir7);
         vCouloir8.setExit("east",vBureau);
         vCouloir8.setExit("west",vCouloir7);
-        //vSortie.setExits(null,null,vCouloir4,null);
         vSortie.setExit("east",vCouloir4);
-        //vTourRDC.setExits(vCouloir4,null,null,null);
         vTourRDC.setExit("north",vCouloir4);
         vTourRDC.setExit("up",vTourHight);
         vTourHight.setExit("down",vTourRDC);
-        //vSalleDesGardes.setExits(null,vCouloir6,null,null);
         vSalleDesGardes.setExit("south",vCouloir6);
-        //vJardin.setExits(vCouloir7,null,null,null);
         vJardin.setExit("north",vCouloir7);
-        //vBureau.setExits(null,null,vTresor,vCouloir8);
         vBureau.setExit("east",vTresor);
         vBureau.setExit("west",vCouloir8);
         vTresor.setExit("west",vBureau);
@@ -87,6 +93,7 @@ public class Game
         this.aCurrentRoom =vPieceDeDepart;
     }
     
+    public Room getRoom(final String pNomRoom){return this.aListeRoom.get(pNomRoom);}
     /**
      * Procedure affichant les information sur la salle actuel
      * comme sont nom ainsi que les sortis possible pour cette piece
