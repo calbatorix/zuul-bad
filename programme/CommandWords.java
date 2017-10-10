@@ -41,12 +41,13 @@ public class CommandWords
         return false;
     } // isCommand()
 
-    public void showAll()
+    public String getCommandList() 
     {
-        for(String vCommand : sValidCommands)
-        {
-            System.out.print(vCommand + "    ");
+        StringBuilder commands = new StringBuilder();
+        for(int i = 0; i < sValidCommands.length; i++) {
+            commands.append( sValidCommands[i] + "  " );
         }
-        System.out.println();
+        return commands.toString();
+    
     }
 } // CommandWords

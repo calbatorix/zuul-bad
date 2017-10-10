@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=Room
 comment0.text=\r\n\ This\ class\ is\ part\ of\ the\ "World\ of\ Zuul"\ application.\ \r\n\ "World\ of\ Zuul"\ is\ a\ very\ simple,\ text\ based\ adventure\ game.\ \ \r\n\ \r\n\ La\ classe\ Room\ a\ pour\ but\ de\ generer\ des\ pieces\r\n\ Elle\ possede\ comme\ attribut\ une\ courte\ description\ de\ la\ piece\ ainsi\ que\ que\ toute\ les\ direction\ de\ sortie,\ li\u00E9e\ \u00E0\ leur\ destination\r\n\ \r\n\ @author\ \ Espinasse\ Baptiste\r\n\ @version\ 2017.09.30\r\n
-comment1.params=pDescription
-comment1.target=Room(java.lang.String)
+comment1.params=pDescription\ pImageName
+comment1.target=Room(java.lang.String,\ java.lang.String)
 comment1.text=\r\n\ constructeur\ naturel\ de\ la\ class\ Room\r\n\ @param\ demande\ en\ parametre\ un\ String\ decrivent\ la\ Room\r\n
 comment2.params=
 comment2.target=java.lang.String\ getDescription()
@@ -18,4 +18,6 @@ comment5.target=void\ setExit(java.lang.String,\ Room)
 comment5.text=\r\nmodificateur\ permetant\ de\ cr\u00E9e/modifier\ une\ direction\ de\ sortie\ de\ la\ piece\ courante\ \r\n@param\ elle\ demande\ un\ String\ contenant\ le\ nom\ de\ la\ direction\ de\ sorite,\ et\ une\ Room\ de\ destination\r\n
 comment6.params=
 comment6.target=java.lang.String\ getLongDescription()
-numComments=7
+comment7.params=
+comment7.target=java.lang.String\ getImageName()
+numComments=8

@@ -1,0 +1,26 @@
+#BlueJ class context
+comment0.target=GameEngine
+comment1.params=
+comment1.target=GameEngine()
+comment1.text=\r\n\ Constructeur\ d'objets\ de\ classe\ GameEngine\r\n
+comment10.params=
+comment10.target=void\ look()
+comment11.params=
+comment11.target=void\ eat()
+comment2.params=pUserInterface
+comment2.target=void\ setGUI(UserInterface)
+comment3.params=
+comment3.target=void\ printWelcome()
+comment4.params=
+comment4.target=void\ createRooms()
+comment5.params=pNomRoom
+comment5.target=Room\ getRoom(java.lang.String)
+comment6.params=pCommandLine
+comment6.target=void\ interpretCommand(java.lang.String)
+comment7.params=
+comment7.target=void\ printHelp()
+comment8.params=pCommand
+comment8.target=void\ goRoom(Command)
+comment9.params=
+comment9.target=void\ endGame()
+numComments=12

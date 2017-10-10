@@ -15,15 +15,17 @@ public class Room
     //attribut
     private String aDescription;
     private HashMap<String, Room> aExits;
+    private String aImageName;
     /****************************constructeur*********************************/
     /**
      * constructeur naturel de la class Room
      * @param demande en parametre un String decrivent la Room
      */
-    public Room(final String pDescription)
+    public Room(final String pDescription, String pImageName)
     {
         this.aDescription = pDescription;
         aExits = new HashMap<>();
+        this.aImageName = pImageName;
     }
     /**************************acesseur et modificateur **********************/
     /**
@@ -67,4 +69,6 @@ public class Room
     {
         return " You are in " + this.aDescription + ".\n" + getExitString();
     }
+
+    public String getImageName(){return this.aImageName;}
 } // Room
