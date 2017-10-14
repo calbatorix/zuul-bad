@@ -18,9 +18,9 @@ public class UserInterface implements ActionListener
     private JTextField aEntryField;
     private JTextArea  aLog;
     private JLabel     aImage;
-    private JLabel     aButton;
-    private JButton    aButton1, aButton2 ,aButton3, aButton4;
-
+    private JPanel     aButton;
+    private JButton    aButtonN, aButtonS ,aButtonE, aButtonW, aButtonU, aButtonD;
+    private JButton    aButtonEat, aButtonLook, aButtonHelp;
     /**
      * Construct a UserInterface. As a parameter, a Game Engine
      * (an object processing and executing the game commands) is
@@ -92,10 +92,7 @@ public class UserInterface implements ActionListener
 
         JPanel vPanel = new JPanel();
         this.aImage = new JLabel();
-        this.aButton1 = new JButton("east");
-        this.aButton2 = new JButton("west");
-        this.aButton3 = new JButton("north");
-        this.aButton4 = new JButton("south");
+        this.makeBoutonBar();
         
         //this.aButton1.addActionListener();
         
@@ -103,13 +100,7 @@ public class UserInterface implements ActionListener
         vPanel.add( this.aImage, BorderLayout.NORTH );
         vPanel.add( vListScroller, BorderLayout.CENTER );
         vPanel.add( this.aEntryField, BorderLayout.SOUTH );
-        
-        GridLayout vZoneButton = new GridLayout(0,2);
-        vPanel.setLayout( vZoneButton );
-        vPanel.add( this.aButton1, vZoneButton);
-        vPanel.add( this.aButton2, vZoneButton);
-        vPanel.add( this.aButton3, vZoneButton);
-        vPanel.add( this.aButton4, vZoneButton);
+        vPanel.add( this.aButton, BorderLayout.EAST );
 
         this.aMyFrame.getContentPane().add( vPanel, BorderLayout.CENTER );
 
@@ -125,6 +116,36 @@ public class UserInterface implements ActionListener
         this.aEntryField.requestFocus();
     } // createGUI()
 
+    public void makeBoutonBar()
+    {
+        aButton = new JPanel();
+        aButton.setLayout(new GridLayout(0,1,3,5));
+        
+        this.aButtonN = new JButton("north");        
+        this.aButtonN.addActionListener(this);
+        this.aButtonS = new JButton("south");
+        this.aButtonS.addActionListener(this);
+        this.aButtonE = new JButton("east");
+        this.aButtonE.addActionListener(this);
+        this.aButtonW = new JButton("west");
+        this.aButtonW.addActionListener(this);
+        this.aButtonEat = new JButton("eat"); 
+        this.aButtonEat.addActionListener(this);
+        this.aButtonLook = new JButton("look"); 
+        this.aButtonLook.addActionListener(this);
+        this.aButtonHelp = new JButton("help"); 
+        this.aButtonHelp.addActionListener(this);
+
+        aButton.add( this.aButtonN);
+        aButton.add( this.aButtonS);
+        aButton.add( this.aButtonE);
+        aButton.add( this.aButtonW);
+        aButton.add( this.aButtonEat);
+        aButton.add( this.aButtonHelp);
+        aButton.add( this.aButtonLook);
+
+    }
+    
     /**
      * Actionlistener interface for entry textfield.
      */
@@ -132,7 +153,14 @@ public class UserInterface implements ActionListener
     {
         // no need to check the type of action at the moment.
         // there is only one possible action: text entry
-        this.processCommand();
+        if(pE.getSource() == this.aButtonN){ this.aEngine.interpretCommand("go north");}
+        if(pE.getSource() == this.aButtonS){ this.aEngine.interpretCommand("go south");}
+        if(pE.getSource() == this.aButtonE){ this.aEngine.interpretCommand("go east");}
+        if(pE.getSource() == this.aButtonW){ this.aEngine.interpretCommand("go west");}
+        if(pE.getSource() == this.aButtonEat){ this.aEngine.interpretCommand("eat");}
+        if(pE.getSource() == this.aButtonLook){ this.aEngine.interpretCommand("look");}
+        if(pE.getSource() == this.aButtonHelp){ this.aEngine.interpretCommand("help");}
+        if(pE.getSource() == this.aEntryField) {processCommand();}
     } // actionPerformed(.)
 
     /**
