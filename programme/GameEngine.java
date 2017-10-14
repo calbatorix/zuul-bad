@@ -54,6 +54,8 @@ public class GameEngine
         Room vJardin = new Room("Jardin","images/Jardin.jpg");
         Room vBureau = new Room("Bureau","images/Bureau.jpg");
         Room vTresor = new Room("salle au tresor","images/SalleAuTresor.jpg");
+        
+        Item vTorche = new Item("vielle Torche",2,05);
 
         aListeRoom = new HashMap();
         this.aListeRoom.put("Piece de depart",vPieceDeDepart);
@@ -106,6 +108,8 @@ public class GameEngine
         vBureau.setExit("east",vTresor);
         vBureau.setExit("west",vCouloir8);
         vTresor.setExit("west",vBureau);
+        
+        vPieceDeDepart.addItem("torche", vTorche);
         //initialisation lieu courant
         this.aCurrentRoom =vPieceDeDepart;
     }

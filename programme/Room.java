@@ -15,6 +15,7 @@ public class Room
     //attribut
     private String aDescription;
     private HashMap<String, Room> aExits;
+    private HashMap<String, Item> aItems;
     private String aImageName;
     /****************************constructeur*********************************/
     /**
@@ -25,6 +26,7 @@ public class Room
     {
         this.aDescription = pDescription;
         aExits = new HashMap<>();
+        aItems = new HashMap<>();
         this.aImageName = pImageName;
     }
     /**************************acesseur et modificateur **********************/
@@ -55,6 +57,17 @@ public class Room
         }
         return vReturnString;
     }
+
+    public String getItemsString()
+    {
+        String vReturnString = "they are in the room : ";
+        Set<String> vKeys = this.aItems.keySet();
+        for(String vItem : vKeys)
+        {
+            vReturnString += " a "+vItem+"\n";
+        }
+        return vReturnString;
+    }
     
     /**
      *modificateur permetant de crée/modifier une direction de sortie de la piece courante 
@@ -65,9 +78,14 @@ public class Room
         this.aExits.put(pDirection, pNeighbor);
     }
 
+    public void addItem(final String pNomItem, final Item pItem )
+    {
+        this.aItems.put(pNomItem, pItem);
+    }
+
     public String getLongDescription()
     {
-        return " You are in " + this.aDescription + ".\n" + getExitString();
+        return " You are in " + this.aDescription + ".\n" + getExitString()+"\n"+getItemsString();
     }
 
     public String getImageName(){return this.aImageName;}
