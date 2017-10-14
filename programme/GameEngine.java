@@ -37,23 +37,23 @@ public class GameEngine
     private void createRooms()
     {
         //declaration des room
-        Room vPieceDeDepart = new Room("Piece de depart","PieceDeDepart.jpg");
-        Room vPrison = new Room("prison","Prison.jpg");
-        Room vCouloir1 = new Room("couloir1","Couloir.jpg");
-        Room vCouloir2 = new Room("couloir1","Couloir.jpg");
-        Room vCouloir3 = new Room("couloir3","Couloir.jpg");
-        Room vCouloir4 = new Room("couloir4","Couloir.jpg");
-        Room vCouloir5 = new Room("couloir5","Couloir.jpg");
-        Room vCouloir6 = new Room("couloir6","Couloir.jpg");
-        Room vCouloir7 = new Room("couloir7","Couloir.jpg");
-        Room vCouloir8 = new Room("couloir8","Couloir.jpg");
-        Room vSortie = new Room("sortie","Sortie.jpg");
-        Room vTourRDC = new Room("RDC de la tour","RDCTour.jpg");
-        Room vTourHight = new Room("Sommet de la tour","SommetTour.jpg");
-        Room vSalleDesGardes = new Room("Salle des gardes","SalleDesGardes.jpg");
-        Room vJardin = new Room("Jardin","Jardin.jpg");
-        Room vBureau = new Room("Bureau","Bureau.jpg");
-        Room vTresor = new Room("salle au tresor","SalleAuTresor.jpg");
+        Room vPieceDeDepart = new Room("Piece de depart","images/PieceDeDepart.jpg");
+        Room vPrison = new Room("prison","images/Prison.jpg");
+        Room vCouloir1 = new Room("couloir1","images/Couloir.jpg");
+        Room vCouloir2 = new Room("couloir1","images/Couloir.jpg");
+        Room vCouloir3 = new Room("couloir3","images/Couloir.jpg");
+        Room vCouloir4 = new Room("couloir4","images/Couloir.jpg");
+        Room vCouloir5 = new Room("couloir5","images/Couloir.jpg");
+        Room vCouloir6 = new Room("couloir6","images/Couloir.jpg");
+        Room vCouloir7 = new Room("couloir7","images/Couloir.jpg");
+        Room vCouloir8 = new Room("couloir8","images/Couloir.jpg");
+        Room vSortie = new Room("sortie","images/Sortie.jpg");
+        Room vTourRDC = new Room("RDC de la tour","images/RDCTour.jpg");
+        Room vTourHight = new Room("Sommet de la tour","images/SommetTour.jpg");
+        Room vSalleDesGardes = new Room("Salle des gardes","images/SalleDesGardes.jpg");
+        Room vJardin = new Room("Jardin","images/Jardin.jpg");
+        Room vBureau = new Room("Bureau","images/Bureau.jpg");
+        Room vTresor = new Room("salle au tresor","images/SalleAuTresor.jpg");
 
         aListeRoom = new HashMap();
         this.aListeRoom.put("Piece de depart",vPieceDeDepart);
