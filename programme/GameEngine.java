@@ -177,11 +177,26 @@ public class GameEngine
 
     private void look()
     { 
-        this.aGui.println(this.aCurrentRoom.getLongDescription());
+    //    if(!pCommand.hasSecondWord())
+    //    {
+            this.aGui.println(this.aCurrentRoom.getLongDescription());
+    //        return;
+    //    } 
+
+    //    String vNameitem = pCommand.getSecondWord();
+
+    //    if (vNameitem == null) this.aGui.println("There is no item !");
+    //    else
+    //    {
+    //        this.aGui.println(this.aCurrentRoom.getLongDescription());
+    //        if(this.aCurrentRoom.getImageName() != null)
+    //            this.aGui.showImage(this.aCurrentRoom.getImageName());
+    //    }
     }
     
     private void eat()
     {
         this.aGui.println("You have eaten now and you are not hungry any more.");
     }
+
 }

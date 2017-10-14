@@ -26,4 +26,10 @@ public class Item
     public void setPrixItem(final double pPrix){this.aPrix=pPrix;}
     public void setPoidsItem(final double pPoids){this.aPoids=pPoids;}
 
+    @Override
+    public String toString()
+    {
+        return this.aDescription + "cette objet pèse " +this.aPoids+"Kg et coute "+this.aPrix+"piece d'or.\n";
+    }
+
 }

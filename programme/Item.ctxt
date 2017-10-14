@@ -15,4 +15,6 @@ comment6.params=pPrix
 comment6.target=void\ setPrixItem(double)
 comment7.params=pPoids
 comment7.target=void\ setPoidsItem(double)
-numComments=8
+comment8.params=
+comment8.target=java.lang.String\ toString()
+numComments=9
