@@ -18,6 +18,8 @@ public class UserInterface implements ActionListener
     private JTextField aEntryField;
     private JTextArea  aLog;
     private JLabel     aImage;
+    private JLabel     aButton;
+    private JButton    aButton1, aButton2 ,aButton3, aButton4;
 
     /**
      * Construct a UserInterface. As a parameter, a Game Engine
@@ -90,11 +92,24 @@ public class UserInterface implements ActionListener
 
         JPanel vPanel = new JPanel();
         this.aImage = new JLabel();
-
+        this.aButton1 = new JButton("east");
+        this.aButton2 = new JButton("west");
+        this.aButton3 = new JButton("north");
+        this.aButton4 = new JButton("south");
+        
+        //this.aButton1.addActionListener();
+        
         vPanel.setLayout( new BorderLayout() );
         vPanel.add( this.aImage, BorderLayout.NORTH );
         vPanel.add( vListScroller, BorderLayout.CENTER );
         vPanel.add( this.aEntryField, BorderLayout.SOUTH );
+        
+        GridLayout vZoneButton = new GridLayout(0,2);
+        vPanel.setLayout( vZoneButton );
+        vPanel.add( this.aButton1, vZoneButton);
+        vPanel.add( this.aButton2, vZoneButton);
+        vPanel.add( this.aButton3, vZoneButton);
+        vPanel.add( this.aButton4, vZoneButton);
 
         this.aMyFrame.getContentPane().add( vPanel, BorderLayout.CENTER );
 

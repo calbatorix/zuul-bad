@@ -38,17 +38,17 @@ public class GameEngine
     {
         //declaration des room
         Room vPieceDeDepart = new Room("Piece de depart","PieceDeDepart.jpg");
-        Room vPrison = new Room("prison","Prison.gif");
-        Room vCouloir1 = new Room("couloir1","Couloir.gif");
-        Room vCouloir2 = new Room("couloir1","Couloir.gif");
-        Room vCouloir3 = new Room("couloir3","Couloir.gif");
-        Room vCouloir4 = new Room("couloir4","Couloir.gif");
-        Room vCouloir5 = new Room("couloir5","Couloir.gif");
-        Room vCouloir6 = new Room("couloir6","Couloir.gif");
-        Room vCouloir7 = new Room("couloir7","Couloir.gif");
-        Room vCouloir8 = new Room("couloir8","Couloir.gif");
+        Room vPrison = new Room("prison","Prison.jpg");
+        Room vCouloir1 = new Room("couloir1","Couloir.jpg");
+        Room vCouloir2 = new Room("couloir1","Couloir.jpg");
+        Room vCouloir3 = new Room("couloir3","Couloir.jpg");
+        Room vCouloir4 = new Room("couloir4","Couloir.jpg");
+        Room vCouloir5 = new Room("couloir5","Couloir.jpg");
+        Room vCouloir6 = new Room("couloir6","Couloir.jpg");
+        Room vCouloir7 = new Room("couloir7","Couloir.jpg");
+        Room vCouloir8 = new Room("couloir8","Couloir.jpg");
         Room vSortie = new Room("sortie","Sortie.jpg");
-        Room vTourRDC = new Room("RDC de la tour","RDCTour.gif");
+        Room vTourRDC = new Room("RDC de la tour","RDCTour.jpg");
         Room vTourHight = new Room("Sommet de la tour","SommetTour.jpg");
         Room vSalleDesGardes = new Room("Salle des gardes","SalleDesGardes.jpg");
         Room vJardin = new Room("Jardin","Jardin.jpg");
