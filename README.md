@@ -286,4 +286,144 @@ private void printHelp()
 }
 ```
 ## Exercice 7.17 (optionnel) (changer Game ?) /*todo*/
+## Exercice 7.18 (getCommandList)
+Supression de la methode showAll() de ma classCommandWords.Il est necaissaire de suprimer cette procedure car dans des evolution futur du jeu il ne faudra plus afficher les commande disponible dans un terminal a l'aide de l'instruction System.out.println().
+Il est donc, pour des raison d'encapsulatiuon, de cree une methode qui preparera un String contenant toute les commande pour pouvoir ensuite les afficher.
+```java
+public String getCommandList() 
+{
+    StringBuilder commands = new StringBuilder();
+    for(int i = 0; i < sValidCommands.length; i++) {
+        commands.append( sValidCommands[i] + "  " );
+    }
+    return commands.toString();   
+}
+```
+## Exercice 7.18.1 : Comparer son projet au projet zuul-better ...
+Les seuls diferrence presente entre Zuul-better et mes source, sont les methode eat,look qui sont en plus.
+## Exercice 7.18.2 optionnel : Étudier StringBuilder ...(optinel)
+## Exercice 7.18.3 : Chercher des images ...
+recherche d'image sur internet pouvant correspondre au salle presente dans le jeu.
+## Exercice 7.18.4 : Décider du titre du jeu ...
+## Exercice 7.18.5 : Les objets Room ...
+Comme les piece du jeu sont créée dans une des methode de la class Game il ne sont pas accessible à l'exterieur de la class.
+C'est pourquoi, il faut ajouter un atribut prive à la class pour pouvoir y acceder depuis l'exterieur.
+Pour ce faire nous allaons créée une liste de type HachMap()
+```java
+private HashMap<String, Room> aListeRoom;
+```
+Il sera maintenant possible apres la creation des objets Room de lister tout ces objet dans le HashMap() de cette maniere:
+```java
+aListeRoom = new HashMap();
+this.aListeRoom.put("Piece de depart",vPieceDeDepart);
+this.aListeRoom.put("couloir 1",vCouloir1);
+this.aListeRoom.put("couloir 2",vCouloir2);
+this.aListeRoom.put("couloir 3",vCouloir3);
+this.aListeRoom.put("couloir 4",vCouloir4);
+this.aListeRoom.put("couloir 5",vCouloir5);
+this.aListeRoom.put("couloir 6",vCouloir6);
+this.aListeRoom.put("couloir 7",vCouloir7);
+this.aListeRoom.put("couloir 8",vCouloir8);
+this.aListeRoom.put("Sortie",vSortie);
+this.aListeRoom.put("RDC de la tour",vTourRDC);
+this.aListeRoom.put("Sommet de la tour",vTourHight);
+this.aListeRoom.put("Salle des gardes",vSalleDesGardes);
+this.aListeRoom.put("Jardin",vJardin);
+this.aListeRoom.put("Bureau",vBureau);
+this.aListeRoom.put("Salle au tresor",vTresor);
+```
+
+## Exercice 7.18.6 : Étudier le projet zuul-with-images ...
+## Exercice 7.18.7 optionnel : Décrire dans le rapport ...
+## Exercice 7.18.8 : Ajouter au moins un bouton ...
+Pour la creation des bouton j'ai choisi d'ajouter un nouveau JPanel du nom de aButton que j'ajoute ensuite dans vPanel.
+Pour la creation de aButton et de tout les element qui seront disposse a l'intereur, j'ai ajoutée une precedure
+makeButtonBar() qui s'occupe de la dipposition et la creation des boutton dans le Panel aButton.
+```java
+    public void makeBoutonBar()
+{
+    aButton = new JPanel();
+    aButton.setLayout(new GridLayout(0,1,3,5));
+    
+    this.aButtonN = new JButton("north");        
+    this.aButtonN.addActionListener(this);
+    this.aButtonS = new JButton("south");
+    this.aButtonS.addActionListener(this);
+    this.aButtonE = new JButton("east");
+    this.aButtonE.addActionListener(this);
+    this.aButtonW = new JButton("west");
+    this.aButtonW.addActionListener(this);
+    this.aButtonEat = new JButton("eat"); 
+    this.aButtonEat.addActionListener(this);
+    this.aButtonLook = new JButton("look"); 
+    this.aButtonLook.addActionListener(this);
+    this.aButtonHelp = new JButton("help"); 
+    this.aButtonHelp.addActionListener(this);
+
+    aButton.add( this.aButtonN);
+    aButton.add( this.aButtonS);
+    aButton.add( this.aButtonE);
+    aButton.add( this.aButtonW);
+    aButton.add( this.aButtonEat);
+    aButton.add( this.aButtonHelp);
+    aButton.add( this.aButtonLook);
+}
+```
+Ensuite j'ajoute les action à realiser lors de l'appuie sur les bouton.
+```java
+public void actionPerformed( final ActionEvent pE ) 
+{
+    // no need to check the type of action at the moment.
+    // there is only one possible action: text entry
+    if(pE.getSource() == this.aButtonN){ this.aEngine.interpretCommand("go north");}
+    if(pE.getSource() == this.aButtonS){ this.aEngine.interpretCommand("go south");}
+    if(pE.getSource() == this.aButtonE){ this.aEngine.interpretCommand("go east");}
+    if(pE.getSource() == this.aButtonW){ this.aEngine.interpretCommand("go west");}
+    if(pE.getSource() == this.aButtonEat){ this.aEngine.interpretCommand("eat");}
+    if(pE.getSource() == this.aButtonLook){ this.aEngine.interpretCommand("look");}
+    if(pE.getSource() == this.aButtonHelp){ this.aEngine.interpretCommand("help");}
+    if(pE.getSource() == this.aEntryField) {processCommand();}
+} // actionPerformed(.)
+```
+Et enfin j'ajoute dans vPanel
+```java
+vPanel.add( this.aButton, BorderLayout.EAST );
+```
+## exercice 7.19 optionnel (MVC)
+## Exercice 7.19.1 optionnel : Étudier le projet zuul-mvc ...
+## Exercice 7.19.2 : Déplacer toutes les images ...
+Je deplace toutes les images dans un dossier images
+Puis je change le chemin de mes images
+## Exercice 7.20 (Item)
+Creation d'une nouvelle class Item.
+Cette class a pour but de cree des objet item.
+```java
+public class Item
+{
+    private String aDescription;
+    private double aPrix;
+    private double aPoids;
+
+    public Item(final String pDescription, final double pPrix, final double pPoids)
+    {
+        this.aDescription = pDescription;
+        this.aPrix        = pPrix;
+        this.aPoids       = pPoids;
+    }
+
+    public String getDescriptionItem(){return this.aDescription;}
+    public double getPrixItem(){return this.aPrix;}
+    public double getPoidsItem(){return this.aPoids;}
+
+    public void setDescriptionItem(final String pDescription){this.aDescription=pDescription;}
+    public void setPrixItem(final double pPrix){this.aPrix=pPrix;}
+    public void setPoidsItem(final double pPoids){this.aPoids=pPoids;}
+}
+```
+## Faire l'exercice 7.21 (item description)
+## Exercice 7.22 (items)
+## Exercice 7.22.1 optionnel : Justifier le choix ...
+## Exercice 7.22.2 : Intégrer les objets (items) ...
+## Exercice 7.23 (back) 
+
 # Mode d'emploi

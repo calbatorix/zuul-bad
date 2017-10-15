@@ -47,7 +47,6 @@ public class CommandWords
         for(int i = 0; i < sValidCommands.length; i++) {
             commands.append( sValidCommands[i] + "  " );
         }
-        return commands.toString();
-    
+        return commands.toString();   
     }
 } // CommandWords
