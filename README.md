@@ -476,4 +476,7 @@ Il reste une petite chose a faire.L'ajout du String "back" dans le tableau conte
 ```java
 private static final String[] sValidCommands = {"go", "quit", "help", "look","eat","back"};
 ```
+## Faire l'exercice 7.26 (Stack) :
+
+
 # Mode d'emploi

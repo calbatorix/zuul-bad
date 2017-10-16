@@ -113,6 +113,8 @@ public class GameEngine
         vPieceDeDepart.addItem("torche", vTorche);
         //initialisation lieu courant
         this.aCurrentRoom =vPieceDeDepart;
+        lastRooms = new Stack<Room>;
+        lastRooms.push(this.aCurrentRoom);
     }
 
     public Room getRoom(final String pNomRoom){return this.aListeRoom.get(pNomRoom);}
@@ -164,7 +166,7 @@ public class GameEngine
         if (vNextRoom == null) this.aGui.println("There is no door !");
         else
         {
-            this.aLastRoom = this.aCurrentRoom;
+            lastRooms.push(this.alastRoom);
             this.aCurrentRoom = vNextRoom;
             this.aGui.println(this.aCurrentRoom.getLongDescription());
             if(this.aCurrentRoom.getImageName() != null)
@@ -204,9 +206,8 @@ public class GameEngine
 
     private void back()
     {
-        Room vCurrentRoom = this.aCurrentRoom;
-        this.aCurrentRoom = this.aLastRoom;
-        this.aLastRoom = vCurrentRoom;
+        if (!lastRooms.empty()) this.aCurrentRoom = lastRooms.pop();
+        else this.aLastRoom = this.aCurrentRoom;
 
         this.aGui.println(this.aCurrentRoom.getLongDescription());
         if(this.aCurrentRoom.getImageName() != null)
