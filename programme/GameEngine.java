@@ -3,6 +3,7 @@ import java.util.HashMap;
 public class GameEngine
 {
     private Room aCurrentRoom;
+    private Room aLastRoom;
     private Parser aParser;
     private HashMap<String, Room> aListeRoom;
     private UserInterface aGui;
@@ -131,6 +132,7 @@ public class GameEngine
         else if (commandWord.equals("go"))     goRoom(command);
         else if (commandWord.equals("look"))   look();
         else if (commandWord.equals("eat"))    eat();
+        else if (commandWord.equals("back"))   back();
         else if (commandWord.equals("quit")) {
             if(command.hasSecondWord())
                 this.aGui.println("Quit what?");
@@ -162,6 +164,7 @@ public class GameEngine
         if (vNextRoom == null) this.aGui.println("There is no door !");
         else
         {
+            this.aLastRoom = this.aCurrentRoom;
             this.aCurrentRoom = vNextRoom;
             this.aGui.println(this.aCurrentRoom.getLongDescription());
             if(this.aCurrentRoom.getImageName() != null)
@@ -197,6 +200,17 @@ public class GameEngine
     private void eat()
     {
         this.aGui.println("You have eaten now and you are not hungry any more.");
+    }
+
+    private void back()
+    {
+        Room vCurrentRoom = this.aCurrentRoom;
+        this.aCurrentRoom = this.aLastRoom;
+        this.aLastRoom = vCurrentRoom;
+
+        this.aGui.println(this.aCurrentRoom.getLongDescription());
+        if(this.aCurrentRoom.getImageName() != null)
+            this.aGui.showImage(this.aCurrentRoom.getImageName());
     }
 
 }

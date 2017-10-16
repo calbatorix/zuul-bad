@@ -425,5 +425,55 @@ public class Item
 ## Exercice 7.22.1 optionnel : Justifier le choix ...
 ## Exercice 7.22.2 : Intégrer les objets (items) ...
 ## Exercice 7.23 (back) 
+On souhaite ajouter une nouvelle commande "back" elle aurat pour but de permettre au jour de revenir dans la salle precedente sans à connaitre la direction.
+Pour cela rien de plus simple.Il suffit d'ajouter un attribut à la class Gameangine, cette attribut contiendra le nom de la Room precedente.
+```java
+private Room aLastRoom;
+```
+On ajoute la ligne 16 à la methode goRoom()
+```java
+private void goRoom(final Command pCommand)
+{
+    if(!pCommand.hasSecondWord())
+    {
+        this.aGui.println("go where ?");
+        return;
+    }  
+    
+    String vDirection = pCommand.getSecondWord();
 
+    Room vNextRoom = this.aCurrentRoom.getExit(vDirection);
+
+    if (vNextRoom == null) this.aGui.println("There is no door !");
+    else
+    {
+        this.aLastRoom = this.aCurrentRoom;
+        this.aCurrentRoom = vNextRoom;
+        this.aGui.println(this.aCurrentRoom.getLongDescription());
+        if(this.aCurrentRoom.getImageName() != null)
+            this.aGui.showImage(this.aCurrentRoom.getImageName());
+    }
+}
+```
+Maintenant je créée ma procedure back()
+```java
+private void back()
+{
+    Room vCurrentRoom = this.aCurrentRoom;
+    this.aCurrentRoom = this.aLastRoom;
+    this.aLastRoom = vCurrentRoom;
+    
+    this.aGui.println(this.aCurrentRoom.getLongDescription());
+    if(this.aCurrentRoom.getImageName() != null)
+        this.aGui.showImage(this.aCurrentRoom.getImageName());
+}
+```
+il faut ajoutée l'interpretation de la commande "back" dans la methode interpretCOmmand()
+```java
+else if (commandWord.equals("back"))   back();
+```
+Il reste une petite chose a faire.L'ajout du String "back" dans le tableau contenant toute les commande connue dans la class CommandWords.
+```java
+private static final String[] sValidCommands = {"go", "quit", "help", "look","eat","back"};
+```
 # Mode d'emploi
