@@ -210,12 +210,11 @@ public class GameEngine
         Room vCurrentRoom = this.aCurrentRoom;
         this.aCurrentRoom = this.aLastRoom;
         this.aLastRoom = vCurrentRoom;
-        /*if (!lastRooms.empty()) this.aCurrentRoom = lastRooms.pop();
-        else this.aLastRoom = this.aCurrentRoom;
 
         this.aGui.println(this.aCurrentRoom.getLongDescription());
         if(this.aCurrentRoom.getImageName() != null)
-            this.aGui.showImage(this.aCurrentRoom.getImageName());*/
+            this.aGui.showImage(this.aCurrentRoom.getImageName());
     }
+
 
 }
