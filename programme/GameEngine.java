@@ -1,9 +1,10 @@
 import java.util.HashMap;
+import java.util.Stack;
 
 public class GameEngine
 {
     private Room aCurrentRoom;
-    private Room aLastRoom;
+    private Stack<Room> aLastRooms;
     private Parser aParser;
     private HashMap<String, Room> aListeRoom;
     private UserInterface aGui;
@@ -15,6 +16,7 @@ public class GameEngine
     {
         this.createRooms();
         this.aParser = new Parser();
+        this.aLastRooms = new Stack();
     }
 
     public void setGUI(UserInterface pUserInterface)
@@ -32,7 +34,6 @@ public class GameEngine
         this.aGui.print("\n");
         this.aGui.println(this.aCurrentRoom.getLongDescription());
         this.aGui.showImage(this.aCurrentRoom.getImageName());
-    //    this.printLocationInfo();
     }
 
     private void createRooms()
@@ -113,8 +114,6 @@ public class GameEngine
         vPieceDeDepart.addItem("torche", vTorche);
         //initialisation lieu courant
         this.aCurrentRoom =vPieceDeDepart;
-        //lastRooms = new Stack<Room>;
-        //lastRooms.push(this.aCurrentRoom);
     }
 
     public Room getRoom(final String pNomRoom){return this.aListeRoom.get(pNomRoom);}
@@ -166,8 +165,7 @@ public class GameEngine
         if (vNextRoom == null) this.aGui.println("There is no door !");
         else
         {
-            this.aLastRoom = this.aCurrentRoom;
-            //lastRooms.push(this.alastRoom);
+            this.aLastRooms.push(this.aCurrentRoom);
             this.aCurrentRoom = vNextRoom;
             this.aGui.println(this.aCurrentRoom.getLongDescription());
             if(this.aCurrentRoom.getImageName() != null)
@@ -207,13 +205,19 @@ public class GameEngine
 
     private void back()
     {
-        Room vCurrentRoom = this.aCurrentRoom;
-        this.aCurrentRoom = this.aLastRoom;
-        this.aLastRoom = vCurrentRoom;
+        if(this.aLastRooms.empty() == true)
+        {
+            this.aGui.println("You are all ready in your first localisation.");
+        }
+        else
+        {
+            this.aGui.println("your go back in the last room");
+            this.aCurrentRoom = this.aLastRooms.pop();
+        }
 
         this.aGui.println(this.aCurrentRoom.getLongDescription());
         if(this.aCurrentRoom.getImageName() != null)
-            this.aGui.showImage(this.aCurrentRoom.getImageName());
+                this.aGui.showImage(this.aCurrentRoom.getImageName());
     }
 
 

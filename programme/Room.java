@@ -15,7 +15,6 @@ public class Room
     //attribut
     private String aDescription;
     private HashMap<String, Room> aExits;
-    //private Stack<Room> aLastRooms;
     private HashMap<String, Item> aItems;
     private String aImageName;
     /****************************constructeur*********************************/
