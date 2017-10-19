@@ -1,6 +1,5 @@
 import java.util.HashMap;
 import java.util.Set;
-import java.util.Stack;
 /**
  * This class is part of the "World of Zuul" application. 
  * "World of Zuul" is a very simple, text based adventure game.  
@@ -16,6 +15,7 @@ public class Room
     //attribut
     private String aDescription;
     private HashMap<String, Room> aExits;
+    //private Stack<Room> aLastRooms;
     private HashMap<String, Item> aItems;
     private String aImageName;
     /****************************constructeur*********************************/
