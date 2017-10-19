@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Stack;
 
 public class GameEngine
 {
@@ -113,7 +114,7 @@ public class GameEngine
         vPieceDeDepart.addItem("torche", vTorche);
         //initialisation lieu courant
         this.aCurrentRoom =vPieceDeDepart;
-        lastRooms = new Stack<Room>;
+        Stack<Room> lastRooms = new Stack<Room>();
         lastRooms.push(this.aCurrentRoom);
     }
 
@@ -166,7 +167,7 @@ public class GameEngine
         if (vNextRoom == null) this.aGui.println("There is no door !");
         else
         {
-            lastRooms.push(this.alastRoom);
+            this.alastRooms.push(this.alastRoom);
             this.aCurrentRoom = vNextRoom;
             this.aGui.println(this.aCurrentRoom.getLongDescription());
             if(this.aCurrentRoom.getImageName() != null)
@@ -206,7 +207,7 @@ public class GameEngine
 
     private void back()
     {
-        if (!lastRooms.empty()) this.aCurrentRoom = lastRooms.pop();
+        if (!this.aLastRooms.empty()) this.aCurrentRoom = lastRooms.pop();
         else this.aLastRoom = this.aCurrentRoom;
 
         this.aGui.println(this.aCurrentRoom.getLongDescription());
