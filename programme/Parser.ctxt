@@ -9,4 +9,5 @@ comment2.target=Command\ getCommand(java.lang.String)
 comment2.text=\r\n\ @return\ The\ next\ command\ from\ the\ user.\r\n
 comment3.params=
 comment3.target=java.lang.String\ showCommands()
+comment3.text=\r\n\r\n\r\n
 numComments=4

@@ -53,6 +53,10 @@ public class Parser
             return new Command( null, vWord2 );
     } // getCommand()
 
+    /**
+     *
+     *
+    */
     public String showCommands()
     {
         return this.aValidCommands.getCommandList();

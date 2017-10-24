@@ -1,9 +1,12 @@
-
 /**
- * Décrivez votre classe Item ici.
+ * This class is part of the "World of Zuul" application. 
+ * "World of Zuul" is a very simple, text based adventure game.  
+ * 
+ * La classe Item a pour but de créé des Items à placer dans les differante piece du jeu
+ * Elle s'occupe aussi de tout le traitment des objets de cette class
  *
- * @author (votre nom)
- * @version (un numéro de version ou une date)
+ * @author  Espinasse Baptiste
+ * @version 2017.10.23
  */
 public class Item
 {
@@ -11,6 +14,10 @@ public class Item
     private double aPrix;
     private double aPoids;
 
+    /**
+     *constructeur naturel de la class Item
+     *
+    */
     public Item(final String pDescription, final double pPrix, final double pPoids)
     {
         this.aDescription = pDescription;
@@ -22,10 +29,15 @@ public class Item
     public double getPrixItem(){return this.aPrix;}
     public double getPoidsItem(){return this.aPoids;}
 
+
     public void setDescriptionItem(final String pDescription){this.aDescription=pDescription;}
     public void setPrixItem(final double pPrix){this.aPrix=pPrix;}
     public void setPoidsItem(final double pPoids){this.aPoids=pPoids;}
 
+    /**
+     *redefinition de la methode toString
+     *@return retourne un String contenant la description de l'Item
+    */
     @Override
     public String toString()
     {

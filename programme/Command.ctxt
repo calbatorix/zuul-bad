@@ -1,13 +1,17 @@
 #BlueJ class context
 comment0.target=Command
+comment0.text=\r\n\ This\ class\ is\ part\ of\ the\ "World\ of\ Zuul"\ application.\ \r\n\ "World\ of\ Zuul"\ is\ a\ very\ simple,\ text\ based\ adventure\ game.\ \ \r\n\ \r\n\ La\ classe\ Command\ s'occupe\ de\ tout\ ce\ qui\ est\ la\ verification\ de\ chaine\ de\ String\ contenant\ les\ commandes\r\n\ \r\n\ @author\ \ Espinasse\ Baptiste\r\n\ @version\ 2017.10.23\r\n
 comment1.params=pCommandWord\ pSecondWord
 comment1.target=Command(java.lang.String,\ java.lang.String)
+comment1.text=\r\nconstructeur\ naturel\ de\ la\ class\ Commade\r\n\r\n
 comment2.params=
 comment2.target=java.lang.String\ getCommandWord()
 comment3.params=
 comment3.target=java.lang.String\ getSecondWord()
 comment4.params=
 comment4.target=boolean\ hasSecondWord()
+comment4.text=\r\nmethode\ de\ test\ pour\ savoir\ si\ il\ y\ a\ un\ second\ mot\ dans\ la\ comamande\r\n@return\ si\ il\ y\ a\ une\ deuxieme\ mot\ retourne\ true\r\n
 comment5.params=
 comment5.target=boolean\ isUnknown()
+comment5.text=\r\nmethode\ de\ test\ pour\ pour\ savoir\ si\ la\ commande\ existe\r\n@return\ si\ la\ commande\ n'est\ pas\ comnue\ retourne\ true\r\n
 numComments=6

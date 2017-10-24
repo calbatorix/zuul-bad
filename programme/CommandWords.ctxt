@@ -9,4 +9,5 @@ comment2.target=boolean\ isCommand(java.lang.String)
 comment2.text=\r\n\ Verifie\ si\ une\ String\ donnee\ fait\ partie\ des\ commandes\ valides.\ \r\n\ @param\ pString\ la\ String\ a\ tester\r\n\ @return\ true\ si\ pString\ est\ une\ comande\ valide,\ false\ sinon\r\n
 comment3.params=
 comment3.target=java.lang.String\ getCommandList()
+comment3.text=\r\nmethode\ permetant\ de\ cree\ une\ chaine\ de\ String\ contenant\ toute\ les\ commande\ connue\r\n@return\ un\ String\ de\ toute\ les\ commandes\ connu\r\n
 numComments=4

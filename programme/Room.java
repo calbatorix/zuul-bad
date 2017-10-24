@@ -57,7 +57,10 @@ public class Room
         }
         return vReturnString;
     }
-
+    /**
+     * acesseur transmettant une liste de tous les objets ce trouvant dans la piece
+     * @return un String contenant tous les objets de la piece
+     */
     public String getItemsString()
     {
         String vReturnString = "they are in the room : ";
@@ -78,15 +81,27 @@ public class Room
         this.aExits.put(pDirection, pNeighbor);
     }
 
+    /**
+     *Procedure permettant d'ajouter un objet dans la piece 
+     *@param demande en parametre un nom pour l'objet à ajouter et un Ojbet Item.
+    */
     public void addItem(final String pNomItem, final Item pItem )
     {
         this.aItems.put(pNomItem, pItem);
     }
 
+    /**
+     *methode ayant pour but de transmettre un String contenant tout les information de la piece, telle que les directions de sorties et les Items contenu dans la piece
+     *@return un String contenant une description de la piece
+    */
     public String getLongDescription()
     {
         return " You are in " + this.aDescription + ".\n" + getExitString()+"\n"+getItemsString();
     }
 
+    /**
+     *
+     *
+    */
     public String getImageName(){return this.aImageName;}
 } // Room

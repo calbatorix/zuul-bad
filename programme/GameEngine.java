@@ -1,6 +1,15 @@
 import java.util.HashMap;
 import java.util.Stack;
 
+/**
+ * This class is part of the "World of Zuul" application. 
+ * "World of Zuul" is a very simple, text based adventure game.  
+ * 
+ * La classe Room a pour but de generer tout les element du scenario (piece, item ...) et toute l'interface graphique
+ * 
+ * @author  Espinasse Baptiste
+ * @version 2017.10.23
+ */
 public class GameEngine
 {
     private Room aCurrentRoom;
@@ -18,13 +27,20 @@ public class GameEngine
         this.aParser = new Parser();
         this.aLastRooms = new Stack();
     }
-
+    /**
+     *
+     *
+    */
     public void setGUI(UserInterface pUserInterface)
     {
         this.aGui = pUserInterface;
         printWelcome();
     }
 
+    /**
+     *procedure affichant un message de bienvenu lors de l'ouverture de la fenetre de jeu
+     *
+    */
     private void printWelcome()
     {
         this.aGui.print("\n");
@@ -36,6 +52,10 @@ public class GameEngine
         this.aGui.showImage(this.aCurrentRoom.getImageName());
     }
 
+    /**
+     *procedure qui à pour but de créé toute les piece du jeu et le contenu de ces pieces
+     *
+    */
     private void createRooms()
     {
         //declaration des room
@@ -118,6 +138,10 @@ public class GameEngine
 
     public Room getRoom(final String pNomRoom){return this.aListeRoom.get(pNomRoom);}
 
+    /**
+     *Procedure qui a pour but d'appeler la bonne methode en fonction de la commande passé en parametre
+     *@param un String contenant la commande tapée par le joueur
+    */
     public void interpretCommand(String pCommandLine) 
     {
         this.aGui.println(pCommandLine);
@@ -142,6 +166,10 @@ public class GameEngine
         }
     }
 
+    /**
+     *procedure effectuee lorsque la commance help est tapee
+     *permet de connaitre toute les commande existante
+    */
     private void printHelp()
     {
         this.aGui.println("You are lost. You are alone.");
@@ -150,6 +178,10 @@ public class GameEngine
         this.aGui.print(this.aParser.showCommands());   
     }
 
+    /**
+     *procedure effectuee lorsque la commande go est tapee
+     *@param le deuxieme String de la commande tapee par le joueur qui est la direction
+    */
     private void goRoom(final Command pCommand)
     {
         if(!pCommand.hasSecondWord())
@@ -173,12 +205,20 @@ public class GameEngine
         }
     }
 
+    /**
+     *precedure pour arreter le jeu
+     *
+    */
     private void endGame()
     {
         this.aGui.println("Thank you for playing.  Good bye.");
         this.aGui.enable(false);
     }
 
+    /**
+     *procedure effectuee lorsque la commande look est tapee par le joueur
+     *permet d'avoir les information sur la piece actuel
+    */
     private void look()
     { 
     //    if(!pCommand.hasSecondWord())
@@ -198,11 +238,19 @@ public class GameEngine
     //    }
     }
     
+    /**
+     *procedure efectuee lorsque la commande eat est tapee
+     *
+    */
     private void eat()
     {
         this.aGui.println("You have eaten now and you are not hungry any more.");
     }
 
+    /**
+     *procedure effectuee lorsque la commande back est tapee
+     *la commande back permet de revenir dans ma salle precedante
+    */
     private void back()
     {
         if(this.aLastRooms.empty() == true)

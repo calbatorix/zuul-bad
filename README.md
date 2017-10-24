@@ -366,7 +366,7 @@ makeButtonBar() qui s'occupe de la dipposition et la creation des boutton dans l
     aButton.add( this.aButtonW);
     aButton.add( this.aButtonEat);
     aButton.add( this.aButtonHelp);
-    aButton.add( this.aButtonLook);
+    aButton.F( this.aButtonLook);
 }
 ```
 Ensuite j'ajoute les action à realiser lors de l'appuie sur les bouton.

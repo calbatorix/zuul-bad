@@ -41,6 +41,10 @@ public class CommandWords
         return false;
     } // isCommand()
 
+    /**
+     *methode permetant de cree une chaine de String contenant toute les commande connue
+     *@return un String de toute les commandes connu
+    */
     public String getCommandList() 
     {
         StringBuilder commands = new StringBuilder();
