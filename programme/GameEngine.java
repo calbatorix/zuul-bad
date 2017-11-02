@@ -140,7 +140,7 @@ public class GameEngine
 
     /**
      *Procedure qui a pour but d'appeler la bonne methode en fonction de la commande passé en parametre
-     *@param un String contenant la commande tapée par le joueur
+     *@param pCommandLine un String contenant la commande tapée par le joueur
     */
     public void interpretCommand(String pCommandLine) 
     {
@@ -180,7 +180,7 @@ public class GameEngine
 
     /**
      *procedure effectuee lorsque la commande go est tapee
-     *@param le deuxieme String de la commande tapee par le joueur qui est la direction
+     *@param pCommand le deuxieme String de la commande tapee par le joueur qui est la direction
     */
     private void goRoom(final Command pCommand)
     {

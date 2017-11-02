@@ -20,7 +20,8 @@ public class Room
     /****************************constructeur*********************************/
     /**
      * constructeur naturel de la class Room
-     * @param demande en parametre un String decrivent la Room
+     * @param pDescription un String decrivent la Room
+     * @param pImageName String contenant le chemin de l'image
      */
     public Room(final String pDescription, String pImageName)
     {
@@ -38,7 +39,7 @@ public class Room
     
     /**
      * acesseur des direction de sortie de la piece
-     * @param demande un String contenant une direction
+     * @param pDirection un String contenant une direction
      * @return aExits
      */
     public Room getExit(String pDirection){return this.aExits.get(pDirection);}
@@ -74,7 +75,8 @@ public class Room
     
     /**
      *modificateur permetant de crée/modifier une direction de sortie de la piece courante 
-     *@param elle demande un String contenant le nom de la direction de sorite, et une Room de destination
+     *@param pDirection demande un String contenant le nom de la direction de sorite
+     *@param pNeighbor demande un String contenant le nom de la Room de destination
      */
     public void setExit(final String pDirection, final Room pNeighbor)
     {
@@ -83,7 +85,8 @@ public class Room
 
     /**
      *Procedure permettant d'ajouter un objet dans la piece 
-     *@param demande en parametre un nom pour l'objet à ajouter et un Ojbet Item.
+     *@param pNomItem nom pour l'objet à ajouter.
+     *@param pItem  Ojbet Item à ajouter.
     */
     public void addItem(final String pNomItem, final Item pItem )
     {
