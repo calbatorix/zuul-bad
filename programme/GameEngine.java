@@ -1,5 +1,9 @@
 import java.util.HashMap;
 import java.util.Stack;
+import java.io.IOException;
+import java.io.File;
+import java.util.Scanner;
+//import java.io.PrintWriter;
 
 /**
  * This class is part of the "World of Zuul" application. 
@@ -12,8 +16,6 @@ import java.util.Stack;
  */
 public class GameEngine
 {
-    private Room aCurrentRoom;
-    private Stack<Room> aLastRooms;
     private Parser aParser;
     private HashMap<String, Room> aListeRoom;
     private UserInterface aGui;
@@ -25,7 +27,6 @@ public class GameEngine
     {
         this.createRooms();
         this.aParser = new Parser();
-        this.aLastRooms = new Stack();
     }
     /**
      *
@@ -76,10 +77,10 @@ public class GameEngine
         Room vJardin = new Room("Jardin","images/Jardin.jpg");
         Room vBureau = new Room("Bureau","images/Bureau.jpg");
         Room vTresor = new Room("salle au tresor","images/SalleAuTresor.jpg");
-        
-        Item vTorche = new Item("vielle Torche",2,05);
 
         aListeRoom = new HashMap();
+        Item vTorche = new Item("vielle Torche",2,05);
+
         this.aListeRoom.put("Piece de depart",vPieceDeDepart);
         this.aListeRoom.put("couloir 1",vCouloir1);
         this.aListeRoom.put("couloir 2",vCouloir2);
@@ -133,10 +134,12 @@ public class GameEngine
         
         vPieceDeDepart.addItem("torche", vTorche);
         //initialisation lieu courant
-        this.aCurrentRoom =vPieceDeDepart;
     }
 
-    public Room getRoom(final String pNomRoom){return this.aListeRoom.get(pNomRoom);}
+    public void creatPlayer()
+    {
+        
+    }
 
     /**
      *Procedure qui a pour but d'appeler la bonne methode en fonction de la commande passé en parametre
@@ -155,6 +158,7 @@ public class GameEngine
         String commandWord = command.getCommandWord();
         if (commandWord.equals("help"))        printHelp();
         else if (commandWord.equals("go"))     goRoom(command);
+        else if (commandWord.equals("test"))   test(command);
         else if (commandWord.equals("look"))   look();
         else if (commandWord.equals("eat"))    eat();
         else if (commandWord.equals("back"))   back();
@@ -203,6 +207,31 @@ public class GameEngine
             if(this.aCurrentRoom.getImageName() != null)
                 this.aGui.showImage(this.aCurrentRoom.getImageName());
         }
+    }
+
+    private void test(final Command pCommand)
+    {
+        if(!pCommand.hasSecondWord())
+        {
+            this.aGui.println("test what?");
+            return;
+        }         
+
+        String vFile = pCommand.getSecondWord();
+        Scanner vScan = null;
+
+        try {vScan = new Scanner(new File("./"+vFile+".txt"));}
+        catch ( final java.io.FileNotFoundException pException )
+        {
+            this.aGui.println("File not find");
+        }
+
+        while(vScan.hasNextLine())
+        {
+            String vLigne = vScan.nextLine();
+            interpretCommand(vLigne);
+        }
+        if (vScan != null) {vScan.close();}
     }
 
     /**
