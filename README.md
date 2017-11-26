@@ -512,4 +512,62 @@ private void back()
 La methode pop() de la class Stack récupère l'objet au sommet de la pile.
 La methode empty() teste si la pile ne contient aucun élément (return true si vide).
 
+##Exercice 7.28.1 : Créer une nouvelle commande test ..
+Nous souhaitons créée une commande de teste qui permetra de savoir si le jeux est jouable sans à avoir a jouer au jeu.
+Pour cela, il faut ajouter une commande qui realisera une routine de teste a partir d'un fichier contenant toute les commande a realiser.
+
+Dans la classe CommandWords, il faut ajouter le nouveau mot:
+
+```java
+private static final String[] sValidCommands = {
+    "go", "quit", "help", "look","eat","back", "test"
+};
+```
+
+La partie compliquer ce trouve la classe GameEngine.Ou il faut maintenant ouvrir l efichier contenant la liste de s commmande a realiser et les recuper pour les executer.
+Ajout d'une methode test():
+```java
+private void test(final Command pCommand)
+{
+    if(!pCommand.hasSecondWord())
+    {
+        this.aGui.println("test what?");
+        return;
+    }         
+
+    String vFile = pCommand.getSecondWord();
+    Scanner vScan = null;
+
+    try {vScan = new Scanner(new File("./"+vFile+".txt"));}
+    catch ( final java.io.FileNotFoundException pException )
+    {
+        this.aGui.println("File not find");
+    }
+
+    while(vScan.hasNextLine())
+    {
+        String vLigne = vScan.nextLine();
+        interpretCommand(vLigne);
+    }
+    if (vScan != null) {vScan.close();}
+}
+```
+
+il faut ajouter les dependance a la classe:
+```java
+import java.io.IOException;
+import java.io.File;
+import java.util.Scanner;
+```
+Et ajouter l'interpretation de la commande dans la methode interpretCommand();
+```java
+else if (commandWord.equals("test"))   test(command);
+```
+##Exercice 7.28.2 : Créer 2 fichiers de commandes ... 
+/*todo : expliquer la creation de fichier test*/
+
+##Exercice 7.29 (Player) :
+
+
+
 # Mode d'emploi
