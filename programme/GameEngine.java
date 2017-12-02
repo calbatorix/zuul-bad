@@ -19,6 +19,7 @@ public class GameEngine
     private Parser aParser;
     private HashMap<String, Room> aListeRoom;
     private UserInterface aGui;
+    private Player aPlayer;
 
     /**
      * Constructeur d'objets de classe GameEngine
@@ -26,6 +27,8 @@ public class GameEngine
     public GameEngine()
     {
         this.createRooms();
+        this.aPlayer = new Player("joueur", this.aListeRoom.get("Piece de depart"));
+        //this.createPlayer();
         this.aParser = new Parser();
     }
     /**
@@ -49,8 +52,9 @@ public class GameEngine
         this.aGui.println("World of Zuul is a new, incredibly boring adventure game.");
         this.aGui.println("Type 'help' if you need help.");
         this.aGui.print("\n");
-        this.aGui.println(this.aCurrentRoom.getLongDescription());
-        this.aGui.showImage(this.aCurrentRoom.getImageName());
+        Room currentRoom = this.aPlayer.getLocalisation();
+        this.aGui.println(currentRoom.getLongDescription());
+        this.aGui.showImage(this.aPlayer.getLocalisation().getImageName());
     }
 
     /**
@@ -136,10 +140,11 @@ public class GameEngine
         //initialisation lieu courant
     }
 
-    public void creatPlayer()
+    /*public void createPlayer()
     {
+        this.aPlayer = new Player("joueur", this.aListeRoom.get("PieceDeDepart"));
         
-    }
+    }*/
 
     /**
      *Procedure qui a pour but d'appeler la bonne methode en fonction de la commande passé en parametre
@@ -196,16 +201,16 @@ public class GameEngine
         
         String vDirection = pCommand.getSecondWord();
 
-        Room vNextRoom = this.aCurrentRoom.getExit(vDirection);
+        Room vNextRoom = this.aPlayer.getLocalisation().getExit(vDirection);
 
         if (vNextRoom == null) this.aGui.println("There is no door !");
         else
         {
-            this.aLastRooms.push(this.aCurrentRoom);
-            this.aCurrentRoom = vNextRoom;
-            this.aGui.println(this.aCurrentRoom.getLongDescription());
-            if(this.aCurrentRoom.getImageName() != null)
-                this.aGui.showImage(this.aCurrentRoom.getImageName());
+            this.aPlayer.setLastRoom(this.aPlayer.getLocalisation());
+            this.aPlayer.setLocalisation(vNextRoom);
+            this.aGui.println(this.aPlayer.getLocalisation().getLongDescription());
+            if(this.aPlayer.getLocalisation().getImageName() != null)
+                this.aGui.showImage(this.aPlayer.getLocalisation().getImageName());
         }
     }
 
@@ -250,21 +255,7 @@ public class GameEngine
     */
     private void look()
     { 
-    //    if(!pCommand.hasSecondWord())
-    //    {
-            this.aGui.println(this.aCurrentRoom.getLongDescription());
-    //        return;
-    //    } 
-
-    //    String vNameitem = pCommand.getSecondWord();
-
-    //    if (vNameitem == null) this.aGui.println("There is no item !");
-    //    else
-    //    {
-    //        this.aGui.println(this.aCurrentRoom.getLongDescription());
-    //        if(this.aCurrentRoom.getImageName() != null)
-    //            this.aGui.showImage(this.aCurrentRoom.getImageName());
-    //    }
+        this.aGui.println(this.aPlayer.getLocalisation().getLongDescription());
     }
     
     /**
@@ -282,19 +273,19 @@ public class GameEngine
     */
     private void back()
     {
-        if(this.aLastRooms.empty() == true)
+        if(this.aPlayer.lastRoomsIsEmpty() == true)
         {
             this.aGui.println("You are all ready in your first localisation.");
         }
         else
         {
             this.aGui.println("your go back in the last room");
-            this.aCurrentRoom = this.aLastRooms.pop();
+            this.aPlayer.setLocalisation(this.aPlayer.getLastRoom());
         }
 
-        this.aGui.println(this.aCurrentRoom.getLongDescription());
-        if(this.aCurrentRoom.getImageName() != null)
-                this.aGui.showImage(this.aCurrentRoom.getImageName());
+        this.aGui.println(this.aPlayer.getLocalisation().getLongDescription());
+        if(this.aPlayer.getLocalisation().getImageName() != null)
+                this.aGui.showImage(this.aPlayer.getLocalisation().getImageName());
     }
 
 

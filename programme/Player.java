@@ -12,7 +12,7 @@ public class Player
     private String aName;
     private double aWeight;
     private Room aLocalisation;
-    private HashMap<Item, int> aInventary;
+    private HashMap<String, Item> aInventary;
     private Stack<Room> aLastRooms;
 
     public Player(final String pName, final Room pLocalisation)
@@ -21,7 +21,7 @@ public class Player
         this.aLocalisation = pLocalisation;
         this.aWeight = 700;
         this.aInventary = new HashMap<>();
-        this.aLastRooms = new Stack()
+        this.aLastRooms = new Stack();
     }
 
     public String getName(){return this.aName;}
@@ -33,6 +33,8 @@ public class Player
     public Room getLocalisation(){return this.aLocalisation;}
     public void setLocalisation(final Room pLocalisation){this.aLocalisation = pLocalisation;}
 
-    public 
+    public Room getLastRoom(){return this.aLastRooms.pop();}
+    public void setLastRoom(final Room pLastRoom){this.aLastRooms.push(pLastRoom);}
+    public boolean lastRoomsIsEmpty(){return this.aLastRooms.empty();}; 
 
 }

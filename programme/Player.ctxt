@@ -1,0 +1,24 @@
+#BlueJ class context
+comment0.target=Player
+comment0.text=\r\n\ D\u00E9crivez\ votre\ classe\ Player\ ici.\r\n\r\n\ @author\ (votre\ nom)\r\n\ @version\ (un\ num\u00E9ro\ de\ version\ ou\ une\ date)\r\n
+comment1.params=pName\ pLocalisation
+comment1.target=Player(java.lang.String,\ Room)
+comment10.params=
+comment10.target=boolean\ lastRoomsIsEmpty()
+comment2.params=
+comment2.target=java.lang.String\ getName()
+comment3.params=pName
+comment3.target=void\ setName(java.lang.String)
+comment4.params=
+comment4.target=double\ getWeight()
+comment5.params=pWeight
+comment5.target=void\ setWeight(double)
+comment6.params=
+comment6.target=Room\ getLocalisation()
+comment7.params=pLocalisation
+comment7.target=void\ setLocalisation(Room)
+comment8.params=
+comment8.target=Room\ getLastRoom()
+comment9.params=pLastRoom
+comment9.target=void\ setLastRoom(Room)
+numComments=11
