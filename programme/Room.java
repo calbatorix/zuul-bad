@@ -93,6 +93,13 @@ public class Room
         this.aItems.put(pNomItem, pItem);
     }
 
+    public Item getItem(String pItem){return this.aItems.get(pItem);}
+
+    public void removeItem(final String pNomItem)
+    {
+        this.aItems.remove(pNomItem);
+    }
+
     /**
      *methode ayant pour but de transmettre un String contenant tout les information de la piece, telle que les directions de sorties et les Items contenu dans la piece
      *@return un String contenant une description de la piece

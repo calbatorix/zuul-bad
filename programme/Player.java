@@ -12,7 +12,7 @@ public class Player
     private String aName;
     private double aWeight;
     private Room aLocalisation;
-    private HashMap<String, Item> aInventary;
+    private HashMap<String, Item> aInventary;//7.30
     private Stack<Room> aLastRooms;
 
     public Player(final String pName, final Room pLocalisation)
@@ -35,6 +35,10 @@ public class Player
 
     public Room getLastRoom(){return this.aLastRooms.pop();}
     public void setLastRoom(final Room pLastRoom){this.aLastRooms.push(pLastRoom);}
-    public boolean lastRoomsIsEmpty(){return this.aLastRooms.empty();}; 
+    public boolean lastRoomsIsEmpty(){return this.aLastRooms.empty();}
+
+    public void takeItem(final String pStringItem, final Item pItem){this.aInventary.put(pStringItem, pItem);} //7.30
+    public void dropItem(final String pStringItem){this.aInventary.remove(pStringItem);} //7.30
+    public Item getItem(final String pItem){return this.aInventary.get(pItem);}
 
 }

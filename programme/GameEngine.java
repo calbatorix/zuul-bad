@@ -164,6 +164,8 @@ public class GameEngine
         if (commandWord.equals("help"))        printHelp();
         else if (commandWord.equals("go"))     goRoom(command);
         else if (commandWord.equals("test"))   test(command);
+        else if (commandWord.equals("take"))   take(command);
+        else if (commandWord.equals("drop"))   drop(command);
         else if (commandWord.equals("look"))   look();
         else if (commandWord.equals("eat"))    eat();
         else if (commandWord.equals("back"))   back();
@@ -288,5 +290,44 @@ public class GameEngine
                 this.aGui.showImage(this.aPlayer.getLocalisation().getImageName());
     }
 
+    private void take(final Command pCommand)
+    {
+        if(!pCommand.hasSecondWord())
+        {
+            this.aGui.println("take what ?");
+            return;
+        }  
 
+        String vItem = pCommand.getSecondWord();
+
+        Item vToTake = this.aPlayer.getLocalisation().getItem(vItem);
+
+        if (vToTake == null) this.aGui.println("this item is not here !");
+        else{
+            this.aPlayer.takeItem(vItem, vToTake);
+            this.aPlayer.getLocalisation().removeItem(vItem);
+            this.aGui.println("I take the item");
+
+        }
+    }
+
+    private void drop(final Command pCommand)
+    {
+        if(!pCommand.hasSecondWord())
+        {
+            this.aGui.println("drop what ?");
+            return;
+        }
+
+        String vItem = pCommand.getSecondWord();
+
+        Item vToDrop = this.aPlayer.getItem(vItem);
+
+        if(vToDrop == null) this.aGui.println("I don't have it !");
+        else{
+            this.aPlayer.getLocalisation().addItem(vItem, vToDrop);
+            this.aPlayer.dropItem(vItem);
+            this.aGui.println("I have drop it !");
+        }
+    }
 }
