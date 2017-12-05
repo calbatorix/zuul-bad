@@ -136,7 +136,7 @@ public class GameEngine
         vBureau.setExit("west",vCouloir8);
         vTresor.setExit("west",vBureau);
         
-        vPieceDeDepart.addItem("torche", vTorche);
+        vPieceDeDepart.takeItem("torche", vTorche);
         //initialisation lieu courant
     }
 
@@ -305,7 +305,7 @@ public class GameEngine
         if (vToTake == null) this.aGui.println("this item is not here !");
         else{
             this.aPlayer.takeItem(vItem, vToTake);
-            this.aPlayer.getLocalisation().removeItem(vItem);
+            this.aPlayer.getLocalisation().dropItem(vItem);
             this.aGui.println("I take the item");
 
         }
@@ -325,7 +325,7 @@ public class GameEngine
 
         if(vToDrop == null) this.aGui.println("I don't have it !");
         else{
-            this.aPlayer.getLocalisation().addItem(vItem, vToDrop);
+            this.aPlayer.getLocalisation().takeItem(vItem, vToDrop);
             this.aPlayer.dropItem(vItem);
             this.aGui.println("I have drop it !");
         }

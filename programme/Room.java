@@ -15,8 +15,8 @@ public class Room
     //attribut
     private String aDescription;
     private HashMap<String, Room> aExits;
-    private HashMap<String, Item> aItems;
     private String aImageName;
+    private ItemList aItemsList;
     /****************************constructeur*********************************/
     /**
      * constructeur naturel de la class Room
@@ -27,8 +27,8 @@ public class Room
     {
         this.aDescription = pDescription;
         aExits = new HashMap<>();
-        aItems = new HashMap<>();
         this.aImageName = pImageName;
+        this.aItemsList = new ItemList();
     }
     /**************************acesseur et modificateur **********************/
     /**
@@ -64,12 +64,7 @@ public class Room
      */
     public String getItemsString()
     {
-        String vReturnString = "they are in the room : ";
-        Set<String> vKeys = this.aItems.keySet();
-        for(String vItem : vKeys)
-        {
-            vReturnString += " a "+vItem+"\n";
-        }
+        String vReturnString = "they are in the room : "+this.aItemsList.getItemString();
         return vReturnString;
     }
     
@@ -81,23 +76,6 @@ public class Room
     public void setExit(final String pDirection, final Room pNeighbor)
     {
         this.aExits.put(pDirection, pNeighbor);
-    }
-
-    /**
-     *Procedure permettant d'ajouter un objet dans la piece 
-     *@param pNomItem nom pour l'objet à ajouter.
-     *@param pItem  Ojbet Item à ajouter.
-    */
-    public void addItem(final String pNomItem, final Item pItem )
-    {
-        this.aItems.put(pNomItem, pItem);
-    }
-
-    public Item getItem(String pItem){return this.aItems.get(pItem);}
-
-    public void removeItem(final String pNomItem)
-    {
-        this.aItems.remove(pNomItem);
     }
 
     /**
@@ -114,4 +92,8 @@ public class Room
      *
     */
     public String getImageName(){return this.aImageName;}
+
+    public void takeItem(final String pStringItem, final Item pItem){this.aItemsList.takeItem(pStringItem,pItem);}
+    public void dropItem(final String pStringItem){this.aItemsList.dropItem(pStringItem);}
+    public Item getItem(final String pItem){return this.aItemsList.getItem(pItem);}
 } // Room
