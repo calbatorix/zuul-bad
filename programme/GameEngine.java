@@ -83,7 +83,7 @@ public class GameEngine
         Room vTresor = new Room("salle au tresor","images/SalleAuTresor.jpg");
 
         aListeRoom = new HashMap();
-        Item vTorche = new Item("vielle Torche",2,05);
+        Item vTorche = new Item("vielle Torche",2,800);
 
         this.aListeRoom.put("Piece de depart",vPieceDeDepart);
         this.aListeRoom.put("couloir 1",vCouloir1);
@@ -303,6 +303,7 @@ public class GameEngine
         Item vToTake = this.aPlayer.getLocalisation().getItem(vItem);
 
         if (vToTake == null) this.aGui.println("this item is not here !");
+        else if(this.aPlayer.canITake(vToTake.getPoidsItem()) == false) this.aGui.println("this item is too heavy !");
         else{
             this.aPlayer.takeItem(vItem, vToTake);
             this.aPlayer.getLocalisation().dropItem(vItem);
