@@ -49,4 +49,10 @@ public class Player
     public boolean canITake(final double pWeight){
         return (pWeight+this.aWeight <= this.aStrong) ;
     }
+
+    public String getItemsString()
+    {
+        String vReturnString = "you got : "+this.aItemsList.getItemString();
+        return vReturnString;
+    }
 }

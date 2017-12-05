@@ -169,6 +169,7 @@ public class GameEngine
         else if (commandWord.equals("look"))   look();
         else if (commandWord.equals("eat"))    eat();
         else if (commandWord.equals("back"))   back();
+        else if (commandWord.equals("items"))  items();
         else if (commandWord.equals("quit")) {
             if(command.hasSecondWord())
                 this.aGui.println("Quit what?");
@@ -330,5 +331,10 @@ public class GameEngine
             this.aPlayer.dropItem(vItem);
             this.aGui.println("I have drop it !");
         }
+    }
+
+    private void items()
+    {
+        this.aGui.println(this.aPlayer.getItemsString());
     }
 }
