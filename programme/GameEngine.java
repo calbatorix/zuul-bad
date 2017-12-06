@@ -84,6 +84,7 @@ public class GameEngine
 
         aListeRoom = new HashMap();
         Item vTorche = new Item("vielle Torche",2,800);
+        Item vMagicCookie = new Item("cookie magique",50,0);
 
         this.aListeRoom.put("Piece de depart",vPieceDeDepart);
         this.aListeRoom.put("couloir 1",vCouloir1);
@@ -137,6 +138,7 @@ public class GameEngine
         vTresor.setExit("west",vBureau);
         
         vPieceDeDepart.takeItem("torche", vTorche);
+        vPieceDeDepart.takeItem("magicCookie", vMagicCookie);
         //initialisation lieu courant
     }
 
@@ -167,7 +169,7 @@ public class GameEngine
         else if (commandWord.equals("take"))   take(command);
         else if (commandWord.equals("drop"))   drop(command);
         else if (commandWord.equals("look"))   look();
-        else if (commandWord.equals("eat"))    eat();
+        else if (commandWord.equals("eat"))    eat(command);
         else if (commandWord.equals("back"))   back();
         else if (commandWord.equals("items"))  items();
         else if (commandWord.equals("quit")) {
@@ -265,9 +267,27 @@ public class GameEngine
      *procedure efectuee lorsque la commande eat est tapee
      *
     */
-    private void eat()
+    private void eat(final Command pCommand)
     {
-        this.aGui.println("You have eaten now and you are not hungry any more.");
+        if(!pCommand.hasSecondWord())
+        {
+            this.aGui.println("eat what?");
+            return;
+        }   
+
+        String vItem = pCommand.getSecondWord();
+
+        Item vToEat = this.aPlayer.getItem(vItem);
+
+        if(vToEat == null) this.aGui.println("I don't have it !");
+        else if(vItem.equals("magicCookie")){
+            this.aPlayer.takeItem(vItem, vToEat);
+            this.aPlayer.getLocalisation().dropItem(vItem);
+            this.aPlayer.setStrong(this.aPlayer.getStrong()+100);
+            this.aGui.println("You have eat the magic cookie");
+        }
+        else
+            this.aGui.println("You have eaten now and you are not hungry any more.");
     }
 
     /**
