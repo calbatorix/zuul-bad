@@ -8,5 +8,10 @@ public enum CommandWord
 {
     // A value for each command word, plus one for unrecognised
     // commands.
-    GO, QUIT, HELP, LOOK, EAT, BACK, TAKE, DROP, ITEMS, TEST, UNKNOWN;
+    GO("go"), QUIT("quit"), HELP("help"), LOOK("look"), EAT("eat"), BACK("back"), TAKE("take"), DROP("drop"), ITEMS("items"), TEST("test"), UNKNOWN("?");
+
+    private String commandString;
+
+    CommandWord(String commandString){this.commandString = commandString;}
+    public String toString(){return commandString;}
 }
