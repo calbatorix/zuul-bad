@@ -8,20 +8,42 @@
  * @author  Michael Kolling and David J. Barnes + D.Bureau
  * @version 2008.03.30 + 2013.09.15
  */
+
+import java.util.HashMap;
+
 public class CommandWords
 {
-    // tableau constant qui contient tous les mots de commande valides
-    private static final String[] sValidCommands = {
-        "go", "quit", "help", "look","eat","back", "test", "take", "drop", "items"
-    };
+    private HashMap<String,CommandWord> aValidCommands;
 
     /**
      * Constructeur par defaut
      */
     public CommandWords()
     {
-        // rien a faire pour le moment...
+        this.aValidCommands = new HashMap<String, CommandWord>();
+        this.aValidCommands.put("go", CommandWord.GO);
+        this.aValidCommands.put("help", CommandWord.HELP);
+        this.aValidCommands.put("quit", CommandWord.QUIT);
+        this.aValidCommands.put("look", CommandWord.LOOK);
+        this.aValidCommands.put("eat", CommandWord.EAT);
+        this.aValidCommands.put("back", CommandWord.BACK);
+        this.aValidCommands.put("test", CommandWord.TEST);
+        this.aValidCommands.put("take", CommandWord.TAKE);
+        this.aValidCommands.put("drop", CommandWord.DROP);
+        this.aValidCommands.put("ITEMS", CommandWord.ITEMS);
+
     } // CommandWords()
+
+    public CommandWord getCommandWord(String pCommandWord)
+    {
+        CommandWord vCommand = this.aValidCommands.get(pCommandWord);
+        if(vCommand != null) {
+            return vCommand;
+        }
+        else {
+            return CommandWord.UNKNOWN;
+        }
+    }
 
     /**
      * Verifie si une String donnee fait partie des commandes valides. 
@@ -30,27 +52,19 @@ public class CommandWords
      */
     public boolean isCommand( final String pString )
     {
-        // pour chacune des commandes valides (du tableau constant)
-        for ( int i=0; i<sValidCommands.length; i++ ) {
-            // si elle est egale a pString
-            if ( sValidCommands[i].equals( pString ) )
-                return true;
-        } // for
-        // si nous arrivons la, c'est que la commande
-        // n'a pas ete trouvee dans le tableau
-        return false;
+        return this.aValidCommands.containsKey(pString);
     } // isCommand()
 
     /**
-     *methode permetant de cree une chaine de String contenant toute les commande connue
-     *@return un String de toute les commandes connu
-    */
+     * Print all valid commands to System.out.
+     */
     public String getCommandList() 
     {
         StringBuilder commands = new StringBuilder();
-        for(int i = 0; i < sValidCommands.length; i++) {
-            commands.append( sValidCommands[i] + "  " );
+        for(String vCommand : this.aValidCommands.keySet()) {
+            commands.append( vCommand + "  " );
         }
-        return commands.toString();   
+        return commands.toString(); 
     }
+
 } // CommandWords

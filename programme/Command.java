@@ -9,20 +9,20 @@
  */
 public class Command
 {
-    private String aCommandWord;
+    private CommandWord aCommandWord;
     private String aSecondWord;
     
     /**
      *constructeur naturel de la class Commade
      *
     */
-    public Command(final String pCommandWord, final String pSecondWord)
+    public Command(final  CommandWord pCommandWord, final String pSecondWord)
     {
         this.aCommandWord = pCommandWord ;
         this.aSecondWord  = pSecondWord;
     }
 
-    public String getCommandWord(){return this.aCommandWord;}
+    public CommandWord getCommandWord(){return this.aCommandWord;}
     public String getSecondWord(){return this.aSecondWord;}
 
     /**
@@ -40,6 +40,6 @@ public class Command
     */    
     public boolean isUnknown()
     {
-        return this.getCommandWord() == null;
+        return (this.aCommandWord == CommandWord.UNKNOWN);
     }
 } // Command

@@ -48,7 +48,7 @@ public class Parser
             vWord2 = null;
 
         if ( this.aValidCommands.isCommand( vWord1 ) )
-            return new Command( vWord1, vWord2 );
+            return new Command( this.aValidCommands.getCommandWord(vWord1), vWord2 );
         else
             return new Command( null, vWord2 );
     } // getCommand()
