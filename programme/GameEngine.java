@@ -163,20 +163,21 @@ public class GameEngine
         }
 
         CommandWord commandWord = command.getCommandWord();
-        if (commandWord == CommandWord.HELP)   printHelp();
-        else if (commandWord == CommandWord.GO)     goRoom(command);
-        else if (commandWord == CommandWord.TEST)   test(command);
-        else if (commandWord == CommandWord.TAKE)   take(command);
-        else if (commandWord == CommandWord.DROP)   drop(command);
-        else if (commandWord == CommandWord.LOOK)   look();
-        else if (commandWord == CommandWord.EAT)    eat(command);
-        else if (commandWord == CommandWord.BACK)   back();
-        else if (commandWord == CommandWord.ITEMS)  items();
-        else if (commandWord == CommandWord.QUIT) {
-            if(command.hasSecondWord())
-                this.aGui.println("Quit what?");
-            else
-                endGame();
+        switch(commandWord){
+            case HELP : printHelp(); break;
+            case GO   : goRoom(command); break;
+            case TEST : test(command); break;
+            case TAKE : take(command); break;
+            case DROP : drop(command); break;
+            case LOOK : look(); break;
+            case EAT  : eat(command); break;
+            case BACK : back(); break;
+            case ITEMS: items(); break;
+            case QUIT : if(command.hasSecondWord())
+                            this.aGui.println("Quit what?");
+                        else
+                            endGame();
+                        break;
         }
     }
 
