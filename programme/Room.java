@@ -17,6 +17,7 @@ public class Room
     private HashMap<String, Room> aExits;
     private String aImageName;
     private ItemList aItemsList;
+    private HashMap<String, Boolean> aTrapDoor;
     /****************************constructeur*********************************/
     /**
      * constructeur naturel de la class Room
@@ -27,9 +28,11 @@ public class Room
     {
         this.aDescription = pDescription;
         aExits = new HashMap<>();
+        aTrapDoor = new HashMap<>();
         this.aImageName = pImageName;
         this.aItemsList = new ItemList();
     }
+
     /**************************acesseur et modificateur **********************/
     /**
      * acesseur de la description de Room
@@ -43,6 +46,8 @@ public class Room
      * @return aExits
      */
     public Room getExit(String pDirection){return this.aExits.get(pDirection);}
+
+    public Boolean isTrapDoor(String pDirection){return this.aTrapDoor.get(pDirection);}
     
     /**
      * acesseur transmettant toute les direction de sortie de la piece
@@ -73,9 +78,10 @@ public class Room
      *@param pDirection demande un String contenant le nom de la direction de sorite
      *@param pNeighbor demande un String contenant le nom de la Room de destination
      */
-    public void setExit(final String pDirection, final Room pNeighbor)
+    public void setExit(final String pDirection, final Room pNeighbor, final boolean pTrapDoor)
     {
         this.aExits.put(pDirection, pNeighbor);
+        this.aTrapDoor.put(pDirection, pTrapDoor);
     }
 
     /**

@@ -104,38 +104,38 @@ public class GameEngine
         this.aListeRoom.put("Salle au tresor",vTresor);
 
         //positionement des sorties
-        vPieceDeDepart.setExit("east",vCouloir1);
-        vPieceDeDepart.setExit("west",vPrison);
-        vPrison.setExit("east",vPieceDeDepart);
-        vCouloir1.setExit("south",vCouloir2);
-        vCouloir1.setExit("west",vPieceDeDepart);
-        vCouloir2.setExit("north",vCouloir1);
-        vCouloir2.setExit("south",vCouloir3);
-        vCouloir2.setExit("east",vCouloir5);
-        vCouloir3.setExit("north",vCouloir2);
-        vCouloir3.setExit("west",vCouloir4);
-        vCouloir4.setExit("south",vTourRDC);
-        vCouloir4.setExit("east",vCouloir3);
-        vCouloir4.setExit("west",vSortie);
-        vCouloir5.setExit("east",vCouloir6);
-        vCouloir5.setExit("west",vCouloir2);
-        vCouloir6.setExit("north",vSalleDesGardes);
-        vCouloir6.setExit("south",vCouloir7);
-        vCouloir6.setExit("west",vCouloir2);
-        vCouloir7.setExit("north",vCouloir6);
-        vCouloir7.setExit("south",vJardin);
-        vCouloir7.setExit("east",vCouloir8);
-        vCouloir8.setExit("east",vBureau);
-        vCouloir8.setExit("west",vCouloir7);
-        vSortie.setExit("east",vCouloir4);
-        vTourRDC.setExit("north",vCouloir4);
-        vTourRDC.setExit("up",vTourHight);
-        vTourHight.setExit("down",vTourRDC);
-        vSalleDesGardes.setExit("south",vCouloir6);
-        vJardin.setExit("north",vCouloir7);
-        vBureau.setExit("east",vTresor);
-        vBureau.setExit("west",vCouloir8);
-        vTresor.setExit("west",vBureau);
+        vPieceDeDepart.setExit("east",vCouloir1,false);
+        vPieceDeDepart.setExit("west",vPrison,false);
+        vPrison.setExit("east",vPieceDeDepart,false);
+        vCouloir1.setExit("south",vCouloir2,false);
+        vCouloir1.setExit("west",vPieceDeDepart,false);
+        vCouloir2.setExit("north",vCouloir1,false);
+        vCouloir2.setExit("south",vCouloir3,false);
+        vCouloir2.setExit("east",vCouloir5,false);
+        vCouloir3.setExit("north",vCouloir2,false);
+        vCouloir3.setExit("west",vCouloir4,false);
+        vCouloir4.setExit("south",vTourRDC,false);
+        vCouloir4.setExit("east",vCouloir3,false);
+        vCouloir4.setExit("west",vSortie,false);
+        vCouloir5.setExit("east",vCouloir6,false);
+        vCouloir5.setExit("west",vCouloir2,false);
+        vCouloir6.setExit("north",vSalleDesGardes,false);
+        vCouloir6.setExit("south",vCouloir7,false);
+        vCouloir6.setExit("west",vCouloir2,false);
+        vCouloir7.setExit("north",vCouloir6,false);
+        vCouloir7.setExit("south",vJardin,false);
+        vCouloir7.setExit("east",vCouloir8,false);
+        vCouloir8.setExit("east",vBureau,true);
+        vCouloir8.setExit("west",vCouloir7,false);
+        vSortie.setExit("east",vCouloir4,false);
+        vTourRDC.setExit("north",vCouloir4,false);
+        vTourRDC.setExit("up",vTourHight,false);
+        vTourHight.setExit("down",vTourRDC,false);
+        vSalleDesGardes.setExit("south",vCouloir6,false);
+        vJardin.setExit("north",vCouloir7,false);
+        vBureau.setExit("east",vTresor,false);
+        //vBureau.setExit("west",vCouloir8,true);
+        vTresor.setExit("west",vBureau,false);
         
         vPieceDeDepart.takeItem("torche", vTorche);
         vPieceDeDepart.takeItem("magicCookie", vMagicCookie);
@@ -212,7 +212,8 @@ public class GameEngine
         if (vNextRoom == null) this.aGui.println("There is no door !");
         else
         {
-            this.aPlayer.setLastRoom(this.aPlayer.getLocalisation());
+            if(this.aPlayer.getLocalisation().isTrapDoor(vDirection)==true) this.aPlayer.resetLastRoom();
+            else this.aPlayer.setLastRoom(this.aPlayer.getLocalisation());
             this.aPlayer.setLocalisation(vNextRoom);
             this.aGui.println(this.aPlayer.getLocalisation().getLongDescription());
             if(this.aPlayer.getLocalisation().getImageName() != null)
