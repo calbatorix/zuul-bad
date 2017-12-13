@@ -567,7 +567,279 @@ else if (commandWord.equals("test"))   test(command);
 /*todo : expliquer la creation de fichier test*/
 
 ##Exercice 7.29 (Player) :
+Tout d'abord il faut savoir ce que l'on atte,td de la classe player, On sait que l'on ne doit plus enregistrer les deplacement dans gameEngine puisque que l'on pourrait imaginer un jeu avec plusieur player et chacun pourrait faire une suite de deplacement differant.
+Il faut donc enregister l'emplacement actuelle du player.
+Et faire une liste contenant tout ses emplacement precedent.
+Le player a un nom pour le differencier des autres
+Et il a une capaciter de charge utile
+Tout ceci nous permet de connaitre les attribut dont la classe a besoin.
+```java
+private String aName;
+private double aWeight;
+private Room aLocalisation;
+private HashMap<String, Item> aInventary;
+private Stack<Room> aLastRooms;
+```
+maintenant il ne reste qu'a completer la classe avec sont constructeur et l'ensemble des getteur et setter
+```java
+public Player(final String pName, final Room pLocalisation)
+{
+    this.aName = pName;
+    this.aLocalisation = pLocalisation;
+    this.aWeight = 700;
+    this.aInventary = new HashMap<>();
+    this.aLastRooms = new Stack();
+}
 
+public String getName(){return this.aName;}
+public void setName(final String pName){this.aName = pName;}
 
+public double getWeight(){return this.aWeight;}
+public void setWeight(final double pWeight){this.aWeight = pWeight;}
+
+public Room getLocalisation(){return this.aLocalisation;}
+public void setLocalisation(final Room pLocalisation){this.aLocalisation = pLocalisation;}
+
+public Room getLastRoom(){return this.aLastRooms.pop();}
+public void setLastRoom(final Room pLastRoom){this.aLastRooms.push(pLastRoom);}
+public boolean lastRoomsIsEmpty(){return this.aLastRooms.empty();}; 
+```
+Dans Game Engine il faut ajouter la creation d'un nouveau player dans le constructeur.
+Et suprimer la liste des Room precedente puisque c'elle ci est differente pour chaque player, il faut aussi modifier les methode utilisant les information sur la Room courante et la liste des emplacement precedant.
+Soit Back() goRoom() et printWelcome()
+```java
+private void printWelcome()
+{
+    this.aGui.print("\n");
+    this.aGui.println("Welcome to the World of Zuul!");
+    this.aGui.println("World of Zuul is a new, incredibly boring adventure game.");
+    this.aGui.println("Type 'help' if you need help.");
+    this.aGui.print("\n");
+    Room currentRoom = this.aPlayer.getLocalisation();
+    this.aGui.println(currentRoom.getLongDescription());
+    this.aGui.showImage(this.aPlayer.getLocalisation().getImageName());
+}
+```
+```java
+private void goRoom(final Command pCommand)
+{
+    if(!pCommand.hasSecondWord())
+    {
+        this.aGui.println("go where ?");
+        return;
+    }  
+        
+    String vDirection = pCommand.getSecondWord();
+
+    Room vNextRoom = this.aPlayer.getLocalisation().getExit(vDirection);
+
+    if (vNextRoom == null) this.aGui.println("There is no door !");
+    else
+    {
+        this.aPlayer.setLastRoom(this.aPlayer.getLocalisation());
+       this.aPlayer.setLocalisation(vNextRoom);
+        this.aGui.println(this.aPlayer.getLocalisation().getLongDescription());
+        if(this.aPlayer.getLocalisation().getImageName() != null)
+            this.aGui.showImage(this.aPlayer.getLocalisation().getImageName());
+    }
+}
+```
+```java
+private void back()
+{
+    if(this.aPlayer.lastRoomsIsEmpty() == true)
+    {
+        this.aGui.println("You are all ready in your first localisation.");
+    }
+    else
+    {
+        this.aGui.println("your go back in the last room");
+        this.aPlayer.setLocalisation(this.aPlayer.getLastRoom());
+    }
+
+    this.aGui.println(this.aPlayer.getLocalisation().getLongDescription());
+    if(this.aPlayer.getLocalisation().getImageName() != null)
+            this.aGui.showImage(this.aPlayer.getLocalisation().getImageName());
+}
+```
+
+##Exercice 7.30 (take, drop) :
+Comme à l'habite lors de l'ajout de nouvels commandes il faut ajouter dans CommandWords les deux nouveaux mots de commande.Ici dans ce cas "take" et "drop":
+```java
+private static final String[] sValidCommands = {
+    "go", "quit", "help", "look","eat","back", "test", "take", "drop"
+};
+```
+Ajouter les commande a la methode interpretCommand de la classe gameEngine
+```java
+else if (commandWord.equals("take"))   take(command);
+else if (commandWord.equals("drop"))   drop(command);
+```
+
+```java
+private void take(final Command pCommand)
+{
+    if(!pCommand.hasSecondWord())
+    {
+        this.aGui.println("take what ?");
+        return;
+    }  
+
+    String vItem = pCommand.getSecondWord();
+
+    Item vToTake = this.aPlayer.getLocalisation().getItem(vItem);
+
+    if (vToTake == null) this.aGui.println("this item is not here !");
+    else{
+        this.aPlayer.takeItem(vItem, vToTake);
+        this.aPlayer.getLocalisation().removeItem(vItem);
+        this.aGui.println("I take the item");
+
+    }
+}
+```
+```java
+private void drop(final Command pCommand)
+{
+    if(!pCommand.hasSecondWord())
+    {
+        this.aGui.println("drop what ?");
+        return;
+    }
+
+    String vItem = pCommand.getSecondWord();
+
+    Item vToDrop = this.aPlayer.getItem(vItem);
+
+    if(vToDrop == null) this.aGui.println("I don't have it !");
+    else{
+        this.aPlayer.getLocalisation().addItem(vItem, vToDrop);
+        this.aPlayer.dropItem(vItem);
+        this.aGui.println("I have drop it !");
+    }
+}
+```
+Dans player il faut ajouter une liste pour l'inventaire
+```java
+private HashMap<String, Item> aInventary;
+```
+et
+
+```java
+public boolean lastRoomsIsEmpty(){return this.aLastRooms.empty();}
+public void takeItem(final String pStringItem, final Item pItem){this.aInventary.put(pStringItem, pItem);}
+public void dropItem(final String pStringItem){this.aInventary.remove(pStringItem);}
+public Item getItem(final String pItem){return this.aInventary.get(pItem);}
+```
+
+Dans Room
+```java
+public void addItem(final String pNomItem, final Item pItem )
+{
+    this.aItems.put(pNomItem, pItem);
+}
+
+public Item getItem(String pItem){return this.aItems.get(pItem);}
+
+public void removeItem(final String pNomItem)
+{
+    this.aItems.remove(pNomItem);
+}
+```
+##Exercice 7.31 (porter plusieurs items)
+fait avec la question precedente
+
+##Exercice 7.31.1 : Créer une nouvelle classe ItemList ...
+Pour diminiuer le couplage des class PLayer et Room avec GameEngine il faut creer une nouvelle classe ItemsList.
+Cette class de gerer les inventaire des Room et des Player
+```java
+import java.util.HashMap;
+import java.util.Set;
+
+public class ItemList
+{
+    private HashMap<String, Item> aInventary;
+
+    /**
+     * Constructeur d'objets de classe ItemList
+     */
+    public ItemList()
+    {
+        this.aInventary = new HashMap<>();
+    }
+
+    public String getItemString(){
+        String vReturnString = "";
+        Set<String> vKeys = this.aInventary.keySet();
+        for(String vItem : vKeys)
+        {
+            vReturnString += " a "+vItem+"\n";
+        }
+        return vReturnString;
+    }
+
+    public void takeItem(final String pStringItem, final Item pItem){this.aInventary.put(pStringItem, pItem);}
+    public void dropItem(final String pStringItem){this.aInventary.remove(pStringItem);}
+    public Item getItem(final String pItem){return this.aInventary.get(pItem);}
+
+}
+```
+##Exercice 7.32 (poids max) :
+Ajout dans la class Player un attribut de aStrong qui correspod au pois max que le joueur peut porter
+```java
+private double aStrong;
+```
+ainsi que ces getter et setter
+```java
+public double getStrong(){return this.aStrong;}
+public void setStrong(final double pStrong){this.aStrong = pStrong;}
+```
+Et une methode permettant de savoir di le joueur peut ajouter a sont inventere un objet d'un certain poid
+```java
+public boolean canITake(final double pWeight){
+    return (pWeight+this.aWeight <= this.aStrong) ;
+}
+```
+
+Et dans la methode take de la classe GameEngine il faut ajouter une condition de test pour savoir si le player est en condition de prendre l'objet
+```java
+else if(this.aPlayer.canITake(vToTake.getPoidsItem()) == false) this.aGui.println("this item is too heavy !");
+```
+##Exercice 7.33 (inventaire) :
+Ajout d'un ecommmadne pour afficher la liste des objet dans l'inventaire du joueur
+```java
+private void items(){this.aGui.println(this.aPlayer.getItemsString());}
+```
+##Exercice 7.34 (magic cookie) :
+Modification de la commande eat, pour que si le joueur mange un magoCookie il est une moficatin de la sont attribut de force.
+```java
+private void eat(final Command pCommand)
+{
+    if(!pCommand.hasSecondWord())
+    {
+        this.aGui.println("eat what?");
+        return;
+    }   
+
+    String vItem = pCommand.getSecondWord();
+
+    Item vToEat = this.aPlayer.getItem(vItem);
+
+    if(vToEat == null) this.aGui.println("I don't have it !");
+    else if(vItem.equals("magicCookie")){
+        this.aPlayer.takeItem(vItem, vToEat);
+        this.aPlayer.getLocalisation().dropItem(vItem);
+        this.aPlayer.setStrong(this.aPlayer.getStrong()+100);
+        this.aGui.println("You have eat the magic cookie");
+    }
+    else
+        this.aGui.println("You have eaten now and you are not hungry any more.");
+}
+```
+##Exercice 7.34.1 : Mettre à jour les fichiers de test ...
+##Exercice 7.34.2 : Re-générer les 2 javadoc ..
+##Exercice 7.35 (zuul-with-enums-v1) :
+##Exercice 7.35.1 : Utiliser le switch ...
+##Exercice 7.41.1 zuul-with-enums-v2 ...
 
 # Mode d'emploi

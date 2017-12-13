@@ -26,7 +26,11 @@ public class CommandWords
                 this.aValidCommands.put(command.toString(), command);
         }
     } // CommandWords()
-
+    /**
+    *Cette methode a pour but de retouver la commande souhaiter dans le hasmap
+    *@param Un String correspondant a la commande que l'on souhaite realiser
+    *@return Le CommandWord correspondant au String en parametre
+    */
     public CommandWord getCommandWord(String pCommandWord)
     {
         CommandWord vCommand = this.aValidCommands.get(pCommandWord);
@@ -49,7 +53,8 @@ public class CommandWords
     } // isCommand()
 
     /**
-     * Print all valid commands to System.out.
+     * cette method à pour but de retournee un String contenant toute les commandes realisable
+     *@return Un String contenant toute les commandes
      */
     public String getCommandList() 
     {

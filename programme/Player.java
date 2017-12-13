@@ -41,6 +41,7 @@ public class Player
     public Room getLastRoom(){return this.aLastRooms.pop();}
     public void setLastRoom(final Room pLastRoom){this.aLastRooms.push(pLastRoom);}
     public boolean lastRoomsIsEmpty(){return this.aLastRooms.empty();}
+    public void resetLastRoom(){this.aLastRooms.clear();}
 
     public void takeItem(final String pStringItem, final Item pItem){this.aItemsList.takeItem(pStringItem,pItem);}
     public void dropItem(final String pStringItem){this.aItemsList.dropItem(pStringItem);}
