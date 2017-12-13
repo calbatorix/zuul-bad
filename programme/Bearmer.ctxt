@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=Bearmer
+comment0.text=\r\n\ D\u00E9crivez\ votre\ classe\ Bearmer\ ici.\r\n\r\n\ @author\ (votre\ nom)\r\n\ @version\ (un\ num\u00E9ro\ de\ version\ ou\ une\ date)\r\n
+comment1.params=pDescription\ pPrix\ pPoids\ pCharge
+comment1.target=Bearmer(java.lang.String,\ double,\ double,\ boolean)
+comment2.params=
+comment2.target=boolean\ isCharged()
+comment3.params=
+comment3.target=void\ charge()
+comment4.params=
+comment4.target=void\ discharge()
+numComments=5
