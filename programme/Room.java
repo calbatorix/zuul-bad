@@ -94,12 +94,27 @@ public class Room
     }
 
     /**
-     *
-     *
+     *Methode pemetant de connaitre le chemin d'accee de l'image illustant la Room
+     *@return un String contenant le chemin d'acces de l'image ilustrant la Room
     */
     public String getImageName(){return this.aImageName;}
 
+    /**
+     *Methode permmeatant d'ajouter un item dans l'inventaire de la Room
+     *@param pStringItem est un String correspondant a la description/nom de l'item a ajouter dans l'inventaire
+     *@param pItem est l'item a ajouter dansl'inventaire
+    */
     public void takeItem(final String pStringItem, final Item pItem){this.aItemsList.takeItem(pStringItem,pItem);}
+
+    /**
+     *Methode permmeatant de retirer un item de l'inventaire de la Room
+     *@param pStringItem est un String correspondant a la description/nom de l'item que l'on souhaite obtenir dans l'invantaire
+    */
     public void dropItem(final String pStringItem){this.aItemsList.dropItem(pStringItem);}
+
+    /**
+     *Methode affichant tout les item contenu dans l'inventaire du player
+     *@return un String contanant la liste des item dans l'inventaire de la Room
+    */ 
     public Item getItem(final String pItem){return this.aItemsList.getItem(pItem);}
 } // Room

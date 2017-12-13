@@ -17,5 +17,5 @@ public class Bearmer extends Item
     public boolean isCharged(){return this.aCharge;}
 
     public void charge(){this.aCharge = true;}
-    public void discharge(){this.aCharge = false;} 
+    public void discharge(){this.aCharge = false;}
 }

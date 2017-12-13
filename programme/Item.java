@@ -25,13 +25,40 @@ public class Item
         this.aPoids       = pPoids;
     }
 
+    /**
+     *getter de la description de l'item
+     *@return un string qui est la description/nom de l'item
+    */
     public String getDescriptionItem(){return this.aDescription;}
+
+    /**
+     *getter du prix de l'item
+     *@return un reel qui est le prix de vente de l'item
+    */
     public double getPrixItem(){return this.aPrix;}
+
+    /**
+     *getter du poids de l'item
+     *@return un reel correspondant au poid de l'item
+    */
     public double getPoidsItem(){return this.aPoids;}
 
-
+    /**
+     *setter de la description/nom de l'item
+     *@param un String de de description de l'item
+    */
     public void setDescriptionItem(final String pDescription){this.aDescription=pDescription;}
+
+    /**
+     *setter du prix de l'item
+     *@param Un double correspondant su prix souhaiter pour l'item
+    */
     public void setPrixItem(final double pPrix){this.aPrix=pPrix;}
+
+    /**
+     *setter du poids l'item
+     *@param Un double correspondant su poid souhaiter pour l'item
+    */
     public void setPoidsItem(final double pPoids){this.aPoids=pPoids;}
 
     /**

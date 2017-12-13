@@ -32,7 +32,7 @@ public class GameEngine
         this.aParser = new Parser();
     }
     /**
-     *
+     *Procedure de creation de l'une interface graphique
      *
     */
     public void setGUI(UserInterface pUserInterface)
@@ -142,12 +142,6 @@ public class GameEngine
         //initialisation lieu courant
     }
 
-    /*public void createPlayer()
-    {
-        this.aPlayer = new Player("joueur", this.aListeRoom.get("PieceDeDepart"));
-        
-    }*/
-
     /**
      *Procedure qui a pour but d'appeler la bonne methode en fonction de la commande passé en parametre
      *@param pCommandLine un String contenant la commande tapée par le joueur
@@ -221,6 +215,10 @@ public class GameEngine
         }
     }
 
+    /**
+     *procedure effectuee lorsque la commande test est tapee
+     *@param pCommand le deuxieme String de la commande tapee par le joueur qui est l'emplacement du fichier conteant la suite des commande de test
+    */
     private void test(final Command pCommand)
     {
         if(!pCommand.hasSecondWord())
@@ -267,7 +265,7 @@ public class GameEngine
     
     /**
      *procedure efectuee lorsque la commande eat est tapee
-     *
+     *@param pCommand le deuxieme String de la commande tapee par le joueur qui est l'item a manger
     */
     private void eat(final Command pCommand)
     {
@@ -313,6 +311,10 @@ public class GameEngine
                 this.aGui.showImage(this.aPlayer.getLocalisation().getImageName());
     }
 
+    /**
+     *procedure efectuee lorsque la commande take est tapee
+     *@param pCommand le deuxieme String de la commande tapee par le joueur qui est l'item a prendre 
+    */
     private void take(final Command pCommand)
     {
         if(!pCommand.hasSecondWord())
@@ -335,6 +337,10 @@ public class GameEngine
         }
     }
 
+    /**
+     *procedure efectuee lorsque la commande drop est tapee
+     *@param pCommand le deuxieme String de la commande tapee par le joueur qui est l'item a deposer 
+    */
     private void drop(final Command pCommand)
     {
         if(!pCommand.hasSecondWord())
@@ -355,6 +361,10 @@ public class GameEngine
         }
     }
 
+    /**
+     *procedure effectuee lorsque la commande items est tapee
+     *la commande items afiiche tout les items contenue dans l'inventaire du joueur
+    */
     private void items()
     {
         this.aGui.println(this.aPlayer.getItemsString());

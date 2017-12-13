@@ -512,7 +512,7 @@ private void back()
 La methode pop() de la class Stack récupère l'objet au sommet de la pile.
 La methode empty() teste si la pile ne contient aucun élément (return true si vide).
 
-##Exercice 7.28.1 : Créer une nouvelle commande test ..
+## Exercice 7.28.1 : Créer une nouvelle commande test ..
 Nous souhaitons créée une commande de teste qui permetra de savoir si le jeux est jouable sans à avoir a jouer au jeu.
 Pour cela, il faut ajouter une commande qui realisera une routine de teste a partir d'un fichier contenant toute les commande a realiser.
 
@@ -563,10 +563,10 @@ Et ajouter l'interpretation de la commande dans la methode interpretCommand();
 ```java
 else if (commandWord.equals("test"))   test(command);
 ```
-##Exercice 7.28.2 : Créer 2 fichiers de commandes ... 
+## Exercice 7.28.2 : Créer 2 fichiers de commandes ... 
 /*todo : expliquer la creation de fichier test*/
 
-##Exercice 7.29 (Player) :
+## Exercice 7.29 (Player) :
 Tout d'abord il faut savoir ce que l'on atte,td de la classe player, On sait que l'on ne doit plus enregistrer les deplacement dans gameEngine puisque que l'on pourrait imaginer un jeu avec plusieur player et chacun pourrait faire une suite de deplacement differant.
 Il faut donc enregister l'emplacement actuelle du player.
 Et faire une liste contenant tout ses emplacement precedent.
@@ -663,7 +663,7 @@ private void back()
 }
 ```
 
-##Exercice 7.30 (take, drop) :
+## Exercice 7.30 (take, drop) :
 Comme à l'habite lors de l'ajout de nouvels commandes il faut ajouter dans CommandWords les deux nouveaux mots de commande.Ici dans ce cas "take" et "drop":
 ```java
 private static final String[] sValidCommands = {
@@ -746,10 +746,10 @@ public void removeItem(final String pNomItem)
     this.aItems.remove(pNomItem);
 }
 ```
-##Exercice 7.31 (porter plusieurs items)
+## Exercice 7.31 (porter plusieurs items)
 fait avec la question precedente
 
-##Exercice 7.31.1 : Créer une nouvelle classe ItemList ...
+## Exercice 7.31.1 : Créer une nouvelle classe ItemList ...
 Pour diminiuer le couplage des class PLayer et Room avec GameEngine il faut creer une nouvelle classe ItemsList.
 Cette class de gerer les inventaire des Room et des Player
 ```java
@@ -784,7 +784,7 @@ public class ItemList
 
 }
 ```
-##Exercice 7.32 (poids max) :
+## Exercice 7.32 (poids max) :
 Ajout dans la class Player un attribut de aStrong qui correspod au pois max que le joueur peut porter
 ```java
 private double aStrong;
@@ -805,12 +805,12 @@ Et dans la methode take de la classe GameEngine il faut ajouter une condition de
 ```java
 else if(this.aPlayer.canITake(vToTake.getPoidsItem()) == false) this.aGui.println("this item is too heavy !");
 ```
-##Exercice 7.33 (inventaire) :
+## Exercice 7.33 (inventaire) :
 Ajout d'un ecommmadne pour afficher la liste des objet dans l'inventaire du joueur
 ```java
 private void items(){this.aGui.println(this.aPlayer.getItemsString());}
 ```
-##Exercice 7.34 (magic cookie) :
+## Exercice 7.34 (magic cookie) :
 Modification de la commande eat, pour que si le joueur mange un magoCookie il est une moficatin de la sont attribut de force.
 ```java
 private void eat(final Command pCommand)
@@ -836,10 +836,11 @@ private void eat(final Command pCommand)
         this.aGui.println("You have eaten now and you are not hungry any more.");
 }
 ```
-##Exercice 7.34.1 : Mettre à jour les fichiers de test ...
-##Exercice 7.34.2 : Re-générer les 2 javadoc ..
-##Exercice 7.35 (zuul-with-enums-v1) :
-##Exercice 7.35.1 : Utiliser le switch ...
-##Exercice 7.41.1 zuul-with-enums-v2 ...
+## Exercice 7.34.1 : Mettre à jour les fichiers de test ...
+## Exercice 7.34.2 : Re-générer les 2 javadoc ..
+## Exercice 7.35 (zuul-with-enums-v1) :
+
+## Exercice 7.35.1 : Utiliser le switch ...
+## Exercice 7.41.1 zuul-with-enums-v2 ...
 
 # Mode d'emploi

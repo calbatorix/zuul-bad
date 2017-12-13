@@ -28,7 +28,9 @@ public class Parser
     } // Parser()
 
     /**
-     * @return The next command from the user.
+     * Methode ayant pour but manufacturer les commamande rentrer par l'utilisateur pour qu'il soit compreansible par les autres methode
+     *@param pInputLine est le String renter par l'utilisateur dans la l'interface IHM
+     *@return The next command from the user.
      */
     public Command getCommand(final String pInputLine) 
     {

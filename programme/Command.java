@@ -13,7 +13,7 @@ public class Command
     private String aSecondWord;
     
     /**
-     *constructeur naturel de la class Commade
+     *constructeur naturel de la class Command
      *
     */
     public Command(final  CommandWord pCommandWord, final String pSecondWord)
@@ -21,8 +21,16 @@ public class Command
         this.aCommandWord = pCommandWord ;
         this.aSecondWord  = pSecondWord;
     }
-
+    /**
+     *retourne le commandeWord c'est a dire le premier mot de la commande
+     *@return CommandWord
+     */
     public CommandWord getCommandWord(){return this.aCommandWord;}
+    
+    /**
+     *retourne le secondWord c'est a dire le deuxieme mot de la commande
+     *@return SecondWord
+     */
     public String getSecondWord(){return this.aSecondWord;}
 
     /**
