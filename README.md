@@ -839,8 +839,59 @@ private void eat(final Command pCommand)
 ## Exercice 7.34.1 : Mettre à jour les fichiers de test ...
 ## Exercice 7.34.2 : Re-générer les 2 javadoc ..
 ## Exercice 7.35 (zuul-with-enums-v1) :
+Pour dimunier encore un peut plus le couplage implicite de la classe CommandWords et la classe Gameengine, il est est demandée de suivre la nouvelle architecture fourni dans zuul-with-enums-v1
+
+Tout daborts mous creons une nouvelle class de type enum qui contiendra toute les commande realisable:
+```java
+public enum CommandWord
+{
+    GO, QUIT, HELP, LOOK, EAT, BACK, TAKE, DROP, ITEMS, TEST, UNKNOWN;
+}
+```
+
 
 ## Exercice 7.35.1 : Utiliser le switch ...
+Dans la methode interpretCommand de la class GameEngine il est souhaiter que nous passions a une structure plus efficace.C'est a dire utiliser des Switch a la place des if et else dans notre cas
+```java
+public void interpretCommand(String pCommandLine) 
+{
+    this.aGui.println(pCommandLine);
+    Command command = this.aParser.getCommand(pCommandLine);
+
+    if(command.isUnknown()) {
+        this.aGui.println("I don't know what you mean...");
+        return;
+    }
+
+    CommandWord commandWord = command.getCommandWord();
+    switch(commandWord){
+        case HELP : printHelp(); break;
+        case GO   : goRoom(command); break;
+        case TEST : test(command); break;
+        case TAKE : take(command); break;
+        case DROP : drop(command); break;
+        case LOOK : look(); break;
+        case EAT  : eat(command); break;
+        case BACK : back(); break;
+        case ITEMS: items(); break;
+        case QUIT : if(command.hasSecondWord())
+                        this.aGui.println("Quit what?");
+                    else
+                        endGame();
+                    break;
+    }
+}
+```
 ## Exercice 7.41.1 zuul-with-enums-v2 ...
+
+## Exercice 7.42 (time limit) :
+
+## Exercice 7.42.2 : IHM graphique ...
+
+## Exercice 7.43 (trap door) :
+Ajout dans la class Room 
+## Exercice 7.44 (beamer) :
+
+## Exercice 7.45.1 : fichiers de test ...
 
 # Mode d'emploi
