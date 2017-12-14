@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=Beamer
+comment0.text=\r\n\ D\u00E9crivez\ votre\ classe\ Bearmer\ ici.\r\n\r\n\ @author\ (votre\ nom)\r\n\ @version\ (un\ num\u00E9ro\ de\ version\ ou\ une\ date)\r\n
+comment1.params=pDescription\ pPrix\ pPoids
+comment1.target=Beamer(java.lang.String,\ double,\ double)
+comment2.params=pDescription\ pPrix\ pPoids\ pChargeRoom
+comment2.target=Beamer(java.lang.String,\ double,\ double,\ Room)
+comment3.params=
+comment3.target=boolean\ isCharged()
+comment4.params=pChargeRoom
+comment4.target=void\ charge(Room)
+comment5.params=
+comment5.target=void\ discharge()
+comment6.params=
+comment6.target=Room\ getChargeRoom()
+numComments=7

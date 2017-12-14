@@ -85,6 +85,7 @@ public class GameEngine
         aListeRoom = new HashMap();
         Item vTorche = new Item("vielle Torche",2,800);
         Item vMagicCookie = new Item("cookie magique",50,0);
+        Beamer vBeamer = new Beamer("teleporteur",100,2);
 
         this.aListeRoom.put("Piece de depart",vPieceDeDepart);
         this.aListeRoom.put("couloir 1",vCouloir1);
@@ -139,6 +140,7 @@ public class GameEngine
         
         vPieceDeDepart.takeItem("torche", vTorche);
         vPieceDeDepart.takeItem("magicCookie", vMagicCookie);
+        vPieceDeDepart.takeItem("beamer", vBeamer);
         //initialisation lieu courant
     }
 
@@ -158,20 +160,22 @@ public class GameEngine
 
         CommandWord commandWord = command.getCommandWord();
         switch(commandWord){
-            case HELP : printHelp(); break;
-            case GO   : goRoom(command); break;
-            case TEST : test(command); break;
-            case TAKE : take(command); break;
-            case DROP : drop(command); break;
-            case LOOK : look(); break;
-            case EAT  : eat(command); break;
-            case BACK : back(); break;
-            case ITEMS: items(); break;
-            case QUIT : if(command.hasSecondWord())
-                            this.aGui.println("Quit what?");
-                        else
-                            endGame();
-                        break;
+            case HELP  : printHelp(); break;
+            case GO    : goRoom(command); break;
+            case TEST  : test(command); break;
+            case TAKE  : take(command); break;
+            case DROP  : drop(command); break;
+            case LOOK  : look(); break;
+            case EAT   : eat(command); break;
+            case BACK  : back(); break;
+            case ITEMS : items(); break;
+            case CHARGE: charge(command); break;
+            case TP    : teleport(command); break;
+            case QUIT  : if(command.hasSecondWord())
+                             this.aGui.println("Quit what?");
+                         else
+                             endGame();
+                         break;
         }
     }
 
@@ -369,4 +373,47 @@ public class GameEngine
     {
         this.aGui.println(this.aPlayer.getItemsString());
     }
+
+    private void charge(final Command pCommand)
+    {
+        if(!pCommand.hasSecondWord())
+        {
+            this.aGui.println("Charge what ?");
+            return;
+        }
+
+        String vStringBeamer = pCommand.getSecondWord();
+        Beamer vBeamer = (Beamer)this.aPlayer.getItem(vStringBeamer);
+
+        if(vBeamer == null) this.aGui.println("I don't have it !");
+        else{
+            vBeamer.charge(this.aPlayer.getLocalisation());
+            this.aGui.println("The beamer is charged");
+        }
+
+    }
+
+    private void teleport(final Command pCommand)
+    {
+        if(!pCommand.hasSecondWord())
+        {
+            this.aGui.println("Teleport with what ?");
+            return;
+        }
+
+        String vStringBeamer = pCommand.getSecondWord();
+        Beamer vBeamer = (Beamer)this.aPlayer.getItem(vStringBeamer);
+
+        if(vBeamer == null) this.aGui.println("I don't have it !");
+        else if(vBeamer.isCharged()==false) this.aGui.println("The beamer is not charged");
+        else{
+            vBeamer.discharge();
+            this.aPlayer.resetLastRoom();
+            this.aPlayer.setLocalisation(vBeamer.getChargeRoom());
+            this.aGui.println(this.aPlayer.getLocalisation().getLongDescription());
+            if(this.aPlayer.getLocalisation().getImageName() != null)
+                this.aGui.showImage(this.aPlayer.getLocalisation().getImageName());
+        }
+    }
+
 }
