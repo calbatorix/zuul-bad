@@ -2,8 +2,8 @@
 /**
  * Décrivez votre classe Bearmer ici.
  *
- * @author (votre nom)
- * @version (un numéro de version ou une date)
+ * @author  Espinasse Baptiste
+ * @version 2017.12.16
  */
 public class Beamer extends Item
 {
@@ -21,14 +21,31 @@ public class Beamer extends Item
         this.aChargeRoom = pChargeRoom;
     }
 
+    /**
+     *Methode pour connaitre l'etat de charge du beamer
+     *@return true si l ebeamer est charger
+    */
     public boolean isCharged(){return this.aCharge;}
 
+    /**
+     *Methode pour cherger le beamer
+     *@param pChargeRoom un Room correspondant a la piece ou le bearmer est charger
+    */
     public void charge(final Room pChargeRoom){
         this.aCharge = true;
         this.aChargeRoom = pChargeRoom;
     }
+
+    /**
+     *Methode pour decherger le beamer
+     *
+    */ 
     public void discharge(){this.aCharge = false;}
 
+    /**
+     *Methode pour connaitre dans quel Room a ete charger le beamer
+     *@return un Room qui est la piece ou le beamer a ete charger pour la derniere fois
+    */
     public Room getChargeRoom(){return this.aChargeRoom;}
 
 }

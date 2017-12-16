@@ -2,10 +2,11 @@ import java.util.HashMap;
 import java.util.Stack;
 
 /**
- * Décrivez votre classe Player ici.
- *
- * @author (votre nom)
- * @version (un numéro de version ou une date)
+ * This class is part of the "World of Zuul" application. 
+ * "World of Zuul" is a very simple, text based adventure game.  
+ * 
+ * @author  Espinasse Baptiste
+ * @version 2017.12.16
  */
 public class Player
 {
@@ -113,7 +114,7 @@ public class Player
 
     /**
      *getter d'un item a partir de la description/nom de l'item
-     *@param pStringItem est un String correspondant a la description/nom de l'item que l'on souhaite obtenir dans l'invantaire
+     *@param pItem est un String correspondant a la description/nom de l'item que l'on souhaite obtenir dans l'invantaire
     */
     public Item getItem(final String pItem){return this.aItemsList.getItem(pItem);}
 

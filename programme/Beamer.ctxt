@@ -1,16 +1,20 @@
 #BlueJ class context
 comment0.target=Beamer
-comment0.text=\r\n\ D\u00E9crivez\ votre\ classe\ Bearmer\ ici.\r\n\r\n\ @author\ (votre\ nom)\r\n\ @version\ (un\ num\u00E9ro\ de\ version\ ou\ une\ date)\r\n
+comment0.text=\r\n\ D\u00E9crivez\ votre\ classe\ Bearmer\ ici.\r\n\r\n\ @author\ \ Espinasse\ Baptiste\r\n\ @version\ 2017.12.16\r\n
 comment1.params=pDescription\ pPrix\ pPoids
 comment1.target=Beamer(java.lang.String,\ double,\ double)
 comment2.params=pDescription\ pPrix\ pPoids\ pChargeRoom
 comment2.target=Beamer(java.lang.String,\ double,\ double,\ Room)
 comment3.params=
 comment3.target=boolean\ isCharged()
+comment3.text=\r\nMethode\ pour\ connaitre\ l'etat\ de\ charge\ du\ beamer\r\n@return\ true\ si\ l\ ebeamer\ est\ charger\r\n
 comment4.params=pChargeRoom
 comment4.target=void\ charge(Room)
+comment4.text=\r\nMethode\ pour\ cherger\ le\ beamer\r\n@param\ un\ Room\ correspondant\ a\ la\ piece\ ou\ le\ bearmer\ est\ charger\r\n
 comment5.params=
 comment5.target=void\ discharge()
+comment5.text=\r\nMethode\ pour\ decherger\ le\ beamer\r\n\r\n
 comment6.params=
 comment6.target=Room\ getChargeRoom()
+comment6.text=\r\nMethode\ pour\ connaitre\ dans\ quel\ Room\ a\ ete\ charger\ le\ beamer\r\n@return\ un\ Room\ qui\ est\ la\ piece\ ou\ le\ beamer\ a\ ete\ charger\ pour\ la\ derniere\ fois\r\n
 numComments=7

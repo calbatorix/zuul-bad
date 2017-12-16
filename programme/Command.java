@@ -5,7 +5,7 @@
  * La classe Command s'occupe de tout ce qui est la verification de chaine de String contenant les commandes
  * 
  * @author  Espinasse Baptiste
- * @version 2017.10.23
+ * @version 2017.12.16
  */
 public class Command
 {

@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=CommandWord
-comment0.text=\r\n\ Representations\ for\ all\ the\ valid\ command\ words\ for\ the\ game.\r\n\ \r\n\ @author\ Michael\ Kolling\ and\ David\ J.\ Barnes\r\n\ @version\ 2006.03.30\r\n
+comment0.text=\r\n\ This\ class\ is\ part\ of\ the\ "World\ of\ Zuul"\ application.\ \r\n\ "World\ of\ Zuul"\ is\ a\ very\ simple,\ text\ based\ adventure\ game.\ \ \r\n\ \r\n\ @author\ \ Espinasse\ Baptiste\r\n\ @version\ 2017.12.16\r\n
 comment1.params=commandString
 comment1.target=CommandWord(java.lang.String)
 comment1.text=\r\n\ Initialise\ with\ the\ corresponding\ command\ word.\r\n\ @param\ commandWord\ The\ command\ string.\r\n

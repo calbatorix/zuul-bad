@@ -5,8 +5,8 @@
  * This class holds an enumeration table of all command words known to the game.
  * It is used to recognise commands as they are typed in.
  *
- * @author  Michael Kolling and David J. Barnes + D.Bureau
- * @version 2008.03.30 + 2013.09.15
+ * @author  Espinasse Baptiste
+ * @version 2017.12.16
  */
 
 import java.util.HashMap;
@@ -28,7 +28,7 @@ public class CommandWords
     } // CommandWords()
     /**
     *Cette methode a pour but de retouver la commande souhaiter dans le hasmap
-    *@param Un String correspondant a la commande que l'on souhaite realiser
+    *@param pCommandWord Un String correspondant a la commande que l'on souhaite realiser
     *@return Le CommandWord correspondant au String en parametre
     */
     public CommandWord getCommandWord(String pCommandWord)

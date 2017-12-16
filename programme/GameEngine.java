@@ -12,7 +12,7 @@ import java.util.Scanner;
  * La classe Room a pour but de generer tout les element du scenario (piece, item ...) et toute l'interface graphique
  * 
  * @author  Espinasse Baptiste
- * @version 2017.10.23
+ * @version 2017.12.16
  */
 public class GameEngine
 {
@@ -377,6 +377,10 @@ public class GameEngine
         this.aGui.println(this.aPlayer.getItemsString());
     }
 
+    /**
+     *procedure efectuee lorsque la commande charge est tapee
+     *@param pCommand le deuxieme String de la commande tapee par le joueur qui est le beamer a charger 
+    */
     private void charge(final Command pCommand)
     {
         if(!pCommand.hasSecondWord())
@@ -395,7 +399,10 @@ public class GameEngine
         }
 
     }
-
+    /**
+     *procedure efectuee lorsque la commande tp est tapee
+     *@param pCommand le deuxieme String de la commande tapee par le joueur qui est le beamer a utiliser
+    */
     private void teleport(final Command pCommand)
     {
         if(!pCommand.hasSecondWord())
@@ -419,6 +426,10 @@ public class GameEngine
         }
     }
 
+    /**
+     *methode qi veririfie si le nombre de commande max rentrer n'est pas depacee
+     *@return true si le nombre de commande est depacee
+    */
     private boolean time(){
         this.aCommantInput++;
         if(this.aCommantInput>200){

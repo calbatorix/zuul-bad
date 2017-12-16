@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=UserInterface
-comment0.text=\r\n\ This\ class\ implements\ a\ simple\ graphical\ user\ interface\ with\ a\ text\ entry\r\n\ area,\ a\ text\ output\ area\ and\ an\ optional\ image.\r\n\ \r\n\ @author\ Michael\ Kolling\ (DB\ edited)\r\n\ @version\ 1.0\ (Jan\ 2003)\r\n
+comment0.text=\r\n\ This\ class\ implements\ a\ simple\ graphical\ user\ interface\ with\ a\ text\ entry\r\n\ area,\ a\ text\ output\ area\ and\ an\ optional\ image.\r\n\ \r\n\ @author\ \ Espinasse\ Baptiste\r\n\ @version\ 2017.12.16\r\n
 comment1.params=pGameEngine
 comment1.target=UserInterface(GameEngine)
 comment1.text=\r\n\ Construct\ a\ UserInterface.\ As\ a\ parameter,\ a\ Game\ Engine\r\n\ (an\ object\ processing\ and\ executing\ the\ game\ commands)\ is\r\n\ needed.\r\n\ \r\n\ @param\ pGameEngine\ \ The\ GameEngine\ object\ implementing\ the\ game\ logic.\r\n

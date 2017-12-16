@@ -8,7 +8,7 @@ import java.util.Set;
  * Elle possede comme attribut une courte description de la piece ainsi que que toute les direction de sortie, liée à leur destination
  * 
  * @author  Espinasse Baptiste
- * @version 2017.09.30
+ * @version 2017.12.16
  */
 public class Room
 {
@@ -114,6 +114,7 @@ public class Room
 
     /**
      *Methode affichant tout les item contenu dans l'inventaire du player
+     *@param pItem un String contenant le nom de l'item
      *@return un String contanant la liste des item dans l'inventaire de la Room
     */ 
     public Item getItem(final String pItem){return this.aItemsList.getItem(pItem);}

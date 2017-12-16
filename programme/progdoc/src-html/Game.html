@@ -6,20 +6,27 @@
 </head>
 <body>
 <div class="sourceContainer">
-<pre><span class="sourceLineNo">001</span>public class Game<a name="line.1"></a>
-<span class="sourceLineNo">002</span>{<a name="line.2"></a>
-<span class="sourceLineNo">003</span>    private UserInterface aGui;<a name="line.3"></a>
-<span class="sourceLineNo">004</span>    private GameEngine aEngine;<a name="line.4"></a>
-<span class="sourceLineNo">005</span>    /**<a name="line.5"></a>
-<span class="sourceLineNo">006</span>     * Construteur par defaut de la classe Game<a name="line.6"></a>
-<span class="sourceLineNo">007</span>     */<a name="line.7"></a>
-<span class="sourceLineNo">008</span>    public Game()<a name="line.8"></a>
-<span class="sourceLineNo">009</span>    {<a name="line.9"></a>
-<span class="sourceLineNo">010</span>        this.aEngine = new GameEngine();<a name="line.10"></a>
-<span class="sourceLineNo">011</span>        this.aGui = new UserInterface(this.aEngine);<a name="line.11"></a>
-<span class="sourceLineNo">012</span>        this.aEngine.setGUI(this.aGui);<a name="line.12"></a>
-<span class="sourceLineNo">013</span>    }<a name="line.13"></a>
-<span class="sourceLineNo">014</span>} // Game<a name="line.14"></a>
+<pre><span class="sourceLineNo">001</span>/**<a name="line.1"></a>
+<span class="sourceLineNo">002</span> * This class is part of the "World of Zuul" application. <a name="line.2"></a>
+<span class="sourceLineNo">003</span> * "World of Zuul" is a very simple, text based adventure game.  <a name="line.3"></a>
+<span class="sourceLineNo">004</span> * <a name="line.4"></a>
+<span class="sourceLineNo">005</span> * @author  Espinasse Baptiste<a name="line.5"></a>
+<span class="sourceLineNo">006</span> * @version 2017.12.16<a name="line.6"></a>
+<span class="sourceLineNo">007</span> */<a name="line.7"></a>
+<span class="sourceLineNo">008</span>public class Game<a name="line.8"></a>
+<span class="sourceLineNo">009</span>{<a name="line.9"></a>
+<span class="sourceLineNo">010</span>    private UserInterface aGui;<a name="line.10"></a>
+<span class="sourceLineNo">011</span>    private GameEngine aEngine;<a name="line.11"></a>
+<span class="sourceLineNo">012</span>    /**<a name="line.12"></a>
+<span class="sourceLineNo">013</span>     * Construteur par defaut de la classe Game<a name="line.13"></a>
+<span class="sourceLineNo">014</span>     */<a name="line.14"></a>
+<span class="sourceLineNo">015</span>    public Game()<a name="line.15"></a>
+<span class="sourceLineNo">016</span>    {<a name="line.16"></a>
+<span class="sourceLineNo">017</span>        this.aEngine = new GameEngine();<a name="line.17"></a>
+<span class="sourceLineNo">018</span>        this.aGui = new UserInterface(this.aEngine);<a name="line.18"></a>
+<span class="sourceLineNo">019</span>        this.aEngine.setGUI(this.aGui);<a name="line.19"></a>
+<span class="sourceLineNo">020</span>    }<a name="line.20"></a>
+<span class="sourceLineNo">021</span>} // Game<a name="line.21"></a>
 
 
 

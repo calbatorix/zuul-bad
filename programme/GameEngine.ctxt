@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=GameEngine
-comment0.text=\r\n\ This\ class\ is\ part\ of\ the\ "World\ of\ Zuul"\ application.\ \r\n\ "World\ of\ Zuul"\ is\ a\ very\ simple,\ text\ based\ adventure\ game.\ \ \r\n\ \r\n\ La\ classe\ Room\ a\ pour\ but\ de\ generer\ tout\ les\ element\ du\ scenario\ (piece,\ item\ ...)\ et\ toute\ l'interface\ graphique\r\n\ \r\n\ @author\ \ Espinasse\ Baptiste\r\n\ @version\ 2017.10.23\r\n
+comment0.text=\r\n\ This\ class\ is\ part\ of\ the\ "World\ of\ Zuul"\ application.\ \r\n\ "World\ of\ Zuul"\ is\ a\ very\ simple,\ text\ based\ adventure\ game.\ \ \r\n\ \r\n\ La\ classe\ Room\ a\ pour\ but\ de\ generer\ tout\ les\ element\ du\ scenario\ (piece,\ item\ ...)\ et\ toute\ l'interface\ graphique\r\n\ \r\n\ @author\ \ Espinasse\ Baptiste\r\n\ @version\ 2017.12.16\r\n
 comment1.params=
 comment1.target=GameEngine()
 comment1.text=\r\n\ Constructeur\ d'objets\ de\ classe\ GameEngine\r\n
@@ -24,10 +24,13 @@ comment15.target=void\ items()
 comment15.text=\r\nprocedure\ effectuee\ lorsque\ la\ commande\ items\ est\ tapee\r\nla\ commande\ items\ afiiche\ tout\ les\ items\ contenue\ dans\ l'inventaire\ du\ joueur\r\n
 comment16.params=pCommand
 comment16.target=void\ charge(Command)
+comment16.text=\r\nprocedure\ efectuee\ lorsque\ la\ commande\ charge\ est\ tapee\r\n@param\ pCommand\ le\ deuxieme\ String\ de\ la\ commande\ tapee\ par\ le\ joueur\ qui\ est\ le\ beamer\ a\ charger\ \r\n
 comment17.params=pCommand
 comment17.target=void\ teleport(Command)
+comment17.text=\r\nprocedure\ efectuee\ lorsque\ la\ commande\ tp\ est\ tapee\r\n@param\ pCommand\ le\ deuxieme\ String\ de\ la\ commande\ tapee\ par\ le\ joueur\ qui\ est\ le\ beamer\ a\ utiliser\r\n
 comment18.params=
 comment18.target=boolean\ time()
+comment18.text=\r\nmethode\ qi\ veririfie\ si\ le\ nombre\ de\ commande\ max\ rentrer\ n'est\ pas\ depacee\r\n@return\ true\ si\ le\ nombre\ de\ commande\ est\ depacee\r\n
 comment2.params=pUserInterface
 comment2.target=void\ setGUI(UserInterface)
 comment2.text=\r\nProcedure\ de\ creation\ de\ l'une\ interface\ graphique\r\n\r\n

@@ -6,7 +6,7 @@
  * Elle s'occupe aussi de tout le traitment des objets de cette class
  *
  * @author  Espinasse Baptiste
- * @version 2017.10.23
+ * @version 2017.12.16
  */
 public class Item
 {
@@ -45,19 +45,19 @@ public class Item
 
     /**
      *setter de la description/nom de l'item
-     *@param un String de de description de l'item
+     *@param pDescription un String de de description de l'item
     */
     public void setDescriptionItem(final String pDescription){this.aDescription=pDescription;}
 
     /**
      *setter du prix de l'item
-     *@param Un double correspondant su prix souhaiter pour l'item
+     *@param pPrix Un double correspondant su prix souhaiter pour l'item
     */
     public void setPrixItem(final double pPrix){this.aPrix=pPrix;}
 
     /**
      *setter du poids l'item
-     *@param Un double correspondant su poid souhaiter pour l'item
+     *@param pPoids Un double correspondant su poid souhaiter pour l'item
     */
     public void setPoidsItem(final double pPoids){this.aPoids=pPoids;}
 

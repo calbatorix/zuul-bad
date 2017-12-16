@@ -18,8 +18,8 @@ import java.net.URL;
  * This class implements a simple graphical user interface with a text entry
  * area, a text output area and an optional image.
  * 
- * @author Michael Kolling (DB edited)
- * @version 1.0 (Jan 2003)
+ * @author  Espinasse Baptiste
+ * @version 2017.12.16
  */
 public class UserInterface implements ActionListener
 {
@@ -45,6 +45,7 @@ public class UserInterface implements ActionListener
     } // UserInterface(.)
 
     /**
+     *@param pText un String de ce u il faut afficher
      * Print out some text into the text area.
      */
     public void print( final String pText )
@@ -54,6 +55,7 @@ public class UserInterface implements ActionListener
     } // print(.)
 
     /**
+       *@param pText un String de ce u il faut afficher
      * Print out some text into the text area, followed by a line break.
      */
     public void println( final String pText )

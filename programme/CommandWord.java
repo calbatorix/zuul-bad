@@ -1,8 +1,9 @@
 /**
- * Representations for all the valid command words for the game.
+ * This class is part of the "World of Zuul" application. 
+ * "World of Zuul" is a very simple, text based adventure game.  
  * 
- * @author Michael Kolling and David J. Barnes
- * @version 2006.03.30
+ * @author  Espinasse Baptiste
+ * @version 2017.12.16
  */
 public enum CommandWord
 {
@@ -14,7 +15,7 @@ public enum CommandWord
 
     /**
      * Initialise with the corresponding command word.
-     * @param commandWord The command string.
+     * @param commandString commandWord The command string.
      */
     CommandWord(String commandString){this.commandString = commandString;}
 

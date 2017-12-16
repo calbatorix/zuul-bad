@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Room
-comment0.text=\r\n\ This\ class\ is\ part\ of\ the\ "World\ of\ Zuul"\ application.\ \r\n\ "World\ of\ Zuul"\ is\ a\ very\ simple,\ text\ based\ adventure\ game.\ \ \r\n\ \r\n\ La\ classe\ Room\ a\ pour\ but\ de\ generer\ des\ pieces\r\n\ Elle\ possede\ comme\ attribut\ une\ courte\ description\ de\ la\ piece\ ainsi\ que\ que\ toute\ les\ direction\ de\ sortie,\ li\u00E9e\ \u00E0\ leur\ destination\r\n\ \r\n\ @author\ \ Espinasse\ Baptiste\r\n\ @version\ 2017.09.30\r\n
+comment0.text=\r\n\ This\ class\ is\ part\ of\ the\ "World\ of\ Zuul"\ application.\ \r\n\ "World\ of\ Zuul"\ is\ a\ very\ simple,\ text\ based\ adventure\ game.\ \ \r\n\ \r\n\ La\ classe\ Room\ a\ pour\ but\ de\ generer\ des\ pieces\r\n\ Elle\ possede\ comme\ attribut\ une\ courte\ description\ de\ la\ piece\ ainsi\ que\ que\ toute\ les\ direction\ de\ sortie,\ li\u00E9e\ \u00E0\ leur\ destination\r\n\ \r\n\ @author\ \ Espinasse\ Baptiste\r\n\ @version\ 2017.12.16\r\n
 comment1.params=pDescription\ pImageName
 comment1.target=Room(java.lang.String,\ java.lang.String)
 comment1.text=\r\n\ constructeur\ naturel\ de\ la\ class\ Room\r\n\ @param\ pDescription\ un\ String\ decrivent\ la\ Room\r\n\ @param\ pImageName\ String\ contenant\ le\ chemin\ de\ l'image\r\n
