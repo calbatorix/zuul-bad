@@ -837,7 +837,7 @@ private void eat(final Command pCommand)
 }
 ```
 ## Exercice 7.34.1 : Mettre à jour les fichiers de test ...
-## Exercice 7.34.2 : Re-générer les 2 javadoc ..
+/////////****************************todo**************************////////////////////////
 ## Exercice 7.35 (zuul-with-enums-v1) :
 Pour dimunier encore un peut plus le couplage implicite de la classe CommandWords et la classe Gameengine, il est est demandée de suivre la nouvelle architecture fourni dans zuul-with-enums-v1
 
@@ -848,7 +848,48 @@ public enum CommandWord
     GO, QUIT, HELP, LOOK, EAT, BACK, TAKE, DROP, ITEMS, TEST, UNKNOWN;
 }
 ```
-
+On enleve toute les commande valide de la class CommandWords en le remplacent par une collection
+```java
+private HashMap<String,CommandWord> aValidCommands;
+```
+Pour le moment on remplie la collection dans le constructeur de la class
+```java
+public CommandWords()
+{
+    this.aValidCommands = new HashMap<String, CommandWord>();
+    this.aValidCommands.put("go", CommandWord.GO);
+    this.aValidCommands.put("help", CommandWord.HELP);
+    this.aValidCommands.put("quit", CommandWord.QUIT);
+    this.aValidCommands.put("look", CommandWord.LOOK);
+    this.aValidCommands.put("eat", CommandWord.EAT);
+    this.aValidCommands.put("back", CommandWord.BACK);
+    this.aValidCommands.put("test", CommandWord.TEST);
+    this.aValidCommands.put("take", CommandWord.TAKE);
+    this.aValidCommands.put("drop", CommandWord.DROP);
+    this.aValidCommands.put("ITEMS", CommandWord.ITEMS);
+}
+```
+et on ajoute une methode pour pouvoir acceder au contenue de la collection depuis l'exterieur
+```java
+public CommandWord getCommandWord(String pCommandWord)
+{
+    CommandWord vCommand = this.aValidCommands.get(pCommandWord);
+    if(vCommand != null) {
+        return vCommand;
+    }
+    else {
+        return CommandWord.UNKNOWN;
+    }
+}
+```
+on modifie aussi la methode isCommand pour obtenir ceci
+```java
+public boolean isCommand( final String pString )
+{
+    return this.aValidCommands.containsKey(pString);
+}
+```
+Dans les autre class tout les attribut et parametre ou varible qui utiliser un Type String pour utiliser une commande doivent etre changer en type CommandWord
 
 ## Exercice 7.35.1 : Utiliser le switch ...
 Dans la methode interpretCommand de la class GameEngine il est souhaiter que nous passions a une structure plus efficace.C'est a dire utiliser des Switch a la place des if et else dans notre cas
@@ -883,15 +924,165 @@ public void interpretCommand(String pCommandLine)
 }
 ```
 ## Exercice 7.41.1 zuul-with-enums-v2 ...
+On modifie la class CommandWord comme demander, on obtient ceci
+```java
+public enum CommandWord
+{
+    GO("go"), QUIT("quit"), HELP("help"), LOOK("look"), EAT("eat"), BACK("back"), TAKE("take"), DROP("drop"), ITEMS("items"), TEST("test"), UNKNOWN("?");
 
+    private String commandString;
+
+    CommandWord(String commandString){this.commandString = commandString;}
+    public String toString(){return commandString;}
+}
+```
+Et j'ameliore le constructeur de CommandWords pour n eplus avoir a le modifier a chaque fois que j'ajoute une commande
+```java
+public CommandWords()
+{
+    this.aValidCommands = new HashMap<String, CommandWord>();
+    for(CommandWord command : CommandWord.values()){
+        if(command != CommandWord.UNKNOWN)
+            this.aValidCommands.put(command.toString(), command);
+    }
+}
+```
 ## Exercice 7.42 (time limit) :
-
-## Exercice 7.42.2 : IHM graphique ...
-
+/////////****************************todo**************************////////////////////////
 ## Exercice 7.43 (trap door) :
-Ajout dans la class Room 
+Le but est que une fois la sortie emprunter on ne plus peut plus faire marche arriere.
+Rien de bien complique il suffis de ne pas mettre cette direction de sortie dans la nouvelle piece.
+Le probleme est qu'il faut aussi empecher la methode back de retourner dans la piece precedante.
+J'ai donc decider d'ajouter une collection a la class Room qui contient toute les sortie est un boolean qui indique si elle sont a sens unique ou non.
+```java
+private HashMap<String, Boolean> aTrapDoor;
+```
+Et lors de la definition des sortie de la Room j'ai ajouter un parametre pour connaitre la nature de la sortie(sens unique ou non).
+```java
+public void setExit(final String pDirection, final Room pNeighbor, final boolean pTrapDoor)
+{
+    this.aExits.put(pDirection, pNeighbor);
+    this.aTrapDoor.put(pDirection, pTrapDoor);
+}
+```
+Et ajout d'une methode pour connaitre la nature de la sortie lorsque le joueur l'emprunte
+```java
+public Boolean isTrapDoor(String pDirection){return this.aTrapDoor.get(pDirection);}
+```
+Il faut ajouter une methode dans la class player pour vider la pile des piece precedente pour que le joueur ne puisse pas utiliser la commande back:
+```java
+public void resetLastRoom(){this.aLastRooms.clear();}
+```
+maintenant le dernier modification ce trouve la commande goRoom de GameEngine
+```java
+    private void goRoom(final Command pCommand)
+    {
+        if(!pCommand.hasSecondWord())
+        {
+            this.aGui.println("go where ?");
+            return;
+        }  
+        
+        String vDirection = pCommand.getSecondWord();
+
+        Room vNextRoom = this.aPlayer.getLocalisation().getExit(vDirection);
+
+        if (vNextRoom == null) this.aGui.println("There is no door !");
+        else
+        {
+            if(this.aPlayer.getLocalisation().isTrapDoor(vDirection)==true) this.aPlayer.resetLastRoom();
+            else this.aPlayer.setLastRoom(this.aPlayer.getLocalisation());
+            this.aPlayer.setLocalisation(vNextRoom);
+            this.aGui.println(this.aPlayer.getLocalisation().getLongDescription());
+            if(this.aPlayer.getLocalisation().getImageName() != null)
+                this.aGui.showImage(this.aPlayer.getLocalisation().getImageName());
+        }
+}
+```
 ## Exercice 7.44 (beamer) :
+Nous savons que le beamer est une sorte d'Item donc, beamer herite de Item.
+Les seul differences entre un Item classique et un Beamer sont, que le beamer a un etat de charge et une piece enregistrer lors de la charge
+```java
+public class Beamer extends Item
+{
+    private boolean aCharge;
+    private Room aChargeRoom;
 
+    public Beamer(final String pDescription, final double pPrix, final double pPoids){
+        super(pDescription,pPrix,pPoids);
+        this.aCharge = false;
+    }
+
+    public Beamer(final String pDescription, final double pPrix, final double pPoids, final Room pChargeRoom){
+        super(pDescription,pPrix,pPoids);
+        this.aCharge = true;
+        this.aChargeRoom = pChargeRoom;
+}
+``` 
+ajout d'un methode pour connaitre l'etat de charge du beamer
+```java
+public boolean isCharged(){return this.aCharge;}
+```
+deux pour autres pour charger l'etat du beamer
+```java
+public void charge(final Room pChargeRoom){
+    this.aCharge = true;
+    this.aChargeRoom = pChargeRoom;
+}
+public void discharge(){this.aCharge = false;}
+```
+Et une derniere dans la class beamer pour connaitre le lieu ou le beamer a ete charger
+```java
+public Room getChargeRoom(){return this.aChargeRoom;}
+```
+
+NOus allons maintenant ajouter deux nouvelle commande charge et teleporte
+charge a pour but d'enregistrer l'emplacement actuelle pour pouvoir une fois la commande teleporte taper s'y deplacer.
+```java
+private void charge(final Command pCommand)
+{
+    if(!pCommand.hasSecondWord())
+    {
+        this.aGui.println("Charge what ?");
+        return;
+    }
+
+    String vStringBeamer = pCommand.getSecondWord();
+    Beamer vBeamer = (Beamer)this.aPlayer.getItem(vStringBeamer);
+
+    if(vBeamer == null) this.aGui.println("I don't have it !");
+    else{
+        vBeamer.charge(this.aPlayer.getLocalisation());
+        this.aGui.println("The beamer is charged");
+    }
+}
+```
+Et la commande teleporte, si le beamer est charger fait changer le player de Room
+```java
+private void teleport(final Command pCommand)
+{
+    if(!pCommand.hasSecondWord())
+    {
+        this.aGui.println("Teleport with what ?");
+        return;
+    }
+
+    String vStringBeamer = pCommand.getSecondWord();
+    Beamer vBeamer = (Beamer)this.aPlayer.getItem(vStringBeamer);
+
+    if(vBeamer == null) this.aGui.println("I don't have it !");
+    else if(vBeamer.isCharged()==false) this.aGui.println("The beamer is not charged");
+    else{
+        vBeamer.discharge();
+        this.aPlayer.resetLastRoom();
+        this.aPlayer.setLocalisation(vBeamer.getChargeRoom());
+        this.aGui.println(this.aPlayer.getLocalisation().getLongDescription());
+        if(this.aPlayer.getLocalisation().getImageName() != null)
+            this.aGui.showImage(this.aPlayer.getLocalisation().getImageName());
+    }
+}
+```
+Et faire toute les ajout habituel lors de la'jout d'une commande
 ## Exercice 7.45.1 : fichiers de test ...
-
+/////////****************************todo**************************////////////////////////
 # Mode d'emploi
