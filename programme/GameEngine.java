@@ -20,6 +20,7 @@ public class GameEngine
     private HashMap<String, Room> aListeRoom;
     private UserInterface aGui;
     private Player aPlayer;
+    private int aCommantInput;
 
     /**
      * Constructeur d'objets de classe GameEngine
@@ -30,6 +31,7 @@ public class GameEngine
         this.aPlayer = new Player("joueur", this.aListeRoom.get("Piece de depart"));
         //this.createPlayer();
         this.aParser = new Parser();
+        this.aCommantInput = 0;
     }
     /**
      *Procedure de creation de l'une interface graphique
@@ -149,7 +151,8 @@ public class GameEngine
      *@param pCommandLine un String contenant la commande tapée par le joueur
     */
     public void interpretCommand(String pCommandLine) 
-    {
+    {   
+        if(time())return;
         this.aGui.println(pCommandLine);
         Command command = this.aParser.getCommand(pCommandLine);
 
@@ -414,6 +417,16 @@ public class GameEngine
             if(this.aPlayer.getLocalisation().getImageName() != null)
                 this.aGui.showImage(this.aPlayer.getLocalisation().getImageName());
         }
+    }
+
+    private boolean time(){
+        this.aCommantInput++;
+        if(this.aCommantInput>200){
+            this.aGui.println("You are out of time");
+            this.aGui.enable(false);
+            return true;
+        }
+        else return false;
     }
 
 }

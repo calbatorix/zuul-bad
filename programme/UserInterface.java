@@ -84,6 +84,7 @@ public class UserInterface implements ActionListener
         this.aEntryField.setEditable( pOnOff );
         if ( ! pOnOff )
             this.aEntryField.getCaret().setBlinkRate( 0 );
+
     } // enable(.)
 
     /**
