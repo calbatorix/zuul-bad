@@ -836,8 +836,6 @@ private void eat(final Command pCommand)
         this.aGui.println("You have eaten now and you are not hungry any more.");
 }
 ```
-## Exercice 7.34.1 : Mettre à jour les fichiers de test ...
-/////////****************************todo**************************////////////////////////
 ## Exercice 7.35 (zuul-with-enums-v1) :
 Pour dimunier encore un peut plus le couplage implicite de la classe CommandWords et la classe Gameengine, il est est demandée de suivre la nouvelle architecture fourni dans zuul-with-enums-v1
 
@@ -948,7 +946,25 @@ public CommandWords()
 }
 ```
 ## Exercice 7.42 (time limit) :
-/////////****************************todo**************************////////////////////////
+j'ai ajouter un attribut qui correspond au nombre de commande traiter par la methode interpretCommand si le nombre de commanbre de commande interpreter est superieur a 200 il est impossible de continuer a executer de commande.
+```java
+private boolean time(){
+    this.aCommantInput++;
+    if(this.aCommantInput>200){
+        this.aGui.println("You are out of time");
+        this.aGui.enable(false);
+        return true;
+    }
+    else return false;
+}
+```
+```java
+public void interpretCommand(String pCommandLine) 
+{   
+    if(time())return;
+   [...]
+}
+```
 ## Exercice 7.43 (trap door) :
 Le but est que une fois la sortie emprunter on ne plus peut plus faire marche arriere.
 Rien de bien complique il suffis de ne pas mettre cette direction de sortie dans la nouvelle piece.
@@ -1083,6 +1099,4 @@ private void teleport(final Command pCommand)
 }
 ```
 Et faire toute les ajout habituel lors de la'jout d'une commande
-## Exercice 7.45.1 : fichiers de test ...
-/////////****************************todo**************************////////////////////////
 # Mode d'emploi
