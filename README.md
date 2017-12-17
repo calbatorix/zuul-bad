@@ -513,9 +513,7 @@ La methode pop() de la class Stack récupère l'objet au sommet de la pile.
 La methode empty() teste si la pile ne contient aucun élément (return true si vide).
 
 ## Exercice 7.28.1 : Créer une nouvelle commande test ..
-Nous souhaitons créée une commande de teste qui permetra de savoir si le jeux est jouable sans à avoir a jouer au jeu.
-Pour cela, il faut ajouter une commande qui realisera une routine de teste a partir d'un fichier contenant toute les commande a realiser.
-
+Nous souhaitons créée une commande de teste qui permettra de savoir si le jeu est jouable sans avoir à jouer au jeu. Pour cela, il faut ajouter une commande qui réalisera une routine de test à partir d’un fichier contenant toutes les commandes à réaliser.
 Dans la classe CommandWords, il faut ajouter le nouveau mot:
 
 ```java
@@ -524,8 +522,7 @@ private static final String[] sValidCommands = {
 };
 ```
 
-La partie compliquer ce trouve la classe GameEngine.Ou il faut maintenant ouvrir l efichier contenant la liste de s commmande a realiser et les recuper pour les executer.
-Ajout d'une methode test():
+La partie compliquée se trouve la classe GameEngine. Ou il faut maintenant ouvrir le fichier contenant la liste des commandes à réaliser et les recouper pour les exécuter. Ajout d’une méthode test():
 ```java
 private void test(final Command pCommand)
 {
@@ -553,26 +550,21 @@ private void test(final Command pCommand)
 }
 ```
 
-il faut ajouter les dependance a la classe:
+Il faut ajouter les dépendances a la class:
 ```java
 import java.io.IOException;
 import java.io.File;
 import java.util.Scanner;
 ```
-Et ajouter l'interpretation de la commande dans la methode interpretCommand();
+Et ajouter l’interprétation de la commande dans la méthode interpretCommand();
 ```java
 else if (commandWord.equals("test"))   test(command);
 ```
 ## Exercice 7.28.2 : Créer 2 fichiers de commandes ... 
-/*todo : expliquer la creation de fichier test*/
+/*todo : expliquer la création de fichiers test*/
 
 ## Exercice 7.29 (Player) :
-Tout d'abord il faut savoir ce que l'on atte,td de la classe player, On sait que l'on ne doit plus enregistrer les deplacement dans gameEngine puisque que l'on pourrait imaginer un jeu avec plusieur player et chacun pourrait faire une suite de deplacement differant.
-Il faut donc enregister l'emplacement actuelle du player.
-Et faire une liste contenant tout ses emplacement precedent.
-Le player a un nom pour le differencier des autres
-Et il a une capaciter de charge utile
-Tout ceci nous permet de connaitre les attribut dont la classe a besoin.
+Tout d’abord il faut savoir ce que l’on attend de la classe player, on sait que l’on ne doit plus enregistrer les déplacements dans gameEngine puisque que l’on pourrait imaginer un jeu avec plusieurs player et chacun pourrait faire une suite de déplacement différant. Il faut donc enregistre l’emplacement actuel du player. Et faire une liste contenant tous ses emplacements précédents. Le player a un nom pour le différencier des autres et il a une capacité de charge utile tout ceci nous permet de connaître les attributs dont la classe a besoin.
 ```java
 private String aName;
 private double aWeight;
@@ -580,7 +572,7 @@ private Room aLocalisation;
 private HashMap<String, Item> aInventary;
 private Stack<Room> aLastRooms;
 ```
-maintenant il ne reste qu'a completer la classe avec sont constructeur et l'ensemble des getteur et setter
+Maintenant il ne reste qu’a complété la classe avec son constructeur et l’ensemble des getteur et setter
 ```java
 public Player(final String pName, final Room pLocalisation)
 {
@@ -604,9 +596,7 @@ public Room getLastRoom(){return this.aLastRooms.pop();}
 public void setLastRoom(final Room pLastRoom){this.aLastRooms.push(pLastRoom);}
 public boolean lastRoomsIsEmpty(){return this.aLastRooms.empty();}; 
 ```
-Dans Game Engine il faut ajouter la creation d'un nouveau player dans le constructeur.
-Et suprimer la liste des Room precedente puisque c'elle ci est differente pour chaque player, il faut aussi modifier les methode utilisant les information sur la Room courante et la liste des emplacement precedant.
-Soit Back() goRoom() et printWelcome()
+Dans Game Engine il faut ajouter la création d’un nouveau player dans le constructeur. Et supprimer la liste des Room précédente puisque c’elle ci est différente pour chaque player, il faut aussi modifier les méthodes utilisant les informations sur la Room courante et la liste des emplacements précédant. Soit Back() goRoom() et printWelcome()
 ```java
 private void printWelcome()
 {
@@ -664,13 +654,13 @@ private void back()
 ```
 
 ## Exercice 7.30 (take, drop) :
-Comme à l'habite lors de l'ajout de nouvels commandes il faut ajouter dans CommandWords les deux nouveaux mots de commande.Ici dans ce cas "take" et "drop":
+Comme à l’habite lors de l’ajout de nouvelles commandes il faut ajouter dans CommandWords les deux nouveaux mots de commande. Ici dans ce cas “take” et “drop”:
 ```java
 private static final String[] sValidCommands = {
     "go", "quit", "help", "look","eat","back", "test", "take", "drop"
 };
 ```
-Ajouter les commande a la methode interpretCommand de la classe gameEngine
+Ajouter les commandes à la méthode interpretCommand de la classe gameEngine
 ```java
 else if (commandWord.equals("take"))   take(command);
 else if (commandWord.equals("drop"))   drop(command);
@@ -719,7 +709,7 @@ private void drop(final Command pCommand)
     }
 }
 ```
-Dans player il faut ajouter une liste pour l'inventaire
+Dans player il faut ajouter une liste pour l’inventaire
 ```java
 private HashMap<String, Item> aInventary;
 ```
@@ -747,11 +737,10 @@ public void removeItem(final String pNomItem)
 }
 ```
 ## Exercice 7.31 (porter plusieurs items)
-fait avec la question precedente
+Fait avec la question précédente
 
 ## Exercice 7.31.1 : Créer une nouvelle classe ItemList ...
-Pour diminiuer le couplage des class PLayer et Room avec GameEngine il faut creer une nouvelle classe ItemsList.
-Cette class de gerer les inventaire des Room et des Player
+Pour diminuer le couplage des class PLayer et Room avec GameEngine il faut créer une nouvelle classe ItemsList. Cette class de gérer les inventaires des Room et des Player
 ```java
 import java.util.HashMap;
 import java.util.Set;
@@ -785,7 +774,7 @@ public class ItemList
 }
 ```
 ## Exercice 7.32 (poids max) :
-Ajout dans la class Player un attribut de aStrong qui correspod au pois max que le joueur peut porter
+Ajout dans la class Player un attribut de aStrong qui correspond au poids max que le joueur peut porter
 ```java
 private double aStrong;
 ```
@@ -794,24 +783,24 @@ ainsi que ces getter et setter
 public double getStrong(){return this.aStrong;}
 public void setStrong(final double pStrong){this.aStrong = pStrong;}
 ```
-Et une methode permettant de savoir di le joueur peut ajouter a sont inventere un objet d'un certain poid
+Et une méthode permettant de savoir di le joueur peut ajouter à son inventaire un objet d’un certain poids
 ```java
 public boolean canITake(final double pWeight){
     return (pWeight+this.aWeight <= this.aStrong) ;
 }
 ```
 
-Et dans la methode take de la classe GameEngine il faut ajouter une condition de test pour savoir si le player est en condition de prendre l'objet
+Et dans la méthode take de la classe GameEngine il faut ajouter une condition de test pour savoir si le player est en condition de prendre l’objet
 ```java
 else if(this.aPlayer.canITake(vToTake.getPoidsItem()) == false) this.aGui.println("this item is too heavy !");
 ```
 ## Exercice 7.33 (inventaire) :
-Ajout d'un ecommmadne pour afficher la liste des objet dans l'inventaire du joueur
+Ajout d’une commande pour afficher la liste des objets dans l’inventaire du joueur
 ```java
 private void items(){this.aGui.println(this.aPlayer.getItemsString());}
 ```
 ## Exercice 7.34 (magic cookie) :
-Modification de la commande eat, pour que si le joueur mange un magoCookie il est une moficatin de la sont attribut de force.
+Modification de la commande eat, pour que si le joueur mange un magicCookie il ait une modification de la sont attribut de force.
 ```java
 private void eat(final Command pCommand)
 {
@@ -837,20 +826,20 @@ private void eat(final Command pCommand)
 }
 ```
 ## Exercice 7.35 (zuul-with-enums-v1) :
-Pour dimunier encore un peut plus le couplage implicite de la classe CommandWords et la classe Gameengine, il est est demandée de suivre la nouvelle architecture fourni dans zuul-with-enums-v1
+Pour diminuer encore un peut plus le couplage implicite de la classe CommandWords et la classe Gameengine, il est demandé de suivre la nouvelle architecture fournie dans zuul-with-enums-v1
+Tout d’abord mous créons une nouvelle class de type enum qui contiendra toutes les commandes réalisables :
 
-Tout daborts mous creons une nouvelle class de type enum qui contiendra toute les commande realisable:
 ```java
 public enum CommandWord
 {
     GO, QUIT, HELP, LOOK, EAT, BACK, TAKE, DROP, ITEMS, TEST, UNKNOWN;
 }
 ```
-On enleve toute les commande valide de la class CommandWords en le remplacent par une collection
+On enlève toutes les commandes valides de la class CommandWords en le remplacent par une collection
 ```java
 private HashMap<String,CommandWord> aValidCommands;
 ```
-Pour le moment on remplie la collection dans le constructeur de la class
+Pour le moment on remplit la collection dans le constructeur de la class
 ```java
 public CommandWords()
 {
@@ -867,7 +856,7 @@ public CommandWords()
     this.aValidCommands.put("ITEMS", CommandWord.ITEMS);
 }
 ```
-et on ajoute une methode pour pouvoir acceder au contenue de la collection depuis l'exterieur
+Et on ajoute une méthode pour pouvoir accéder au contenue de la collection depuis l’extérieur
 ```java
 public CommandWord getCommandWord(String pCommandWord)
 {
@@ -880,17 +869,17 @@ public CommandWord getCommandWord(String pCommandWord)
     }
 }
 ```
-on modifie aussi la methode isCommand pour obtenir ceci
+On modifie aussi la méthode isCommand pour obtenir ceci
 ```java
 public boolean isCommand( final String pString )
 {
     return this.aValidCommands.containsKey(pString);
 }
 ```
-Dans les autre class tout les attribut et parametre ou varible qui utiliser un Type String pour utiliser une commande doivent etre changer en type CommandWord
+Dans les autres class tous les attributs et paramètre ou variable qui utiliser un Type String pour utiliser une commande doivent être changer en type CommandWord
 
 ## Exercice 7.35.1 : Utiliser le switch ...
-Dans la methode interpretCommand de la class GameEngine il est souhaiter que nous passions a une structure plus efficace.C'est a dire utiliser des Switch a la place des if et else dans notre cas
+Dans la méthode interpretCommand de la class GameEngine il est souhaité que nous passions à une structure plus efficace. C’est à dire utiliser des Switch a la place des if et else dans notre cas
 ```java
 public void interpretCommand(String pCommandLine) 
 {
@@ -934,7 +923,7 @@ public enum CommandWord
     public String toString(){return commandString;}
 }
 ```
-Et j'ameliore le constructeur de CommandWords pour n eplus avoir a le modifier a chaque fois que j'ajoute une commande
+Et j’améliore le constructeur de CommandWords pour ne plus avoir à le modifier à chaque fois que j’ajoute une commande
 ```java
 public CommandWords()
 {
@@ -946,7 +935,7 @@ public CommandWords()
 }
 ```
 ## Exercice 7.42 (time limit) :
-j'ai ajouter un attribut qui correspond au nombre de commande traiter par la methode interpretCommand si le nombre de commanbre de commande interpreter est superieur a 200 il est impossible de continuer a executer de commande.
+J’ai ajouté un attribut qui correspond au nombre de commande traiter par la méthode interpretCommand si le nombre de commande interpréter est supérieur a 200 il est impossible de continuer a exécuté de commande.
 ```java
 private boolean time(){
     this.aCommantInput++;
@@ -966,14 +955,11 @@ public void interpretCommand(String pCommandLine)
 }
 ```
 ## Exercice 7.43 (trap door) :
-Le but est que une fois la sortie emprunter on ne plus peut plus faire marche arriere.
-Rien de bien complique il suffis de ne pas mettre cette direction de sortie dans la nouvelle piece.
-Le probleme est qu'il faut aussi empecher la methode back de retourner dans la piece precedante.
-J'ai donc decider d'ajouter une collection a la class Room qui contient toute les sortie est un boolean qui indique si elle sont a sens unique ou non.
+Le but est qu’une fois la sortie emprunter on ne plus peut plus faire marche arrière. Rien de bien compliquer il suffit de ne pas mettre cette direction de sortie dans la nouvelle pièce. Le problème est qu’il faut aussi empêcher la méthode back de retourner dans la pièce précédente. J’ai donc décidé d’ajouter une collection a la class Room qui contient toutes les sorties est un boolean qui indique si elles sont à sens unique ou non.
 ```java
 private HashMap<String, Boolean> aTrapDoor;
 ```
-Et lors de la definition des sortie de la Room j'ai ajouter un parametre pour connaitre la nature de la sortie(sens unique ou non).
+Et lors de la définition des sorties de la Room, j’ai ajouté un paramètre pour connaître la nature de la sortie (sens unique ou non).
 ```java
 public void setExit(final String pDirection, final Room pNeighbor, final boolean pTrapDoor)
 {
@@ -981,15 +967,15 @@ public void setExit(final String pDirection, final Room pNeighbor, final boolean
     this.aTrapDoor.put(pDirection, pTrapDoor);
 }
 ```
-Et ajout d'une methode pour connaitre la nature de la sortie lorsque le joueur l'emprunte
+Et ajout d’une méthode pour connaître la nature de la sortie lorsque le joueur l’emprunte
 ```java
 public Boolean isTrapDoor(String pDirection){return this.aTrapDoor.get(pDirection);}
 ```
-Il faut ajouter une methode dans la class player pour vider la pile des piece precedente pour que le joueur ne puisse pas utiliser la commande back:
+Il faut ajouter une méthode dans la class player pour vider la pile des pièces précédentes pour que le joueur ne puisse pas utiliser la commande back:
 ```java
 public void resetLastRoom(){this.aLastRooms.clear();}
 ```
-maintenant le dernier modification ce trouve la commande goRoom de GameEngine
+Maintenant le dernière modification ce trouve la commande goRoom de GameEngine 
 ```java
     private void goRoom(final Command pCommand)
     {
@@ -1016,8 +1002,7 @@ maintenant le dernier modification ce trouve la commande goRoom de GameEngine
 }
 ```
 ## Exercice 7.44 (beamer) :
-Nous savons que le beamer est une sorte d'Item donc, beamer herite de Item.
-Les seul differences entre un Item classique et un Beamer sont, que le beamer a un etat de charge et une piece enregistrer lors de la charge
+Nous savons que le beamer est une sorte d’Item donc, beamer hérite de Item. Les seules différences entre un Item classique et un Beamer sont que le beamer a un état de charge et une pièce enregistrer lors de la charge
 ```java
 public class Beamer extends Item
 {
@@ -1035,11 +1020,11 @@ public class Beamer extends Item
         this.aChargeRoom = pChargeRoom;
 }
 ``` 
-ajout d'un methode pour connaitre l'etat de charge du beamer
+Ajout d’une méthode pour connaître l’état de charge du beamer
 ```java
 public boolean isCharged(){return this.aCharge;}
 ```
-deux pour autres pour charger l'etat du beamer
+deux pour autres pour charger l’état du beamer
 ```java
 public void charge(final Room pChargeRoom){
     this.aCharge = true;
@@ -1047,13 +1032,12 @@ public void charge(final Room pChargeRoom){
 }
 public void discharge(){this.aCharge = false;}
 ```
-Et une derniere dans la class beamer pour connaitre le lieu ou le beamer a ete charger
+Et une dernière dans la class beamer pour connaître le lieu où le beamer a été charger
 ```java
 public Room getChargeRoom(){return this.aChargeRoom;}
 ```
 
-NOus allons maintenant ajouter deux nouvelle commande charge et teleporte
-charge a pour but d'enregistrer l'emplacement actuelle pour pouvoir une fois la commande teleporte taper s'y deplacer.
+Nous allons maintenant ajouter deux nouvelles commandes charge et téléporte charge a pour but d’enregistrer l’emplacement actuel pour pouvoir une fois la commande téléporte taper s’y déplacer.
 ```java
 private void charge(final Command pCommand)
 {
@@ -1073,7 +1057,7 @@ private void charge(final Command pCommand)
     }
 }
 ```
-Et la commande teleporte, si le beamer est charger fait changer le player de Room
+Et la commande téléporte, si le beamer est charger fait changer le player de Room
 ```java
 private void teleport(final Command pCommand)
 {
@@ -1098,5 +1082,5 @@ private void teleport(final Command pCommand)
     }
 }
 ```
-Et faire toute les ajout habituel lors de la'jout d'une commande
+Et faire tous les ajouts habituels lors de l’ajout d’une commande
 # Mode d'emploi
