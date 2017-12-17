@@ -15,5 +15,5 @@ comment4.target=void\ dropItem(java.lang.String)
 comment4.text=\r\nmethode\ permettant\ de\ retirer\ un\ item\ de\ l'inventaire\r\n@param\ pStringItem\ Un\ string\ contenant\ la\ description/nom\ de\ l'item\ a\ retirer\ de\ l'inventaire\r\n
 comment5.params=pItem
 comment5.target=Item\ getItem(java.lang.String)
-comment5.text=\r\ngetter\ d'un\ item\ a\ partir\ de\ la\ description/nom\ de\ l'item\r\n@param\ pStringItem\ est\ un\ String\ correspondant\ a\ la\ description/nom\ de\ l'item\ que\ l'on\ souhaite\ obtenir\ dans\ l'invantaire\r\n
+comment5.text=\r\ngetter\ d'un\ item\ a\ partir\ de\ la\ description/nom\ de\ l'item\r\n@param\ pItem\ est\ un\ String\ correspondant\ a\ la\ description/nom\ de\ l'item\ que\ l'on\ souhaite\ obtenir\ dans\ l'invantaire\r\n
 numComments=6

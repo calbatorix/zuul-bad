@@ -1,5 +1,12 @@
 take torche
+take beamer
 take magicCookie
 eat magicCookie
+eat
 look
-go north
+go west
+charge beamer
+help
+back
+take blocDePierre
+tp beamer

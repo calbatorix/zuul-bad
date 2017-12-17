@@ -20,3 +20,4 @@ go north
 go east
 go east
 go east
+take antidote

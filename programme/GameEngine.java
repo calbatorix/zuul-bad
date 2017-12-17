@@ -85,8 +85,10 @@ public class GameEngine
         Room vTresor = new Room("salle au tresor","images/SalleAuTresor.jpg");
 
         aListeRoom = new HashMap();
-        Item vTorche = new Item("vielle Torche",2,800);
+        Item vTorche = new Item("vielle Torche",2,10);
         Item vMagicCookie = new Item("cookie magique",50,0);
+        Item vBlocDePierre = new Item("gros bloc de pierre",0,700);
+        Item vAntidote = new Item("antidote",1000,5);
         Beamer vBeamer = new Beamer("teleporteur",100,2);
 
         this.aListeRoom.put("Piece de depart",vPieceDeDepart);
@@ -143,6 +145,8 @@ public class GameEngine
         vPieceDeDepart.takeItem("torche", vTorche);
         vPieceDeDepart.takeItem("magicCookie", vMagicCookie);
         vPieceDeDepart.takeItem("beamer", vBeamer);
+        vPieceDeDepart.takeItem("blocDePierre", vBlocDePierre);
+        vTresor.takeItem("antidote", vAntidote);
         //initialisation lieu courant
     }
 

@@ -6,3 +6,4 @@ go south
 go east
 go east
 go east
+take antidote
